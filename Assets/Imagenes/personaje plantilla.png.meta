@@ -1,0 +1,1915 @@
+fileFormatVersion: 2
+guid: 9d14a07d484fc864d8282c4152710bd8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2843848679677194443
+    second: personaje plantilla_0
+  - first:
+      213: -2291361120975971100
+    second: personaje plantilla_1
+  - first:
+      213: 149743165752186084
+    second: personaje plantilla_2
+  - first:
+      213: 107376417670605972
+    second: personaje plantilla_3
+  - first:
+      213: 1970534301162222319
+    second: personaje plantilla_4
+  - first:
+      213: 1856131276107712992
+    second: personaje plantilla_5
+  - first:
+      213: -4453128164208458791
+    second: personaje plantilla_6
+  - first:
+      213: -5661466016221632943
+    second: personaje plantilla_7
+  - first:
+      213: -713377426225628971
+    second: personaje plantilla_8
+  - first:
+      213: 1852411677112627668
+    second: personaje plantilla_9
+  - first:
+      213: -5714625167381693663
+    second: personaje plantilla_10
+  - first:
+      213: -5096618098320862702
+    second: personaje plantilla_11
+  - first:
+      213: -150933681591879940
+    second: personaje plantilla_12
+  - first:
+      213: 4082957932206125023
+    second: personaje plantilla_13
+  - first:
+      213: -3866106981510539936
+    second: personaje plantilla_14
+  - first:
+      213: 1430282051430952517
+    second: personaje plantilla_15
+  - first:
+      213: -3597744447527711830
+    second: personaje plantilla_16
+  - first:
+      213: 7693320358827017806
+    second: personaje plantilla_17
+  - first:
+      213: -3577217299416897316
+    second: personaje plantilla_18
+  - first:
+      213: 6094941417781656139
+    second: personaje plantilla_19
+  - first:
+      213: 4952948431269896517
+    second: personaje plantilla_20
+  - first:
+      213: 5315330804208123289
+    second: personaje plantilla_21
+  - first:
+      213: 8882334719119182594
+    second: personaje plantilla_22
+  - first:
+      213: -4321340782042283590
+    second: personaje plantilla_23
+  - first:
+      213: 1939989453249518981
+    second: personaje plantilla_24
+  - first:
+      213: 5444169260693891514
+    second: personaje plantilla_25
+  - first:
+      213: -1668942937530336306
+    second: personaje plantilla_26
+  - first:
+      213: 5563305167311002082
+    second: personaje plantilla_27
+  - first:
+      213: 7156958114666308655
+    second: personaje plantilla_28
+  - first:
+      213: 6751410550092506792
+    second: personaje plantilla_29
+  - first:
+      213: 8771424888229083072
+    second: personaje plantilla_30
+  - first:
+      213: 2678146534221924683
+    second: personaje plantilla_31
+  - first:
+      213: -6274520571852316237
+    second: personaje plantilla_32
+  - first:
+      213: -4368913440912916963
+    second: personaje plantilla_33
+  - first:
+      213: -440949095700462188
+    second: personaje plantilla_34
+  - first:
+      213: 2243517861923760922
+    second: personaje plantilla_35
+  - first:
+      213: -2744037174867089787
+    second: personaje plantilla_36
+  - first:
+      213: 6052101120597528543
+    second: personaje plantilla_37
+  - first:
+      213: -4163821823981118353
+    second: personaje plantilla_38
+  - first:
+      213: 8953639642353687117
+    second: personaje plantilla_39
+  - first:
+      213: 7229433483589460607
+    second: personaje plantilla_40
+  - first:
+      213: 7956205446925471199
+    second: personaje plantilla_41
+  - first:
+      213: -3540395342223959685
+    second: personaje plantilla_42
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: personaje plantilla_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1abed3f15c19dc04dab1b0dba74d7c0d
+      internalID: 1915603035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_1
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e631e1cbdfe68847a532451dd09a6ba
+      internalID: -179246004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_2
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c61e0bbde8b707e42a5af59a52519470
+      internalID: -1256550419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_3
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ef14ef348aac24a8d3099dbf3fbde6
+      internalID: -681739534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_4
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9dd03a83e101764ab84b19270cd5ff2
+      internalID: 13632133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_5
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1355c4799f0d08345a844a4cb930a80b
+      internalID: -242220730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_6
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d432c2f7f039cec42b88031455323d4d
+      internalID: 1718400953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_7
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c1f405ad4e9c3242a62ca05a39c8391
+      internalID: 479437174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 819669e235f6ad242a783655efda2cf0
+      internalID: -996353641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_9
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f554a304fc5e39c4a8d58d976895885d
+      internalID: -1877955416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_10
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4737ff8c619905c4fb21759b1b115fd6
+      internalID: -133114304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_11
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a467094ae423b14bb670e1bfa8195bc
+      internalID: 685036938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_12
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 595cf605bec96b6409f8009cf04be7b2
+      internalID: -1270495051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_13
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83f8d62e652042844ab801ae984bd3a2
+      internalID: -110762269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_14
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aac4e432d0b7fcb439527c11e2c23a43
+      internalID: 450937374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_15
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e733622b6cb4e843921fa38fd554e8b
+      internalID: -715589733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06828a9e972a5d045bda78b821610938
+      internalID: -353694686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_17
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7cdc62d6f3fd1c4ca65c1aab239b95f
+      internalID: -1022795693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_18
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a2c97da4e4626f40ad2a3af11a89107
+      internalID: -294554879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_19
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc2b2b048a5ef4f42b14edaf879c4d5e
+      internalID: -1100926975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_20
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e5a62bcb42ed4647b6a2f8e957cdee9
+      internalID: 848878756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_21
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1028e7b15002c8408463567fec8f7c0
+      internalID: 114740359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_22
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 317ff659840d5664faa66e024335dcee
+      internalID: 1911583064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_23
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd5e8ab666b5bc54c93cd01cbb070464
+      internalID: 329079165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d529a988a6d506941af21078065ab46b
+      internalID: -304364674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_25
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e022f66ebf20b8a45a7227e5763c510b
+      internalID: -1917676485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_26
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bcf2583710b2e3439f3ee11b5ed469a
+      internalID: 717331733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_27
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa8a48cc7d8cd4d40ac1eb50eef5f95b
+      internalID: 1239061850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_28
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e36259ac9aab3b4d9250606c6413f82
+      internalID: 1798627271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_29
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99467b2608f45f94ba17ef15afda4f9c
+      internalID: -182242600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_30
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a72e75d509f6e948ba26fa5a41602a0
+      internalID: 777543344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_31
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5373cf9d69c59334fa016f91d9117541
+      internalID: -961887015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 416
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75734fd83dfecd041b651d095689991f
+      internalID: -1756865360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_33
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 416
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.36, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 222ead41025e0164ca5b98d21c27eab9
+      internalID: -1286481497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_34
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 416
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.4, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88c31b2048a1b7749951c4a248ec2d5e
+      internalID: -1385670747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_35
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 416
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae9d8bf4ed59b39499dd784fa8f8f3bf
+      internalID: -1331716453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_36
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 416
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00b2339a879a3e04385782ade1102cfa
+      internalID: 1992607809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_37
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 416
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75ef95d32517b2c4d976889da10304e1
+      internalID: -1116710398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_38
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 416
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cb83513fa6216f4385ecaf0571a6b31
+      internalID: 947937550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_39
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 416
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 034d00763c5c9f140a631c44e8cc747a
+      internalID: -396348475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 312
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.71, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6837a9c7ff236e347b35197d3b674113
+      internalID: -1302157199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_41
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 312
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.62, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e969009c86467c04ab595fd22d9e7889
+      internalID: -1386869266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_42
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 312
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.6, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d82a5a87055ed544d8b180b77a68882c
+      internalID: 824401455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_43
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 312
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.57, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5111ed1d38e2ad245b6120b3c58f73f4
+      internalID: -900235505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_44
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 312
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93cf913766e6aee458125ab3e7e8a480
+      internalID: -449977916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_45
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 312
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68cbbe435b322b4408ba540e7db0399f
+      internalID: 1986998628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_46
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 312
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 232ded6c1d7754a47bdb492685f0060e
+      internalID: 373750736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_47
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 312
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6fa342fb40581149b788f8ab102b523
+      internalID: -198215855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 848f86390d5b5f04ea9924615bd6efed
+      internalID: 1467301515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_49
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac824a642c11f704d8023c65e81e1d09
+      internalID: -1616022617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_50
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f5e47c61cbdaeb4c9ef1843315ab90f
+      internalID: 187824228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_51
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fcaf8bc3f7d57744814169cbe51fbf7
+      internalID: 669219579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_52
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46dc8bba06812ce4a85c4a5f36011120
+      internalID: -1209586443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_53
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4913e9d9a9a15454d8cbf32064c9304e
+      internalID: 432201545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_54
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 208
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.427, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 509bf202e231bb045a6845793a008e77
+      internalID: 1003720941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_55
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebc3e0af79d545642882465f316e0f6e
+      internalID: -1448758048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 470dd7ec4edaf1546ac3a158e40368d7
+      internalID: 333058848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_57
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75ad346d7ac0d4c4a80961193d89cbff
+      internalID: 2076885645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_58
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64bf40da03bc35f40b1c21b48bf6fc9d
+      internalID: 257544870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_59
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4a2c1756f0f94b4db815d4c6fc9219a
+      internalID: 466870944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_60
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bf8274b846bd9e47a9e976d4a5eb9d8
+      internalID: 1902226991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_61
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a5758efc22c3af44930eab16866d7dc
+      internalID: -987552011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_62
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b85053a27fc1657448d68c3c37fb3123
+      internalID: 1691232159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_63
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be2c0b531670b004b9391ed54aed54f1
+      internalID: -285844371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_64
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 304f7f9dbfae8ab4bbc8003b3d9c1d1a
+      internalID: 103071352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_65
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89f1739bc3e56fe4d882e3b13aa6f162
+      internalID: 1843144390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_66
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed8afa7537a72cb4aa1b2ac696376ebf
+      internalID: 672756278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_67
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 0
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.66, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3bc7cefd1d6aa849850ad395f6e58b8
+      internalID: -1489708585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_68
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.74, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c1c6645328eaf94abf3343185f06d1c
+      internalID: 1483459172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_69
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 0
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.76, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c0b122d63064c14baa9adf55fddf8b0
+      internalID: -700701365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_70
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 0
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.76, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38209aad3406aa940a8e14fd4e15dc1d
+      internalID: 1381755584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje plantilla_71
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 0
+        width: 104
+        height: 104
+      alignment: 9
+      pivot: {x: 0.76, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69690b599d5086a4e8b600ff575124a8
+      internalID: 1332795492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d722cc5110ff821479aa0f80bb98fb57
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      personaje plantilla_0: 1915603035
+      personaje plantilla_1: -179246004
+      personaje plantilla_10: -133114304
+      personaje plantilla_11: 685036938
+      personaje plantilla_12: -1270495051
+      personaje plantilla_13: -110762269
+      personaje plantilla_14: 450937374
+      personaje plantilla_15: -715589733
+      personaje plantilla_16: -353694686
+      personaje plantilla_17: -1022795693
+      personaje plantilla_18: -294554879
+      personaje plantilla_19: -1100926975
+      personaje plantilla_2: -1256550419
+      personaje plantilla_20: 848878756
+      personaje plantilla_21: 114740359
+      personaje plantilla_22: 1911583064
+      personaje plantilla_23: 329079165
+      personaje plantilla_24: -304364674
+      personaje plantilla_25: -1917676485
+      personaje plantilla_26: 717331733
+      personaje plantilla_27: 1239061850
+      personaje plantilla_28: 1798627271
+      personaje plantilla_29: -182242600
+      personaje plantilla_3: -681739534
+      personaje plantilla_30: 777543344
+      personaje plantilla_31: -961887015
+      personaje plantilla_32: -1756865360
+      personaje plantilla_33: -1286481497
+      personaje plantilla_34: -1385670747
+      personaje plantilla_35: -1331716453
+      personaje plantilla_36: 1992607809
+      personaje plantilla_37: -1116710398
+      personaje plantilla_38: 947937550
+      personaje plantilla_39: -396348475
+      personaje plantilla_4: 13632133
+      personaje plantilla_40: -1302157199
+      personaje plantilla_41: -1386869266
+      personaje plantilla_42: 824401455
+      personaje plantilla_43: -900235505
+      personaje plantilla_44: -449977916
+      personaje plantilla_45: 1986998628
+      personaje plantilla_46: 373750736
+      personaje plantilla_47: -198215855
+      personaje plantilla_48: 1467301515
+      personaje plantilla_49: -1616022617
+      personaje plantilla_5: -242220730
+      personaje plantilla_50: 187824228
+      personaje plantilla_51: 669219579
+      personaje plantilla_52: -1209586443
+      personaje plantilla_53: 432201545
+      personaje plantilla_54: 1003720941
+      personaje plantilla_55: -1448758048
+      personaje plantilla_56: 333058848
+      personaje plantilla_57: 2076885645
+      personaje plantilla_58: 257544870
+      personaje plantilla_59: 466870944
+      personaje plantilla_6: 1718400953
+      personaje plantilla_60: 1902226991
+      personaje plantilla_61: -987552011
+      personaje plantilla_62: 1691232159
+      personaje plantilla_63: -285844371
+      personaje plantilla_64: 103071352
+      personaje plantilla_65: 1843144390
+      personaje plantilla_66: 672756278
+      personaje plantilla_67: -1489708585
+      personaje plantilla_68: 1483459172
+      personaje plantilla_69: -700701365
+      personaje plantilla_7: 479437174
+      personaje plantilla_70: 1381755584
+      personaje plantilla_71: 1332795492
+      personaje plantilla_8: -996353641
+      personaje plantilla_9: -1877955416
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

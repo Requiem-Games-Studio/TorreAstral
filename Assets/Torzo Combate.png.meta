@@ -1,0 +1,2002 @@
+fileFormatVersion: 2
+guid: a79ae9a12bb3eac40bfbbe23e3207187
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3953096717735518938
+    second: personaje Acciones_0
+  - first:
+      213: -8375988235366977479
+    second: personaje Acciones_1
+  - first:
+      213: 9144458174695382222
+    second: personaje Acciones_2
+  - first:
+      213: -7409084591187013216
+    second: personaje Acciones_3
+  - first:
+      213: 7733578980299825275
+    second: personaje Acciones_4
+  - first:
+      213: -1378004899452794829
+    second: personaje Acciones_5
+  - first:
+      213: -7215264313315082303
+    second: personaje Acciones_6
+  - first:
+      213: -4992973595268033601
+    second: personaje Acciones_7
+  - first:
+      213: 7215854776143373291
+    second: personaje Acciones_8
+  - first:
+      213: -8361339615553273700
+    second: personaje Acciones_9
+  - first:
+      213: -7047884991522480405
+    second: personaje Acciones_10
+  - first:
+      213: -5437461932846777790
+    second: personaje Acciones_11
+  - first:
+      213: -3629365145849350373
+    second: personaje Acciones_12
+  - first:
+      213: -6405314593913139564
+    second: personaje Acciones_13
+  - first:
+      213: -8850786058042073471
+    second: personaje Acciones_14
+  - first:
+      213: -3906177237815143429
+    second: personaje Acciones_15
+  - first:
+      213: -8564198266924786989
+    second: personaje Acciones_16
+  - first:
+      213: -3468868316812425849
+    second: personaje Acciones_17
+  - first:
+      213: 6671072837773942304
+    second: personaje Acciones_18
+  - first:
+      213: 2067364890019894649
+    second: personaje Acciones_19
+  - first:
+      213: 3717142367179275377
+    second: personaje Acciones_20
+  - first:
+      213: -1385606454999153468
+    second: personaje Acciones_21
+  - first:
+      213: 3368114367090489598
+    second: personaje Acciones_22
+  - first:
+      213: -3488621753765652038
+    second: personaje Acciones_23
+  - first:
+      213: -5666960835446852431
+    second: personaje Acciones_24
+  - first:
+      213: 8593728041720578627
+    second: personaje Acciones_25
+  - first:
+      213: 3027462553271161934
+    second: personaje Acciones_26
+  - first:
+      213: -7020760455381521396
+    second: personaje Acciones_27
+  - first:
+      213: 5310085743842087134
+    second: personaje Acciones_28
+  - first:
+      213: -525282371487571316
+    second: personaje Acciones_29
+  - first:
+      213: -7090924362943710370
+    second: personaje Acciones_30
+  - first:
+      213: 3522872284818216258
+    second: personaje Acciones_31
+  - first:
+      213: -6445292205667860413
+    second: personaje Acciones_32
+  - first:
+      213: -6843797430937593969
+    second: personaje Acciones_33
+  - first:
+      213: -4236846103769589735
+    second: personaje Acciones_34
+  - first:
+      213: -5964943308532805849
+    second: personaje Acciones_35
+  - first:
+      213: 5468976517384510320
+    second: personaje Acciones_36
+  - first:
+      213: -2525976293613428656
+    second: personaje Acciones_37
+  - first:
+      213: -3715807494101017023
+    second: personaje Acciones_38
+  - first:
+      213: -7409304746594165430
+    second: personaje Acciones_39
+  - first:
+      213: -531717561365600242
+    second: personaje Acciones_40
+  - first:
+      213: 4901443339214653931
+    second: personaje Acciones_41
+  - first:
+      213: 4175143039648622495
+    second: personaje Acciones_42
+  - first:
+      213: -2275113340315132337
+    second: personaje Acciones_43
+  - first:
+      213: -2294303481032602916
+    second: personaje Acciones_44
+  - first:
+      213: -2568595902700218843
+    second: personaje Acciones_45
+  - first:
+      213: -74389420259381437
+    second: personaje Acciones_46
+  - first:
+      213: 4269538145329353594
+    second: personaje Acciones_47
+  - first:
+      213: 5766822150567289328
+    second: personaje Acciones_48
+  - first:
+      213: -1187736190633681865
+    second: personaje Acciones_49
+  - first:
+      213: 4345161310304204369
+    second: personaje Acciones_50
+  - first:
+      213: -8959767621254517904
+    second: personaje Acciones_51
+  - first:
+      213: 5326668100390813599
+    second: personaje Acciones_52
+  - first:
+      213: -4613192640325964727
+    second: personaje Acciones_53
+  - first:
+      213: 1497487291723780853
+    second: personaje Acciones_54
+  - first:
+      213: 4648655523446775493
+    second: personaje Acciones_55
+  - first:
+      213: -3976020930192129114
+    second: personaje Acciones_56
+  - first:
+      213: 2690201374722263220
+    second: personaje Acciones_57
+  - first:
+      213: 8096581504244409101
+    second: personaje Acciones_58
+  - first:
+      213: -7858537288315888902
+    second: personaje Acciones_59
+  - first:
+      213: -418726971159905089
+    second: personaje Acciones_60
+  - first:
+      213: 608608528047454631
+    second: personaje Acciones_61
+  - first:
+      213: 5204782707960493604
+    second: personaje Acciones_62
+  - first:
+      213: 2227036430016424562
+    second: personaje Acciones_63
+  - first:
+      213: 2806623174011358471
+    second: personaje Acciones_64
+  - first:
+      213: -1809837795564520062
+    second: personaje Acciones_65
+  - first:
+      213: -1375931470407632439
+    second: personaje Acciones_66
+  - first:
+      213: 4238495859956039762
+    second: personaje Acciones_67
+  - first:
+      213: 8651269004811040918
+    second: personaje Acciones_68
+  - first:
+      213: 4050480081157636964
+    second: personaje Acciones_69
+  - first:
+      213: 8493804047886505333
+    second: personaje Acciones_70
+  - first:
+      213: 1161475358598192502
+    second: personaje Acciones_71
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: personaje Acciones_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53a687e0fcec9734b89591552074bac5
+      internalID: -186227701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_1
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dd04c536b5893043a6390fe4a2b3110
+      internalID: -1837819955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_2
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb91fc0122540da4ba2a9e3b2abfaf2c
+      internalID: -1582397732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_3
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 478b1451677aac346bc93c8fb11ed222
+      internalID: 1550749239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_4
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 111628b50f329fe418d6e04bdd0fd605
+      internalID: 736800757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_5
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84be3fb77ee5083408aa0d11e6ce7511
+      internalID: 696449225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_6
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f45fe64518d83c4b9d40478d6a1c347
+      internalID: 1274688649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_7
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 832
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32626827650664646a9dd13e58eab9db
+      internalID: -891363654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75279d54853a48040b89612396419e2a
+      internalID: 1915499538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_9
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b40be159c13b4ce4990f01eef254cc8f
+      internalID: 98722681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_10
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ea1239b31f5d754fa4f87270036b60e
+      internalID: 647715122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_11
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 006b0382b2fd8ce44bb40539877a605b
+      internalID: -1999594841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_12
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cebf77b62c9b5c145bbb1996244b2519
+      internalID: -877260363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_13
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4a2cac1b87e6e1439964b27315e4f4c
+      internalID: -547005908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_14
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b0fdfaf72a483a4e9a458e5fcfdd8ed
+      internalID: 1928079443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_15
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 728
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1059f47f189d2f34fa7b7b83e6b64d60
+      internalID: 978503289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c25b934b2291ec40a17e665510d27d0
+      internalID: -67586836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_17
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd43cec8e79fb0b459591341342f9057
+      internalID: 1516234587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_18
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bec2c95195de58f44816de8631974a1d
+      internalID: -1494682655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_19
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f63aaa0338741b242854868faa05bbfa
+      internalID: 552587408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_20
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 268f5d15b8ff21b43946a67139c8d4e0
+      internalID: -902913979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_21
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0de1bb9a7f1eff4992659e38ea017c0
+      internalID: -968824215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_22
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ded968d7c310b74f9d05331b8efca2d
+      internalID: 1252456531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_23
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 624
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c53c6194c0a39a49b35c761b00193f2
+      internalID: 1569756649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b8d6c67eaff7f14d87661c52d51ef1a
+      internalID: 1155638941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_25
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdb5fe557a48ed449bade1af0abe7ec4
+      internalID: -884761959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_26
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 603f18e598230af4190e7c4825b1b900
+      internalID: -69521712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_27
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 703eb8b7362bd0247b0076f672b70b9a
+      internalID: 1149468036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_28
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 750657dcad00ce047a36805c9031cdf5
+      internalID: 1305267867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_29
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eec99733e44de3248b123c77e8bdb502
+      internalID: 1899531854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_30
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d07354a02979844f8bebf4cba2b60f2
+      internalID: 258809761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_31
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 520
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f5f995f4624d434a9ddd53a2da990d8
+      internalID: -1052764361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 416
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fe64e14570e32d4d82be3aec6c95088
+      internalID: 482822921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_33
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 416
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd4f590e8f317bc4581ac71184bd21b4
+      internalID: -643733371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_34
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 416
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 708e447e781a2eb40bb52b30199d343e
+      internalID: -1639708419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_35
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 416
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2583c4545ba717f4d8dfc6bd3eb9eec0
+      internalID: 1361843045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_36
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 416
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0023af983d1f1e6488b2dce9bfbf3579
+      internalID: -1316615480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_37
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 416
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25222097b73e3e04b87f62a16b0a2010
+      internalID: -1245668696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_38
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 416
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d4deb07a78183c41bfe60b0fffd53ba
+      internalID: -958659577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_39
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 416
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe57a78240a453146b5f10a25f6a7862
+      internalID: 2133612444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 312
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c405604dc0e3214eaa335bbb16de8a2
+      internalID: -654530681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_41
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 312
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c37c0aeec85232349bab342c1067392d
+      internalID: 927838052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_42
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 312
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c93afe7a29ebb548982b6c734671698
+      internalID: 760454361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_43
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 312
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0c8af20f1057eb46a58b1592e14d0a4
+      internalID: -402922191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_44
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 312
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11b4c39057620ea4691bbb4e92815fd2
+      internalID: -546390737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_45
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 312
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d67c64d556c12c4a9e991d8d2e79b48
+      internalID: 433737135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_46
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 312
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eca244c8e0f5be44b51401ae49a9e70
+      internalID: 265121343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_47
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 312
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73422d7bac9a45c45b70c87bb6ce9de0
+      internalID: -1977005005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af9403d4205b9d147ad0ab082d1be3c2
+      internalID: -2070308039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_49
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4071dbaf1066cb447a1aaa64484be7d7
+      internalID: 1251598362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_50
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e112064e232661478379575eb66b15f
+      internalID: -2054005461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_51
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a8fcc0dfe57a748b716d29427aa164
+      internalID: -950484980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_52
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30f2d453c7103c44a8e370738b36366d
+      internalID: 1288679465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_53
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ef3e297cb1c60d419d71df5878f74ae
+      internalID: -1864036114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_54
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9c9ecda03010cb469a69fef75b32098
+      internalID: -23217776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_55
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 208
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffb19a182d58db14c9a709108eeea6f5
+      internalID: -981854443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e71b378eb91325e41b7c4703979b79db
+      internalID: 1665611953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_57
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2c32c697102a964f946230030495bd6
+      internalID: -2131519098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_58
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cbf59be723e6564f967c68c7246bbfe
+      internalID: -1174611754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_59
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e974bd4d3375b764db2651bbb6be2197
+      internalID: -2142701705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_60
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00933c52e961e194c957a754d1bc5332
+      internalID: -1298229041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_61
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd79e5f8ffb92fc4092b8c8024bff206
+      internalID: -602353410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_62
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9826dc486e0339345b3461438074e0c2
+      internalID: 1121857362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_63
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 104
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45bd5904dd61fed4983693334e1d6733
+      internalID: 965577400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_64
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9407d3f5d02dea44d8f079042b216b7b
+      internalID: -1517539485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_65
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 021bbf33bd20c2a4185792294005eb03
+      internalID: 1103033122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_66
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19dc5318134b46f4e8b699f971e54212
+      internalID: 1118906333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_67
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 0
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 780b5086a3870664b8e752d046555421
+      internalID: 719352010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_68
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 619c6d382433fc44ebbf99f019aabcf8
+      internalID: 1125255803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_69
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 0
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6720a70c9ab17b64faa6a7fd4942119d
+      internalID: 1960065248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_70
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 0
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 456a1b7538438ea428b985bbeb6f74d6
+      internalID: 1141328763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: personaje Acciones_71
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 0
+        width: 104
+        height: 104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfed6c1bddd4cb445b7a2fd4f6db3271
+      internalID: 1125775586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: cea6ce8c23fb2724c8f63424bba4a121
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      personaje Acciones_0: -186227701
+      personaje Acciones_1: -1837819955
+      personaje Acciones_10: 647715122
+      personaje Acciones_11: -1999594841
+      personaje Acciones_12: -877260363
+      personaje Acciones_13: -547005908
+      personaje Acciones_14: 1928079443
+      personaje Acciones_15: 978503289
+      personaje Acciones_16: -67586836
+      personaje Acciones_17: 1516234587
+      personaje Acciones_18: -1494682655
+      personaje Acciones_19: 552587408
+      personaje Acciones_2: -1582397732
+      personaje Acciones_20: -902913979
+      personaje Acciones_21: -968824215
+      personaje Acciones_22: 1252456531
+      personaje Acciones_23: 1569756649
+      personaje Acciones_24: 1155638941
+      personaje Acciones_25: -884761959
+      personaje Acciones_26: -69521712
+      personaje Acciones_27: 1149468036
+      personaje Acciones_28: 1305267867
+      personaje Acciones_29: 1899531854
+      personaje Acciones_3: 1550749239
+      personaje Acciones_30: 258809761
+      personaje Acciones_31: -1052764361
+      personaje Acciones_32: 482822921
+      personaje Acciones_33: -643733371
+      personaje Acciones_34: -1639708419
+      personaje Acciones_35: 1361843045
+      personaje Acciones_36: -1316615480
+      personaje Acciones_37: -1245668696
+      personaje Acciones_38: -958659577
+      personaje Acciones_39: 2133612444
+      personaje Acciones_4: 736800757
+      personaje Acciones_40: -654530681
+      personaje Acciones_41: 927838052
+      personaje Acciones_42: 760454361
+      personaje Acciones_43: -402922191
+      personaje Acciones_44: -546390737
+      personaje Acciones_45: 433737135
+      personaje Acciones_46: 265121343
+      personaje Acciones_47: -1977005005
+      personaje Acciones_48: -2070308039
+      personaje Acciones_49: 1251598362
+      personaje Acciones_5: 696449225
+      personaje Acciones_50: -2054005461
+      personaje Acciones_51: -950484980
+      personaje Acciones_52: 1288679465
+      personaje Acciones_53: -1864036114
+      personaje Acciones_54: -23217776
+      personaje Acciones_55: -981854443
+      personaje Acciones_56: 1665611953
+      personaje Acciones_57: -2131519098
+      personaje Acciones_58: -1174611754
+      personaje Acciones_59: -2142701705
+      personaje Acciones_6: 1274688649
+      personaje Acciones_60: -1298229041
+      personaje Acciones_61: -602353410
+      personaje Acciones_62: 1121857362
+      personaje Acciones_63: 965577400
+      personaje Acciones_64: -1517539485
+      personaje Acciones_65: 1103033122
+      personaje Acciones_66: 1118906333
+      personaje Acciones_67: 719352010
+      personaje Acciones_68: 1125255803
+      personaje Acciones_69: 1960065248
+      personaje Acciones_7: -891363654
+      personaje Acciones_70: 1141328763
+      personaje Acciones_71: 1125775586
+      personaje Acciones_8: 1915499538
+      personaje Acciones_9: 98722681
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
