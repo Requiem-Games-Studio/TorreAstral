@@ -5,8 +5,8 @@ using System;
 public class PlayerControler : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public Animator animator,animatorP;
-    public SpriteRenderer spriteRenderer,spritePiernas;
+    public Animator animator,animatorP,animatorC;
+    public SpriteRenderer spriteRenderer,spritePiernas,spriteCabeza;
     public Transform espadaPivot; // arrastra aquí tu EspadaPivot en el inspector
 
     public Transform groundCheck; // Punto en los pies para detectar el suelo
@@ -62,6 +62,7 @@ public class PlayerControler : MonoBehaviour
         isInteracting = animator.GetBool("isInteracting");
         animator.SetBool("isAttacking",isAttacking);
         animatorP.SetBool("isAttacking", isAttacking);
+        animatorC.SetBool("isAttacking", isAttacking);
 
         if (Input.GetMouseButtonDown(0)) // Click derecho
         {
@@ -82,6 +83,7 @@ public class PlayerControler : MonoBehaviour
                         Debug.Log("¡Ataque crítico!");
                         animator.Play("Critical");
                         animatorP.Play("Critical");
+                        animatorC.Play("Critical");
                         enemy.CriticalDamage(criticalDamage);
                         return;
                     }
@@ -95,6 +97,7 @@ public class PlayerControler : MonoBehaviour
                 comboTimer = comboDelay;
                 animator.Play("Attack");
                 animatorP.Play("Attack");
+                animatorC.Play("Attack");
             }
             else if (comboStep == 1 && comboTimer > 0)
             {
@@ -131,12 +134,15 @@ public class PlayerControler : MonoBehaviour
                 animator.SetBool("blocking", true);
                 animatorP.Play("StartBlock");
                 animatorP.SetBool("blocking", true);
+                animatorC.Play("StartBlock");
+                animatorC.SetBool("blocking", true);
             }
         }
         if (Input.GetMouseButtonUp(1))
         {
             animator.SetBool("blocking", false);
             animatorP.SetBool("blocking", false);
+            animatorC.SetBool("blocking", false);
         }
 
         //Movimiento y vista del jugador solo si no esta iteractuando
@@ -159,6 +165,7 @@ public class PlayerControler : MonoBehaviour
             {
                 spriteRenderer.flipX = moveInput < 0;
                 spritePiernas.flipX = moveInput < 0;
+                spriteCabeza.flipX = moveInput < 0;
 
                 // **Flip del pivote de la espada**
                 Vector3 scale = espadaPivot.localScale;
@@ -172,12 +179,15 @@ public class PlayerControler : MonoBehaviour
 
             animatorP.SetBool("Walk", moveInput != 0 && !isRunning);
             animatorP.SetBool("Run", moveInput != 0 && isRunning);
+            animatorC.SetBool("Walk", moveInput != 0 && !isRunning);
+            animatorC.SetBool("Run", moveInput != 0 && isRunning);
 
             // **Salto Variable**
             if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f)
             {
                 animator.Play("Jump");
                 animatorP.Play("Jump");
+                animatorC.Play("Jump");
                 isJumping = true;
                 jumpTimeCounter = maxJumpTime;
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -231,9 +241,11 @@ public class PlayerControler : MonoBehaviour
                 isCrouching = true;
                 rb.linearVelocityX = 0;
                 animator.Play("StarCrouch");
-                animatorP.Play("StarCrouch");
                 animator.SetBool("Crouch", true);   // Mantiene pose de agachado
+                animatorP.Play("StarCrouch");               
                 animatorP.SetBool("Crouch", true);
+                animatorC.Play("StarCrouch");
+                animatorC.SetBool("Crouch", true);
             }
 
             // Cuando se suelta la flecha abajo (empieza a levantarse)
@@ -242,12 +254,14 @@ public class PlayerControler : MonoBehaviour
                 isCrouching = false;
                 animator.SetBool("Crouch", false);  // Termina pose de agachado
                 animatorP.SetBool("Crouch", false);
+                animatorC.SetBool("Crouch", false);
             }
         }
         
         // Activar la animación de salto
         animator.SetBool("isJumping", isJumping);
         animatorP.SetBool("isJumping", isJumping);
+        animatorC.SetBool("isJumping", isJumping);
 
         // **Coyote Time**
         if (isGrounded)
@@ -277,11 +291,13 @@ public class PlayerControler : MonoBehaviour
                 rb.linearVelocityX = 0;
                 animatorP.Play("Land"); // Animación de aterrizaje
                 animator.Play("Land");
+                animatorC.Play("Land");
             }
             else
             {
                 animatorP.Play("idle"); // Vuelve a idle normal
                 animator.Play("idle");
+                animatorC.Play("idle");
             }
         }
     }
@@ -297,11 +313,13 @@ public class PlayerControler : MonoBehaviour
         {
             animator.Play("Dodge");
             animatorP.Play("Dodge");
+            animatorC.Play("Dodge");
         }
         else
         {
             animator.Play("CrouchSlide");
             animatorP.Play("CrouchSlide");
+            animatorC.Play("CrouchSlide");
         }
 
         // Desactivar colisión con enemigos
@@ -340,6 +358,7 @@ public class PlayerControler : MonoBehaviour
             isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
             animator.SetBool("Ground", isGrounded);
             animatorP.SetBool("Ground", isGrounded);
+            animatorC.SetBool("Ground", isGrounded);
         }
     }
 }
