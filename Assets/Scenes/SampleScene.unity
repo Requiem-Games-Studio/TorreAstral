@@ -3174,7 +3174,7 @@ Transform:
   m_GameObject: {fileID: 2028228733}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.067, z: 0}
+  m_LocalPosition: {x: -0.02, y: -0.078, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3259,7 +3259,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 15
-  m_Sprite: {fileID: -186227701, guid: ed9c52dbef3f6b04db1a3d0dd2dbe398, type: 3}
+  m_Sprite: {fileID: -186227701, guid: 8954c3e1f55c72d498c4e6bdaacec17e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3558,9 +3558,11 @@ MonoBehaviour:
   animator: {fileID: 1297034059}
   animatorP: {fileID: 537018718}
   animatorC: {fileID: 1586015188}
+  animatorB: {fileID: 2028228736}
   spriteRenderer: {fileID: 1297034061}
   spritePiernas: {fileID: 537018719}
   spriteCabeza: {fileID: 1586015189}
+  spriteBrazo: {fileID: 2028228737}
   espadaPivot: {fileID: 217396888}
   groundCheck: {fileID: 825740584}
   groundLayer:
