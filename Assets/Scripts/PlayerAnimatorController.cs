@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerAnimatorController : MonoBehaviour
 {
     public PlayerStats playerStats;
+    public PlayerControler playerControler;
 
     public void SetBlock()
     {
@@ -17,5 +18,11 @@ public class PlayerAnimatorController : MonoBehaviour
     public void StopBlock()
     {
         playerStats.StopBlock();    
+    }
+
+    public void PlayAnimationP(string animation)
+    {
+        playerControler.animatorP.Play(animation);
+        playerControler.StopVelocity();
     }
 }

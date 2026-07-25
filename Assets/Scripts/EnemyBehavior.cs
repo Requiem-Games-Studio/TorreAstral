@@ -16,7 +16,7 @@ public class EnemyBehavior : MonoBehaviour
     private Animator animator;
     private Vector2 startPos;
     private float lastAttackTime = 0;
-    public bool dead;
+    public bool dead,attacking;
 
     void Start()
     {
@@ -36,13 +36,16 @@ public class EnemyBehavior : MonoBehaviour
             {
                 AttackPlayer();
             }
-            else if (distance <= patrolRange)
+            else if (distance <= patrolRange && !attacking)
             {
                 ChasePlayer();
             }
             else
             {
-                Patrol();
+                if(!attacking)
+                {
+                    Patrol();
+                }
             }
         }
     }
@@ -72,6 +75,7 @@ public class EnemyBehavior : MonoBehaviour
     }
     void AttackPlayer()
     {
+        attacking = true;
         rb.linearVelocity = Vector2.zero;
         animator.SetBool("isWalking", false);
 
@@ -81,7 +85,7 @@ public class EnemyBehavior : MonoBehaviour
             lastAttackTime = Time.time;
         }
 
-        Flip(player.position.x - transform.position.x);
+        //Flip(player.position.x - transform.position.x);
     }
 
     void Flip(float direction)

@@ -5,6 +5,7 @@ using System;
 public class PlayerControler : MonoBehaviour
 {
     private Rigidbody2D rb;
+    public WeaponManager weaponManager;
     public Animator animator,animatorP,animatorC,animatorB;
     public SpriteRenderer spriteRenderer,spritePiernas,spriteCabeza,spriteBrazo;
     public Transform espadaPivot; // arrastra aquí tu EspadaPivot en el inspector
@@ -46,6 +47,7 @@ public class PlayerControler : MonoBehaviour
     private float comboTimer = 0f;
     public float comboDelay = 0.5f; // tiempo máximo entre ataques
     private bool isAttacking = false;
+    private bool isBlocking;
 
     public float rayDistance = 1.5f;
     public LayerMask enemyLayer;
@@ -60,10 +62,12 @@ public class PlayerControler : MonoBehaviour
     void Update()
     {
         isInteracting = animator.GetBool("isInteracting");
+        isBlocking = animator.GetBool("blocking");
         animator.SetBool("isAttacking",isAttacking);
         animatorP.SetBool("isAttacking", isAttacking);
         animatorC.SetBool("isAttacking", isAttacking);
         animatorB.SetBool("isAttacking", isAttacking);
+        weaponManager.anim.SetBool("isAttacking", isAttacking);
 
         if (Input.GetMouseButtonDown(0)) // Click derecho
         {
@@ -86,6 +90,7 @@ public class PlayerControler : MonoBehaviour
                         animatorP.Play("Critical");
                         animatorC.Play("Critical");
                         animatorB.Play("Critical");
+                        weaponManager.anim.Play("Critical");
                         enemy.CriticalDamage(criticalDamage);
                         return;
                     }
@@ -104,6 +109,7 @@ public class PlayerControler : MonoBehaviour
                 }
                 animatorC.Play("Attack");
                 animatorB.Play("Attack");
+                weaponManager.anim.Play("Attack");
             }
             else if (comboStep == 1 && comboTimer > 0)
             {
@@ -130,32 +136,7 @@ public class PlayerControler : MonoBehaviour
                 comboStep = 0;
                 isAttacking = false;
             }
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (!isAttacking && !isInteracting)
-            {               
-                animator.Play("StartBlock");
-                animator.SetBool("blocking", true);
-                if (!animatorP.GetBool("Walk") && !animatorP.GetBool("Run"))
-                {
-                    animatorP.Play("StartBlock");
-                    animatorP.SetBool("blocking", true);
-                }                
-                animatorC.Play("StartBlock");
-                animatorC.SetBool("blocking", true);
-                animatorB.Play("StartBlock");
-                animatorB.SetBool("blocking", true);
-            }
-        }
-        if (Input.GetMouseButtonUp(1))
-        {
-            animator.SetBool("blocking", false);
-            animatorP.SetBool("blocking", false);
-            animatorC.SetBool("blocking", false);
-            animatorB.SetBool("blocking", false);
-        }
+        }       
 
         //Movimiento y vista del jugador solo si no esta iteractuando
         if (!isInteracting)
@@ -167,7 +148,7 @@ public class PlayerControler : MonoBehaviour
 
             // Cambiar velocidad según estado (caminar/correr)
             float speed = isRunning ? runSpeed : walkSpeed;
-            if (!isCrouching)
+            if (!isCrouching && !isInteracting)
             {
                 rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
             }
@@ -179,6 +160,7 @@ public class PlayerControler : MonoBehaviour
                 spritePiernas.flipX = moveInput < 0;
                 spriteCabeza.flipX = moveInput < 0;
                 spriteBrazo.flipX = moveInput < 0;
+                
 
                 // **Flip del pivote de la espada**
                 Vector3 scale = espadaPivot.localScale;
@@ -188,14 +170,48 @@ public class PlayerControler : MonoBehaviour
 
             // --- Animaciones Walk y Run ---
             animator.SetBool("Walk", moveInput != 0 && !isRunning);
-            animator.SetBool("Run", moveInput != 0 && isRunning);
-
             animatorP.SetBool("Walk", moveInput != 0 && !isRunning);
-            animatorP.SetBool("Run", moveInput != 0 && isRunning);
             animatorC.SetBool("Walk", moveInput != 0 && !isRunning);
-            animatorC.SetBool("Run", moveInput != 0 && isRunning);
             animatorB.SetBool("Walk", moveInput != 0 && !isRunning);
+            weaponManager.anim.SetBool("Walk", moveInput != 0 && !isRunning);
+
+
+            animator.SetBool("Run", moveInput != 0 && isRunning);
+            animatorP.SetBool("Run", moveInput != 0 && isRunning);
+            animatorC.SetBool("Run", moveInput != 0 && isRunning);
             animatorB.SetBool("Run", moveInput != 0 && isRunning);
+            weaponManager.anim.SetBool("Run", moveInput != 0 && isRunning);
+
+
+            // --- Animacion de bloqueo ----
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (!isAttacking && !isInteracting)
+                {
+                    animator.Play("StartBlock");
+                    animator.SetBool("blocking", true);
+                    if (!animatorP.GetBool("Walk") && !animatorP.GetBool("Run"))
+                    {
+                        animatorP.Play("StartBlock");
+                        animatorP.SetBool("blocking", true);
+                    }
+                    animatorC.Play("StartBlock");
+                    animatorC.SetBool("blocking", true);
+                    animatorB.Play("StartBlock");
+                    animatorB.SetBool("blocking", true);
+                    weaponManager.anim.Play("StartBlock");
+                    weaponManager.anim.SetBool("blocking", true);
+                }
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                animator.SetBool("blocking", false);
+                animatorP.SetBool("blocking", false);
+                animatorC.SetBool("blocking", false);
+                animatorB.SetBool("blocking", false);
+                weaponManager.anim.SetBool("blocking", false);
+            }
 
             // **Salto Variable**
             if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f)
@@ -204,6 +220,7 @@ public class PlayerControler : MonoBehaviour
                 animatorP.Play("Jump");
                 animatorC.Play("Jump");
                 animatorB.Play("Jump");
+                weaponManager.anim.Play("Jump");
                 isJumping = true;
                 jumpTimeCounter = maxJumpTime;
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -264,6 +281,8 @@ public class PlayerControler : MonoBehaviour
                 animatorC.SetBool("Crouch", true);
                 animatorB.Play("StarCrouch");
                 animatorB.SetBool("Crouch", true);
+                weaponManager.anim.Play("StarCrouch");
+                weaponManager.anim.SetBool("Crouch", true);
             }
 
             // Cuando se suelta la flecha abajo (empieza a levantarse)
@@ -274,6 +293,7 @@ public class PlayerControler : MonoBehaviour
                 animatorP.SetBool("Crouch", false);
                 animatorC.SetBool("Crouch", false);
                 animatorB.SetBool("Crouch", false);
+                weaponManager.anim.SetBool("Crouch", false);
             }
         }
         
@@ -282,6 +302,7 @@ public class PlayerControler : MonoBehaviour
         animatorP.SetBool("isJumping", isJumping);
         animatorC.SetBool("isJumping", isJumping);
         animatorB.SetBool("isJumping", isJumping);
+        weaponManager.anim.SetBool("isJumping", isJumping);
 
         // **Coyote Time**
         if (isGrounded)
@@ -313,6 +334,7 @@ public class PlayerControler : MonoBehaviour
                 animator.Play("Land");
                 animatorC.Play("Land");
                 animatorB.Play("Land");
+                weaponManager.anim.Play("Land");
             }
             else
             {
@@ -320,6 +342,7 @@ public class PlayerControler : MonoBehaviour
                 animator.Play("idle");
                 animatorC.Play("idle");
                 animatorB.Play("idle");
+                weaponManager.anim.Play("idle");
             }
         }
     }
@@ -337,6 +360,7 @@ public class PlayerControler : MonoBehaviour
             animatorP.Play("Dodge");
             animatorC.Play("Dodge");
             animatorB.Play("Dodge");
+            weaponManager.anim.Play("Dodge");
         }
         else
         {
@@ -344,6 +368,7 @@ public class PlayerControler : MonoBehaviour
             animatorP.Play("CrouchSlide");
             animatorC.Play("CrouchSlide");
             animatorB.Play("CrouchSlide");
+            weaponManager.anim.Play("CrouchSlide");
         }
 
         // Desactivar colisión con enemigos
@@ -375,6 +400,13 @@ public class PlayerControler : MonoBehaviour
         yield return new WaitForSeconds(dodgeCooldown);
         canDodge = true;
     }   
+
+    public void StopVelocity()
+    {
+        rb.linearVelocity = Vector2.zero;
+        //rb.gravityScale = 0;
+    }
+
     private void FixedUpdate()
     {
         if (!animator.GetBool("dodge"))
@@ -384,6 +416,7 @@ public class PlayerControler : MonoBehaviour
             animatorP.SetBool("Ground", isGrounded);
             animatorC.SetBool("Ground", isGrounded);
             animatorB.SetBool("Ground", isGrounded);
+            weaponManager.anim.SetBool("Ground", isGrounded);
         }
     }
 }
