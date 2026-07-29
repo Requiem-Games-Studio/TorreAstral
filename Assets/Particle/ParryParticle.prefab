@@ -119,7 +119,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -290,8 +290,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
-      minScalar: 0.1
+      scalar: 0.2
+      minScalar: 0.05
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4904,7 +4904,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 279c146764f691d4f946cd903a476d56, type: 3}
   m_Resource: {fileID: 8300000, guid: 279c146764f691d4f946cd903a476d56, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -5123,15 +5123,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5432818511286414855, guid: 9880c8bc615f15a4cbfc856543d89bfa, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 70
+      value: 2.8
       objectReference: {fileID: 0}
     - target: {fileID: 5432818511286414855, guid: 9880c8bc615f15a4cbfc856543d89bfa, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.8396226
+      value: 0.5587002
       objectReference: {fileID: 0}
     - target: {fileID: 5432818511286414855, guid: 9880c8bc615f15a4cbfc856543d89bfa, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.96746963
+      value: 0.91389275
       objectReference: {fileID: 0}
     - target: {fileID: 5432818511286414855, guid: 9880c8bc615f15a4cbfc856543d89bfa, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r

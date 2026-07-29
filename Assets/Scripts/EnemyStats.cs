@@ -21,6 +21,9 @@ public class EnemyStats : MonoBehaviour
     public Slider healthBar;
     public Slider postureBar;
     public GameObject canvas;
+    public GameObject bloodParticle;
+
+    public FlashSprite flashSprite;
 
     void Start()
     {
@@ -53,10 +56,16 @@ public class EnemyStats : MonoBehaviour
             CheckPostureBreak();
         }
 
+        flashSprite.Flash();
+        Instantiate(bloodParticle, transform.position, Quaternion.identity);
+
         if (currentHealth <= 0)
         {
+            GameFeelManager.Instance.DoImpactToKill();
             Die();
+            return;
         }
+        GameFeelManager.Instance.DoImpact();
     }
 
     public void CriticalDamage(float damage)

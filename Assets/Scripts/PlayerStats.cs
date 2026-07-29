@@ -23,8 +23,9 @@ public class PlayerStats : MonoBehaviour
     public Slider healthBar;
     public Slider postureBar;
 
-    public AudioSource audioBlock;
-    public GameObject parryParticle;
+    public GameObject blockParticle,parryParticle,bloodParticle;
+
+    public FlashSprite flashSprite;
 
     void Start()
     {
@@ -48,6 +49,7 @@ public class PlayerStats : MonoBehaviour
             {
                 Debug.Log("Parry perfecto: No se recibe daño y se rompe la postura del enemigo");
                 animator.Play("Parry");
+                GameFeelManager.Instance.DoParryImpact();
                 Instantiate(parryParticle,gameObject.transform);
                 // Aquí deberías llamar algo como enemy.ReducePosture()
                 EnemyStats enemy = enemyTransform.GetComponent<EnemyStats>();
@@ -64,7 +66,7 @@ public class PlayerStats : MonoBehaviour
                 UpdatePostureBar();
                 CheckPostureBreak();
                 Debug.Log("Bloqueo normal: daño a la resistencia");
-                audioBlock.Play();
+                Instantiate(blockParticle,gameObject.transform);
                 return;
             }
         }
@@ -76,11 +78,16 @@ public class PlayerStats : MonoBehaviour
         UpdatePostureBar();
         CheckPostureBreak();
         UpdateHealthBar();
+        flashSprite.Flash();
+        Instantiate(bloodParticle, transform.position, Quaternion.identity);
 
         if (currentHealth <= 0)
         {
             Die();
+            GameFeelManager.Instance.DoImpactToKill();
+            return;
         }
+        GameFeelManager.Instance.DoImpactPlayer();
     }
 
     // Recuperación de resistencia si no está siendo golpeado

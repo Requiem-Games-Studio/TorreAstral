@@ -1,0 +1,451 @@
+fileFormatVersion: 2
+guid: 38afec26daff98747a8ae04b5594009c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5684327315910396547
+    second: Blood_0
+  - first:
+      213: -1189345562256101844
+    second: Blood_1
+  - first:
+      213: 5722333315871558701
+    second: Blood_2
+  - first:
+      213: 3909595645733894167
+    second: Blood_3
+  - first:
+      213: -374699494892873770
+    second: Blood_4
+  - first:
+      213: 5281811327271454313
+    second: Blood_5
+  - first:
+      213: -2044344349260785571
+    second: Blood_6
+  - first:
+      213: 1295801174852132906
+    second: Blood_7
+  - first:
+      213: 1921429812043486609
+    second: Blood_8
+  - first:
+      213: 1383461657061368076
+    second: Blood_9
+  - first:
+      213: 5335947261288081930
+    second: Blood_10
+  - first:
+      213: -420561362150945321
+    second: Blood_11
+  - first:
+      213: -7858715718292287355
+    second: Blood_12
+  - first:
+      213: -1034289341275851498
+    second: Blood_13
+  - first:
+      213: 5052171841915474803
+    second: Blood_14
+  - first:
+      213: 746896397948701829
+    second: Blood_15
+  - first:
+      213: -7567482132543009634
+    second: Blood_16
+  - first:
+      213: -6743018210936478119
+    second: Blood_17
+  - first:
+      213: -3883518051959684106
+    second: Blood_18
+  - first:
+      213: 6553323263654280841
+    second: Blood_19
+  - first:
+      213: -6577351968973786745
+    second: Blood_20
+  - first:
+      213: -897078715031351629
+    second: Blood_21
+  - first:
+      213: -4572818326935346543
+    second: Blood_22
+  - first:
+      213: 8041310347366581422
+    second: Blood_23
+  - first:
+      213: -6555394148765354152
+    second: Blood_24
+  - first:
+      213: 4201216384262297053
+    second: Blood_25
+  - first:
+      213: -1076412981617156026
+    second: Blood_26
+  - first:
+      213: 1013293048883887740
+    second: Blood_27
+  - first:
+      213: -656188230328449305
+    second: Blood_28
+  - first:
+      213: 3860720148897288421
+    second: Blood_29
+  - first:
+      213: 889770481953779268
+    second: Blood_30
+  - first:
+      213: 4327907867643408495
+    second: Blood_31
+  - first:
+      213: -5470664636874853462
+    second: Blood_32
+  - first:
+      213: -7999300154375720742
+    second: Blood_33
+  - first:
+      213: 1426609218032138122
+    second: Blood_34
+  - first:
+      213: -1827875614463769959
+    second: Blood_35
+  - first:
+      213: 5596150657813055826
+    second: Blood_36
+  - first:
+      213: -568464005771191168
+    second: Blood_37
+  - first:
+      213: -4115894474923453527
+    second: Blood_38
+  - first:
+      213: 6271267269155110270
+    second: Blood_39
+  - first:
+      213: -3924809585859123549
+    second: Blood_40
+  - first:
+      213: 1702673457542605582
+    second: Blood_41
+  - first:
+      213: -981765383835898783
+    second: Blood_42
+  - first:
+      213: 8212015718710066394
+    second: Blood_43
+  - first:
+      213: -4809857469296149070
+    second: Blood_44
+  - first:
+      213: 3462105070884755277
+    second: Blood_45
+  - first:
+      213: 5078037396634909361
+    second: Blood_46
+  - first:
+      213: -772163090726090922
+    second: Blood_47
+  - first:
+      213: -321193792032334686
+    second: Blood_48
+  - first:
+      213: -2167140810385639814
+    second: Blood_49
+  - first:
+      213: -80029556159743606
+    second: Blood_50
+  - first:
+      213: 2331608019378864654
+    second: Blood_51
+  - first:
+      213: -5259561233162126685
+    second: Blood_52
+  - first:
+      213: -6820232115612183221
+    second: Blood_53
+  - first:
+      213: 8909655363935596759
+    second: Blood_54
+  - first:
+      213: -7318225467781305882
+    second: Blood_55
+  - first:
+      213: 20909568435169969
+    second: Blood_56
+  - first:
+      213: 4332411185454022142
+    second: Blood_57
+  - first:
+      213: -1609774352881513653
+    second: Blood_58
+  - first:
+      213: -5667556957461652691
+    second: Blood_59
+  - first:
+      213: -4934914382739049551
+    second: Blood_60
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Blood_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e603b2618ed6c1442ad4b4d6d0a376ac
+      internalID: 1109847289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faf8474e825c8664699a1e9ee63c7131
+      internalID: -1837019669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_2
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0578aad3753d5004da1fbc943e876ea2
+      internalID: -530404899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceb4ef20e44ff6b47920ee4c579427eb
+      internalID: 1252773900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5365dca422af8e439193f13eac6afe9
+      internalID: 982407931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15db077e41ed775448d71211abc95a26
+      internalID: 657956359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: bb470f53a7ae2f045a70f301c9fd028c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Blood_0: 1109847289
+      Blood_1: -1837019669
+      Blood_2: -530404899
+      Blood_3: 1252773900
+      Blood_4: 982407931
+      Blood_5: 657956359
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

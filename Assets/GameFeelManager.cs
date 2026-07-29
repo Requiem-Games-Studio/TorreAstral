@@ -47,7 +47,7 @@ public class GameFeelManager : MonoBehaviour
     {
         Debug.Log("Impact Parry");
         DoSlowMotion(0.2f, 0.5f);
-        cameraShake?.Shake(0.12f, 0.25f);       // shake más potente
+        cameraShake?.Shake(0.12f, 0.2f);       // shake más potente
     }
 
 
