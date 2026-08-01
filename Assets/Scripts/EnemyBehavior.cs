@@ -1,6 +1,8 @@
 using UnityEngine;
+using System;
+using Fusion;
 
-public class EnemyBehavior : MonoBehaviour
+public class EnemyBehavior : NetworkBehaviour
 {
     public float patrolSpeed = 2f;
     public float chaseSpeed = 3.5f;
@@ -18,8 +20,9 @@ public class EnemyBehavior : MonoBehaviour
     private float lastAttackTime = 0;
     public bool dead,attacking;
 
-    void Start()
+    public override void Spawned()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         startPos = transform.position;
         rb = GetComponent<Rigidbody2D>();
         animator = spriteEnemy.GetComponent<Animator>();

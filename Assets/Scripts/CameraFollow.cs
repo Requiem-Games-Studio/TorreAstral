@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -13,10 +14,14 @@ public class CameraFollow : MonoBehaviour
     private Vector3 offset;
     private Camera cam;
 
-    void Start()
+    public void StartCamera()
     {
+        Debug.Log("Camera Spawned");
         cam = GetComponent<Camera>();
-        offset = transform.position - player.position;
+        if (player != null)
+        {
+            offset = transform.position - player.position;
+        }
     }
 
     void LateUpdate()

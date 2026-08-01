@@ -1,8 +1,10 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using Fusion;
+using Photon.Realtime;
 
-public class PlayerControler : MonoBehaviour
+public class PlayerControler : NetworkBehaviour
 {
     private Rigidbody2D rb;
     public WeaponManager weaponManager;
@@ -43,8 +45,8 @@ public class PlayerControler : MonoBehaviour
 
     [Header("Combate")]
     //Combate
-    private int comboStep = 0;
-    private float comboTimer = 0f;
+    public int comboStep = 0;
+    public float comboTimer = 0f;
     public float comboDelay = 0.5f; // tiempo máximo entre ataques
     private bool isAttacking = false;
     private bool isBlocking;
@@ -54,23 +56,44 @@ public class PlayerControler : MonoBehaviour
     public Transform rayOrigin;
     public float criticalDamage;
 
-    void Start()
+    public CameraFollow cameraFollow;
+    public ChunkManagerByName chunkManager;
+
+    private NetworkButtons previousButtons;
+
+
+    public override void Spawned()
     {
-        rb = GetComponent<Rigidbody2D>();        
+        rb = GetComponent<Rigidbody2D>();
+        if (HasInputAuthority)
+        {
+            // Este es mi jugador local
+            cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>(); 
+            cameraFollow.player = this.gameObject.transform;
+            cameraFollow.StartCamera();
+            chunkManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<ChunkManagerByName>();
+            chunkManager.player = this.gameObject.transform;
+            chunkManager.StartChunkManager();
+        }
     }
 
-    void Update()
+    private void Update()
     {
+        if (!HasInputAuthority)
+            return;
+
         isInteracting = animator.GetBool("isInteracting");
         isBlocking = animator.GetBool("blocking");
-        animator.SetBool("isAttacking",isAttacking);
+        animator.SetBool("isAttacking", isAttacking);
         animatorP.SetBool("isAttacking", isAttacking);
         animatorC.SetBool("isAttacking", isAttacking);
         animatorB.SetBool("isAttacking", isAttacking);
         weaponManager.anim.SetBool("isAttacking", isAttacking);
 
-        if (Input.GetMouseButtonDown(0)) // Click derecho
+
+        if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Attack WasPressed");
             // Determina dirección basada en flipX
             Vector2 direction = spriteRenderer.flipX ? Vector2.left : Vector2.right;
 
@@ -99,6 +122,7 @@ public class PlayerControler : MonoBehaviour
             //Ataque normal
             if (!isAttacking && !isInteracting)
             {
+                Debug.Log("Attack button");
                 isAttacking = true;
                 comboStep = 1;
                 comboTimer = comboDelay;
@@ -113,6 +137,7 @@ public class PlayerControler : MonoBehaviour
             }
             else if (comboStep == 1 && comboTimer > 0)
             {
+                Debug.Log("Attack1 button");
                 comboStep = 2;
                 comboTimer = comboDelay;
                 isAttacking = true;
@@ -120,6 +145,7 @@ public class PlayerControler : MonoBehaviour
             }
             else if (comboStep == 2 && comboTimer > 0)
             {
+                Debug.Log("Attack2 button");
                 comboStep = 3;
                 comboTimer = comboDelay;
                 //animator.Play("Attack2");
@@ -134,39 +160,17 @@ public class PlayerControler : MonoBehaviour
             if (comboTimer <= 0)
             {
                 comboStep = 0;
+                comboTimer = comboDelay;
                 isAttacking = false;
             }
-        }       
+        }
 
         //Movimiento y vista del jugador solo si no esta iteractuando
         if (!isInteracting)
         {
-
             float moveInput = Input.GetAxisRaw("Horizontal");
-            // --- Detectar si corre ---
             bool isRunning = Input.GetKey(KeyCode.LeftShift);
 
-            // Cambiar velocidad según estado (caminar/correr)
-            float speed = isRunning ? runSpeed : walkSpeed;
-            if (!isCrouching && !isInteracting)
-            {
-                rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
-            }
-            
-            // **Rotar sprite según dirección**
-            if (moveInput != 0)
-            {
-                spriteRenderer.flipX = moveInput < 0;
-                spritePiernas.flipX = moveInput < 0;
-                spriteCabeza.flipX = moveInput < 0;
-                spriteBrazo.flipX = moveInput < 0;
-                
-
-                // **Flip del pivote de la espada**
-                Vector3 scale = espadaPivot.localScale;
-                scale.x = moveInput < 0 ? -1 : 1;
-                espadaPivot.localScale = scale;
-            }
 
             // --- Animaciones Walk y Run ---
             animator.SetBool("Walk", moveInput != 0 && !isRunning);
@@ -253,12 +257,12 @@ public class PlayerControler : MonoBehaviour
             // --- Dodge solo con tap de LeftShift (<0.2s) ---
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                shiftPressTime = Time.time; // Guardar el tiempo en que se presionó
+                shiftPressTime = Time.deltaTime; // Guardar el tiempo en que se presionó
             }
 
             if (Input.GetKeyUp(KeyCode.LeftShift) && canDodge)
             {
-                float heldTime = Time.time - shiftPressTime;
+                float heldTime = Runner.DeltaTime - shiftPressTime;
                 if (heldTime <= 0.2f) // Si se soltó rápido
                 {
                     StartCoroutine(Dodge());
@@ -275,7 +279,7 @@ public class PlayerControler : MonoBehaviour
                 rb.linearVelocityX = 0;
                 animator.Play("StarCrouch");
                 animator.SetBool("Crouch", true);   // Mantiene pose de agachado
-                animatorP.Play("StarCrouch");               
+                animatorP.Play("StarCrouch");
                 animatorP.SetBool("Crouch", true);
                 animatorC.Play("StarCrouch");
                 animatorC.SetBool("Crouch", true);
@@ -296,7 +300,7 @@ public class PlayerControler : MonoBehaviour
                 weaponManager.anim.SetBool("Crouch", false);
             }
         }
-        
+
         // Activar la animación de salto
         animator.SetBool("isJumping", isJumping);
         animatorP.SetBool("isJumping", isJumping);
@@ -311,21 +315,21 @@ public class PlayerControler : MonoBehaviour
         }
         else
         {
-            coyoteTimeCounter -= Time.deltaTime;
+            coyoteTimeCounter -= Time.deltaTime; ;
         }
 
         // Detectar inicio de caída
         if (!isGrounded && rb.linearVelocity.y < 0 && !isFalling)
         {
             isFalling = true;
-            fallStartTime = Time.time; // Guardar cuando empezó a caer
+            fallStartTime = Runner.DeltaTime; ; // Guardar cuando empezó a caer
         }
 
         // Detectar aterrizaje
         if (isGrounded && isFalling)
         {
             isFalling = false;
-            float fallDuration = Time.time - fallStartTime;
+            float fallDuration = Time.deltaTime - fallStartTime;
 
             if (fallDuration >= fallThreshold)
             {
@@ -343,6 +347,46 @@ public class PlayerControler : MonoBehaviour
                 animatorC.Play("idle");
                 animatorB.Play("idle");
                 weaponManager.anim.Play("idle");
+            }
+        }
+    }
+
+
+    public override void FixedUpdateNetwork()
+    {
+        if (!HasInputAuthority)      
+            return;        
+
+        if (!GetInput(out NetworkInputData input))
+            return;    
+     
+        //Movimiento y vista del jugador solo si no esta iteractuando
+        if (!isInteracting)
+        {
+            float moveInput = input.movement.x;
+            // --- Detectar si corre ---
+            bool isRunning = input.buttons.IsSet(InputButtons.Run);
+
+            // Cambiar velocidad según estado (caminar/correr)
+            float speed = isRunning ? runSpeed : walkSpeed;
+            if (!isCrouching && !isInteracting)
+            {
+                rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
+            }
+            
+            // **Rotar sprite según dirección**
+            if (moveInput != 0)
+            {
+                spriteRenderer.flipX = moveInput < 0;
+                spritePiernas.flipX = moveInput < 0;
+                spriteCabeza.flipX = moveInput < 0;
+                spriteBrazo.flipX = moveInput < 0;
+                
+
+                // **Flip del pivote de la espada**
+                Vector3 scale = espadaPivot.localScale;
+                scale.x = moveInput < 0 ? -1 : 1;
+                espadaPivot.localScale = scale;
             }
         }
     }
