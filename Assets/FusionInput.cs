@@ -14,15 +14,15 @@ public class FusionInput : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnConnectFailed(NetworkRunner runner, NetAddress remoteAddress, NetConnectFailedReason reason)
     {
-        throw new NotImplementedException();
+
     }
     public void OnConnectRequest(NetworkRunner runner, NetworkRunnerCallbackArgs.ConnectRequest request, byte[] token)
     {
-        throw new NotImplementedException();
+
     }
     public void OnCustomAuthenticationResponse(NetworkRunner runner, Dictionary<string, object> data)
     {
-        throw new NotImplementedException();
+
     }
 
     public void OnDisconnectedFromServer(NetworkRunner runner, NetDisconnectReason reason)
@@ -32,7 +32,7 @@ public class FusionInput : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnHostMigration(NetworkRunner runner, HostMigrationToken hostMigrationToken)
     {
-        throw new NotImplementedException();
+        
     }
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
