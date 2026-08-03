@@ -1132,7 +1132,7 @@ MonoBehaviour:
   fallThreshold: 0.5
   comboStep: 0
   comboTimer: 0
-  comboDelay: 0.5
+  comboDelay: 0.9
   rayDistance: 1.5
   enemyLayer:
     serializedVersion: 2
