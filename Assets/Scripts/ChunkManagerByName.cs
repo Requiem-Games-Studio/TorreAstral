@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq; // Necesario para comparar los conjuntos de forma eficiente
 
 public class ChunkManagerByName : MonoBehaviour
 {
@@ -9,13 +10,14 @@ public class ChunkManagerByName : MonoBehaviour
     public int chunkHeight = 24;
     public int loadRadius = 1;
 
-    public Transform player;
+    // Cambia el array por List<Transform>
+    public List<Transform> players = new List<Transform>();
     public float xOffset, yOffset;
 
     private Dictionary<Vector2Int, GameObject> loadedChunks = new Dictionary<Vector2Int, GameObject>();
     private Dictionary<Vector2Int, GameObject> chunkPrefabMap = new Dictionary<Vector2Int, GameObject>();
 
-    private Vector2Int currentPlayerChunk;
+    private HashSet<Vector2Int> currentPlayersChunks = new HashSet<Vector2Int>();
 
     void Awake()
     {
@@ -24,25 +26,31 @@ public class ChunkManagerByName : MonoBehaviour
 
     public void StartChunkManager()
     {
-        //InitializeChunkMap();
-
-        if (player != null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-        }       
-        currentPlayerChunk = GetPlayerChunk();
+        // Guardamos los chunks iniciales
+        currentPlayersChunks = GetAllPlayerChunks();
         UpdateChunks();
     }
 
     void Update()
     {
-        Vector2Int newChunk = GetPlayerChunk();
+        // 1. Obtenemos el conjunto actual de chunks donde hay jugadores
+        HashSet<Vector2Int> newPlayersChunks = GetAllPlayerChunks();
 
-        if (newChunk != currentPlayerChunk)
+        // 2. Comparamos si el conjunto cambió con respecto al último frame
+        if (!AreChunkSetsEqual(currentPlayersChunks, newPlayersChunks))
         {
-            currentPlayerChunk = newChunk;
+            currentPlayersChunks = newPlayersChunks;
             UpdateChunks();
         }
+    }
+    // Método auxiliar para comparar si dos HashSet contienen exactamente las mismas posiciones
+    private bool AreChunkSetsEqual(HashSet<Vector2Int> setA, HashSet<Vector2Int> setB)
+    {
+        if (setA == null || setB == null) return setA == setB;
+        if (setA.Count != setB.Count) return false;
+
+        // SetEquals verifica si ambos conjuntos tienen los mismos elementos sin importar el orden
+        return setA.SetEquals(setB);
     }
 
     void InitializeChunkMap()
@@ -81,35 +89,43 @@ public class ChunkManagerByName : MonoBehaviour
         return true;
     }
 
-    void UpdateChunks()
+    public void UpdateChunks()
     {
-        Vector2Int playerChunk = currentPlayerChunk;
+        // 1. Crear un conjunto con TODOS los chunks que deben estar cargados en el mapa
+        // considerando el radio alrededor de CADA jugador.
+        HashSet<Vector2Int> requiredChunks = new HashSet<Vector2Int>();
 
-        // CARGAR CHUNKS
-        for (int x = -loadRadius; x <= loadRadius; x++)
+        foreach (Vector2Int pChunk in currentPlayersChunks)
         {
-            for (int y = -loadRadius; y <= loadRadius; y++)
+            for (int x = -loadRadius; x <= loadRadius; x++)
             {
-                Vector2Int chunkCoord = new Vector2Int(playerChunk.x + x, playerChunk.y + y);
-
-                if (!loadedChunks.ContainsKey(chunkCoord) && chunkPrefabMap.ContainsKey(chunkCoord))
+                for (int y = -loadRadius; y <= loadRadius; y++)
                 {
-                    LoadChunk(chunkCoord);
+                    Vector2Int chunkCoord = new Vector2Int(pChunk.x + x, pChunk.y + y);
+                    requiredChunks.Add(chunkCoord); // Si ya existe en el HashSet, no se duplica
                 }
             }
         }
 
-        // DESCARGAR CHUNKS (logica cuadrada consistente)
+        // 2. CARGAR CHUNKS
+        // Iteramos solo sobre los chunks que acabamos de determinar que deben estar activos
+        foreach (Vector2Int chunkCoord in requiredChunks)
+        {
+            if (!loadedChunks.ContainsKey(chunkCoord) && chunkPrefabMap.ContainsKey(chunkCoord))
+            {
+                LoadChunk(chunkCoord);
+            }
+        }
+
+        // 3. DESCARGAR CHUNKS
+        // Si un chunk cargado NO está en la lista de chunks requeridos por ningún jugador, se descarga.
         List<Vector2Int> chunksToUnload = new List<Vector2Int>();
 
-        foreach (var chunk in loadedChunks.Keys)
+        foreach (var loadedChunkCoord in loadedChunks.Keys)
         {
-            int dx = Mathf.Abs(chunk.x - playerChunk.x);
-            int dy = Mathf.Abs(chunk.y - playerChunk.y);
-
-            if (dx > loadRadius || dy > loadRadius)
+            if (!requiredChunks.Contains(loadedChunkCoord))
             {
-                chunksToUnload.Add(chunk);
+                chunksToUnload.Add(loadedChunkCoord);
             }
         }
 
@@ -119,17 +135,22 @@ public class ChunkManagerByName : MonoBehaviour
         }
     }
 
-    Vector2Int GetPlayerChunk()
+    // Tu función de obtención de chunks para múltiples jugadores
+    private HashSet<Vector2Int> GetAllPlayerChunks()
     {
-        if (player == null)
+        HashSet<Vector2Int> activeChunks = new HashSet<Vector2Int>();
+
+        foreach (Transform p in players) // Asegúrate de tener tu array/lista 'players'
         {
-            return Vector2Int.zero;
+            if (p == null) continue;
+
+            int chunkX = Mathf.FloorToInt((p.position.x + xOffset) / chunkWidth);
+            int chunkY = Mathf.FloorToInt((p.position.y + yOffset) / chunkHeight);
+
+            activeChunks.Add(new Vector2Int(chunkX, chunkY));
         }
 
-        int chunkX = Mathf.FloorToInt((player.position.x + xOffset) / chunkWidth);
-        int chunkY = Mathf.FloorToInt((player.position.y + yOffset) / chunkHeight);
-
-        return new Vector2Int(chunkX, chunkY);
+        return activeChunks;
     }
 
     void LoadChunk(Vector2Int chunkCoord)

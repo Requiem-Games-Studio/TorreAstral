@@ -9,8 +9,8 @@ public class EnemyBehavior : NetworkBehaviour
     public float patrolRange = 3f;
     public float attackRange = 1f;
     public float attackCooldown = 1.5f;
-    public Transform player;
 
+    public NetworkObject Target;
 
     private bool movingRight = true;
     private Rigidbody2D rb;
@@ -22,18 +22,28 @@ public class EnemyBehavior : NetworkBehaviour
 
     public override void Spawned()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        startPos = transform.position;
+        Debug.Log("Spawned Enemy");
+
         rb = GetComponent<Rigidbody2D>();
         animator = spriteEnemy.GetComponent<Animator>();
         startPos = transform.position;
     }
 
-    void Update()
+    public void SetTarget(NetworkObject attacker)
     {
-        if(!dead)
+
+        Debug.Log("Set Target");
+
+        Target = attacker;
+    }
+
+    public override void FixedUpdateNetwork()
+    {
+        Debug.Log("Enemy Tick");
+
+        if (!dead)
         {
-            float distance = Vector2.Distance(transform.position, player.position);
+            float distance = Vector2.Distance(transform.position, Target.transform.position);
 
             if (distance <= attackRange)
             {
@@ -71,7 +81,7 @@ public class EnemyBehavior : NetworkBehaviour
     {
         animator.SetBool("isWalking", true);
 
-        float direction = player.position.x - transform.position.x;
+        float direction = Target.transform.position.x - transform.position.x;
         rb.linearVelocity = new Vector2(Mathf.Sign(direction) * chaseSpeed, rb.linearVelocity.y);
 
         Flip(direction);
@@ -82,10 +92,10 @@ public class EnemyBehavior : NetworkBehaviour
         rb.linearVelocity = Vector2.zero;
         animator.SetBool("isWalking", false);
 
-        if (Time.time - lastAttackTime > attackCooldown)
+        if (Runner.SimulationTime - lastAttackTime > attackCooldown)
         {
             animator.SetTrigger("attack");
-            lastAttackTime = Time.time;
+            lastAttackTime = Runner.SimulationTime;
         }
 
         //Flip(player.position.x - transform.position.x);

@@ -37,9 +37,10 @@ public class EnemyStats : MonoBehaviour
     }
 
     // Recibir daño
-    public void Damage(float damage, float postureDamage, bool isHeavyAttack = false)
+    public void Damage(float damage, float postureDamage)
     {
         if (!isAlive) return;
+
 
         if (isStaggered)
         {
@@ -52,7 +53,7 @@ public class EnemyStats : MonoBehaviour
             animator.Play("Damage");
             currentHealth -= damage;
             UpdateHealthBar();
-            currentPosture -= postureDamage * (isHeavyAttack ? 2f : 1f);
+            currentPosture -= postureDamage;
             CheckPostureBreak();
         }
 

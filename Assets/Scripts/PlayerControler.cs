@@ -56,6 +56,8 @@ public class PlayerControler : NetworkBehaviour
     public Transform rayOrigin;
     public float criticalDamage;
 
+    public GameObject cameraPlayer;
+    [HideInInspector]
     public CameraFollow cameraFollow;
     public ChunkManagerByName chunkManager;
 
@@ -68,15 +70,28 @@ public class PlayerControler : NetworkBehaviour
         if (HasInputAuthority)
         {
             // Este es mi jugador local
-            cameraFollow = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>(); 
+            cameraPlayer.transform.parent = null;
+            cameraFollow = cameraPlayer.GetComponent<CameraFollow>(); 
             cameraFollow.player = this.gameObject.transform;
             cameraFollow.StartCamera();
             chunkManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<ChunkManagerByName>();
-            chunkManager.player = this.gameObject.transform;
+            // Verificas que no esté ya en la lista para no duplicarlo
+            if (!chunkManager.players.Contains(this.transform))
+            {
+                chunkManager.players.Add(this.transform);
+            }
             chunkManager.StartChunkManager();
         }
     }
 
+    public override void Despawned(NetworkRunner runner, bool hasState)
+    {
+        if (chunkManager != null && chunkManager.players.Contains(this.transform))
+        {
+            chunkManager.players.Remove(this.transform);
+            chunkManager.UpdateChunks(); // Actualiza para descargar los chunks que hayan quedado solos
+        }
+    }
 
     public override void FixedUpdateNetwork()
     {       

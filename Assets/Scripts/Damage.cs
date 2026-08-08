@@ -1,4 +1,6 @@
+using Fusion;
 using UnityEngine;
+using Photon.Realtime;
 
 public class Damage : MonoBehaviour
 {
@@ -6,6 +8,9 @@ public class Damage : MonoBehaviour
     public bool damageToPlayer, damageToEnemy;
     public bool heavyAttack;
     public GameObject enemyObject;
+    public NetworkObject attacker;
+    public EnemyBehavior behavior;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,9 +27,17 @@ public class Damage : MonoBehaviour
         if (damageToEnemy && collision.gameObject.CompareTag("Enemy"))
         {
             EnemyStats stats = collision.GetComponent<EnemyStats>();
+            behavior = collision.GetComponent<EnemyBehavior>();
+
             if (stats != null)
             {               
-                stats.Damage(damage, postureDamage, heavyAttack);
+                stats.Damage(damage, postureDamage);
+            }
+
+            if (behavior != null && attacker != null)
+            {
+                behavior.SetTarget(attacker);
+                Debug.Log("Damage Set Targer");
             }
         }
     }

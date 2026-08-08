@@ -32,7 +32,8 @@ public class TransitionZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             WorldMapManager.Instance.SaveChunkExplored(coord);
-            CameraFollow camFollow = Camera.main.GetComponent<CameraFollow>();
+            PlayerControler controler = other.GetComponent<PlayerControler>();
+            CameraFollow camFollow = controler.cameraFollow;
             if (camFollow != null && newCameraBounds != null)
             {
                 StartCoroutine(ChangeBoundsSmooth(camFollow, newCameraBounds));
