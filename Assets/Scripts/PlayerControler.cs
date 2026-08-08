@@ -74,13 +74,13 @@ public class PlayerControler : NetworkBehaviour
             cameraFollow = cameraPlayer.GetComponent<CameraFollow>(); 
             cameraFollow.player = this.gameObject.transform;
             cameraFollow.StartCamera();
-            chunkManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<ChunkManagerByName>();
-            // Verificas que no esté ya en la lista para no duplicarlo
-            if (!chunkManager.players.Contains(this.transform))
-            {
-                chunkManager.players.Add(this.transform);
-            }
-            chunkManager.StartChunkManager();
+            //chunkManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<ChunkManagerByName>();
+            //// Verificas que no esté ya en la lista para no duplicarlo
+            //if (!chunkManager.players.Contains(this.transform))
+            //{
+            //    chunkManager.players.Add(this.transform);
+            //}
+            //chunkManager.StartChunkManager();
         }
     }
 

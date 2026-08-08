@@ -1429,6 +1429,7 @@ GameObject:
   - component: {fileID: 6302946020921851620}
   - component: {fileID: 9190664089563162739}
   - component: {fileID: 1797219506598494534}
+  - component: {fileID: 201050464240502819}
   m_Layer: 0
   m_Name: 'Player '
   m_TagString: Player
@@ -1506,6 +1507,7 @@ MonoBehaviour:
   rayOrigin: {fileID: 8270392624658335719}
   criticalDamage: 5
   cameraPlayer: {fileID: 644494887135801860}
+  cameraFollow: {fileID: 0}
   chunkManager: {fileID: 0}
 --- !u!50 &3986657837030566230
 Rigidbody2D:
@@ -1652,6 +1654,7 @@ MonoBehaviour:
   - {fileID: 9190664089563162739}
   - {fileID: 7965105969142543180}
   - {fileID: 1797219506598494534}
+  - {fileID: 201050464240502819}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &9190664089563162739
 MonoBehaviour:
@@ -1706,3 +1709,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 644494887135801860}
+--- !u!114 &201050464240502819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8920193556659171520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 3677897170165220480}
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 0000000015b524dc47ef5bf56bd5a32d398fdc048ae5ae5008aae2d537b935014e73a6a75a51641619ff57152fa61b6f1c153e580d286c404e865f4328a981077af3fe2e22ff2dfda6dcfb1298ae24641c8df28b26b8da42a4f796c762c60e1ee089429bbfb077b9fc1e44ba93a058f617838e199d7933ae87e80944d46c38e45623746120e23b685928a8ce3270625b602a1d72e67a3208b4204d214ef1484d7d426d7a9f065eb81b2588572ef6da876d58e98412a70e9ab7e3e925
+  TriggerHashes: 00000000d7ff7839
+  TotalWords: 2

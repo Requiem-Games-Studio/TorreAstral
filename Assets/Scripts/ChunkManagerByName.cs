@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq; // Necesario para comparar los conjuntos de forma eficiente
+using Fusion;
+using Photon.Realtime;
 
-public class ChunkManagerByName : MonoBehaviour
+public class ChunkManagerByName : NetworkBehaviour
 {
     [Header("Chunk Settings")]
     public GameObject[] chunkPrefabs;
@@ -19,10 +21,26 @@ public class ChunkManagerByName : MonoBehaviour
 
     private HashSet<Vector2Int> currentPlayersChunks = new HashSet<Vector2Int>();
 
-    void Awake()
+    public override void Spawned()
     {
+        Debug.Log("Spawn Manager");
+        CheckPlayers();
         InitializeChunkMap();
     }
+
+    public void CheckPlayers()
+    {
+        GameObject[] newPlayer = GameObject.FindGameObjectsWithTag("Player");
+        for (int i = 0; i < newPlayer.Length; i++)
+        {
+            if (!players.Contains(newPlayer[i].transform))
+            {
+                players.Add(newPlayer[i].transform);
+            }
+        }      
+        StartChunkManager();
+    }
+
 
     public void StartChunkManager()
     {
@@ -91,6 +109,7 @@ public class ChunkManagerByName : MonoBehaviour
 
     public void UpdateChunks()
     {
+
         // 1. Crear un conjunto con TODOS los chunks que deben estar cargados en el mapa
         // considerando el radio alrededor de CADA jugador.
         HashSet<Vector2Int> requiredChunks = new HashSet<Vector2Int>();

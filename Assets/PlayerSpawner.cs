@@ -6,6 +6,7 @@ using static Unity.Collections.Unicode;
 public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
 {
     public GameObject playerPrefab;
+    public ChunkManagerByName chunkManager;
 
     public void PlayerJoined(PlayerRef player)
     {
@@ -17,6 +18,8 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
                 Quaternion.identity,
                 player
             );
+
+            chunkManager.CheckPlayers();
         }
     }
 }
