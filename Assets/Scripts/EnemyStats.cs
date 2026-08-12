@@ -1,18 +1,19 @@
+using Fusion;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyStats : MonoBehaviour
+public class EnemyStats : NetworkBehaviour
 {
     [Header("Health")]
     public float maxHealth = 100f;
-    public float currentHealth;
+    [Networked] public float currentHealth { get; set; }
 
     [Header("Posture / Resistance")]
     public float maxPosture = 100f;
-    public float currentPosture;
+    [Networked] public float currentPosture { get; set; }
     public float postureRecoveryRate = 8f; // Recuperación por segundo
     public float postureBreakTime = 2f;
-    public bool isStaggered = false;
+    [Networked] public NetworkBool isStaggered { get; set; }
 
     public Animator animator;
     private bool isAlive = true;

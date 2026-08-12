@@ -1,15 +1,16 @@
+using Fusion;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : NetworkBehaviour
 {
     [Header("Health")]
     public float maxHealth = 100f;
-    public float currentHealth;
+    [Networked] public float currentHealth { get; set; }
 
     [Header("Posture / Resistance")]
     public float maxPosture = 100f;
-    public float currentPosture;
+    [Networked] public float currentPosture { get; set; }
     public float postureRecoveryRate = 10f; // Por segundo
     public float postureBreakTime = 2f; // Tiempo que dura tambaleado
     private bool isStaggered = false;

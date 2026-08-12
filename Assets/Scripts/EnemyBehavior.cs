@@ -10,20 +10,27 @@ public class EnemyBehavior : NetworkBehaviour
     public float attackRange = 1f;
     public float attackCooldown = 1.5f;
 
-    public NetworkObject Target;
+    [Networked] public NetworkObject Target { get; set; }
 
-    private bool movingRight = true;
+
     private Rigidbody2D rb;
     public GameObject spriteEnemy;
     private Animator animator;
     private Vector2 startPos;
     private float lastAttackTime = 0;
-    public bool dead,attacking;
+    private bool MovingRight = true;
+    public bool Attacking;
+
+
+    [Networked] public NetworkBool Dead { get; set; }
+    [Networked] public NetworkBool IsWalking { get; set; }
+    [Networked] public NetworkBool FacingRight { get; set; }
+
 
     public override void Spawned()
     {
         Debug.Log("Spawned Enemy");
-
+        transform.parent = null;
         rb = GetComponent<Rigidbody2D>();
         animator = spriteEnemy.GetComponent<Animator>();
         startPos = transform.position;
@@ -31,34 +38,36 @@ public class EnemyBehavior : NetworkBehaviour
 
     public void SetTarget(NetworkObject attacker)
     {
-
+        if (!HasStateAuthority)
+            return;
         Debug.Log("Set Target");
-
         Target = attacker;
     }
 
     public override void FixedUpdateNetwork()
     {
         Debug.Log("Enemy Tick");
+        if (!HasStateAuthority)
+            return;
 
-        if (!dead)
+        if (Dead || Target == null)
+            return;
+
+        float distance = Vector2.Distance(transform.position, Target.transform.position);
+
+        if (distance <= attackRange)
+        { 
+            AttackPlayer();
+        }
+        else if (distance <= patrolRange && !Attacking)
         {
-            float distance = Vector2.Distance(transform.position, Target.transform.position);
-
-            if (distance <= attackRange)
+            ChasePlayer();
+        }
+        else
+        {
+            if (!Attacking)
             {
-                AttackPlayer();
-            }
-            else if (distance <= patrolRange && !attacking)
-            {
-                ChasePlayer();
-            }
-            else
-            {
-                if(!attacking)
-                {
-                    Patrol();
-                }
+                Patrol();
             }
         }
     }
@@ -67,13 +76,13 @@ public class EnemyBehavior : NetworkBehaviour
     {
         animator.SetBool("isWalking", true);
 
-        float moveDirection = movingRight ? 1 : -1;
+        float moveDirection = MovingRight ? 1 : -1;
         rb.linearVelocity = new Vector2(moveDirection * patrolSpeed, rb.linearVelocity.y);
 
-        if (movingRight && transform.position.x >= startPos.x + patrolRange)
-            movingRight = false;
-        else if (!movingRight && transform.position.x <= startPos.x - patrolRange)
-            movingRight = true;
+        if (MovingRight && transform.position.x >= startPos.x + patrolRange)
+            MovingRight = false;
+        else if (!MovingRight && transform.position.x <= startPos.x - patrolRange)
+            MovingRight = true;
 
         Flip(moveDirection);
     }
@@ -88,7 +97,7 @@ public class EnemyBehavior : NetworkBehaviour
     }
     void AttackPlayer()
     {
-        attacking = true;
+        Attacking = true;
         rb.linearVelocity = Vector2.zero;
         animator.SetBool("isWalking", false);
 
@@ -113,7 +122,7 @@ public class EnemyBehavior : NetworkBehaviour
 
     public void DeadEvent()
     {       
-        dead = true;
+        Dead = true;
         rb.bodyType = RigidbodyType2D.Kinematic;
         gameObject.layer = LayerMask.NameToLayer("BackEnemy");
     }

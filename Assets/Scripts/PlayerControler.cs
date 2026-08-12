@@ -18,7 +18,7 @@ public class PlayerControler : NetworkBehaviour
     [Header("Velocidades")]
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
-    private float shiftPressTime;
+    private float shiftHeldTime;
 
     public float dodgeSpeed = 5f;  // Velocidad del dodge
     public float dodgeDuration = 0.5f;
@@ -30,38 +30,42 @@ public class PlayerControler : NetworkBehaviour
     public float coyoteTime = 0.15f; // Tiempo extra después de dejar el suelo
     public float normalGravity;
 
-    bool isGrounded;
-    private bool canDodge = true;
-    private bool isJumping, isInteracting;
+
     private float jumpTimeCounter;
     private float coyoteTimeCounter;
 
-    bool isCrouching;
-
     //Caida
+    bool isGrounded;
     public float fallThreshold = 0.5f; // Tiempo mínimo de caída para animación de aterrizaje
     private float fallStartTime;
-    private bool isFalling = false;
+
 
     [Header("Combate")]
     //Combate
-    public int comboStep = 0;
+    [Networked] public int ComboStep { get; set; }
     public float comboTimer = 0f;
     public float comboDelay = 0.5f; // tiempo máximo entre ataques
-    private bool isAttacking = false;
-    private bool isBlocking;
 
     public float rayDistance = 1.5f;
     public LayerMask enemyLayer;
     public Transform rayOrigin;
     public float criticalDamage;
 
-    public GameObject cameraPlayer;
+    public GameObject cameraPlayer,canvas;
     [HideInInspector]
     public CameraFollow cameraFollow;
     public ChunkManagerByName chunkManager;
 
     private NetworkButtons previousButtons;
+
+    [Networked] public NetworkBool IsFacingLeft { get; set; }
+    [Networked] public NetworkBool IsJumping { get; set; }
+    [Networked] public NetworkBool IsInteracting { get; set; }
+    [Networked] public NetworkBool IsCrouching { get; set; }
+    [Networked] public NetworkBool IsFalling { get; set; }
+    [Networked] public NetworkBool CanDodge { get; set; }
+    [Networked] public NetworkBool IsAttacking { get; set; }
+    [Networked] public NetworkBool IsBlocking { get; set; }
 
     public override void Spawned()
     {
@@ -71,16 +75,10 @@ public class PlayerControler : NetworkBehaviour
         {
             // Este es mi jugador local
             cameraPlayer.transform.parent = null;
+            canvas.transform.parent = null;
             cameraFollow = cameraPlayer.GetComponent<CameraFollow>(); 
             cameraFollow.player = this.gameObject.transform;
             cameraFollow.StartCamera();
-            //chunkManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<ChunkManagerByName>();
-            //// Verificas que no esté ya en la lista para no duplicarlo
-            //if (!chunkManager.players.Contains(this.transform))
-            //{
-            //    chunkManager.players.Add(this.transform);
-            //}
-            //chunkManager.StartChunkManager();
         }
     }
 
@@ -97,6 +95,14 @@ public class PlayerControler : NetworkBehaviour
     {       
         if (!GetInput(out NetworkInputData input))
             return;
+       
+        float moveInput = input.movement.x;
+
+        if (moveInput != 0)
+        {
+            // Actualizamos la variable de red
+            IsFacingLeft = moveInput < 0;
+        }
 
         SetAnimatorParameters();
 
@@ -107,21 +113,21 @@ public class PlayerControler : NetworkBehaviour
             AttackPlayer();
         }
         // Reducir tiempo de combo
-        if (isAttacking)
+        if (IsAttacking)
         {
             comboTimer -= Runner.DeltaTime;
             if (comboTimer <= 0)
             {
-                comboStep = 0;
+                ComboStep = 0;
                 comboTimer = comboDelay;
-                isAttacking = false;
+                IsAttacking = false;
             }
         }
       
         // Block Down and Up
         if (input.buttons.WasPressed(previousButtons, InputButtons.Block))
         {
-            if (!isAttacking && !isInteracting)
+            if (!IsAttacking && !IsInteracting)
             {
                 animator.Play("StartBlock");
                 animator.SetBool("blocking", true);
@@ -155,11 +161,11 @@ public class PlayerControler : NetworkBehaviour
             animatorC.Play("Jump");
             animatorB.Play("Jump");
             weaponManager.anim.Play("Jump");
-            isJumping = true;
+            IsJumping = true;
             jumpTimeCounter = maxJumpTime;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
-        if (input.buttons.IsSet(InputButtons.Jump) && isJumping)
+        if (input.buttons.IsSet(InputButtons.Jump) && IsJumping)
         {
             if (jumpTimeCounter > 0)
             {
@@ -169,21 +175,21 @@ public class PlayerControler : NetworkBehaviour
             }
             else
             {
-                isJumping = false;
+                IsJumping = false;
                 rb.gravityScale = normalGravity;
             }
         }
         if (input.buttons.WasReleased(previousButtons, InputButtons.Jump))
         {
-            isJumping = false;
+            IsJumping = false;
             rb.gravityScale = normalGravity;
         }
         // Activar la animación de salto
-        animator.SetBool("isJumping", isJumping);
-        animatorP.SetBool("isJumping", isJumping);
-        animatorC.SetBool("isJumping", isJumping);
-        animatorB.SetBool("isJumping", isJumping);
-        weaponManager.anim.SetBool("isJumping", isJumping);
+        animator.SetBool("isJumping", IsJumping);
+        animatorP.SetBool("isJumping", IsJumping);
+        animatorC.SetBool("isJumping", IsJumping);
+        animatorB.SetBool("isJumping", IsJumping);
+        weaponManager.anim.SetBool("isJumping", IsJumping);
         // **Coyote Time**
         if (isGrounded)
         {
@@ -195,9 +201,9 @@ public class PlayerControler : NetworkBehaviour
         }
 
         //Movimiento y vista del jugador solo si no esta iteractuando
-        if (!isInteracting)
+        if (!IsInteracting)
         {
-            float moveInput = input.movement.x;
+            
             // --- Detectar si corre ---
             bool isRunning = input.buttons.IsSet(InputButtons.Run);
 
@@ -218,49 +224,40 @@ public class PlayerControler : NetworkBehaviour
 
             // Cambiar velocidad según estado (caminar/correr)
             float speed = isRunning ? runSpeed : walkSpeed;
-            if (!isCrouching && !isInteracting)
+            if (!IsCrouching && !IsInteracting)
             {
                 rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
             }
-            
-            // **Rotar sprite según dirección**
-            if (moveInput != 0)
-            {
-                spriteRenderer.flipX = moveInput < 0;
-                spritePiernas.flipX = moveInput < 0;
-                spriteCabeza.flipX = moveInput < 0;
-                spriteBrazo.flipX = moveInput < 0;
-                
-
-                // **Flip del pivote de la espada**
-                Vector3 scale = espadaPivot.localScale;
-                scale.x = moveInput < 0 ? -1 : 1;
-                espadaPivot.localScale = scale;
-            }
         }
+
+
 
         //Agacharse y caida
         if (isGrounded)
         {
+            //Roll
             if (input.buttons.WasPressed(previousButtons, InputButtons.Run))
             {
-                shiftPressTime = Runner.DeltaTime; // Guardar el tiempo en que se presionó
+                shiftHeldTime = 0f;
             }
-            if (input.buttons.WasReleased(previousButtons, InputButtons.Run) && canDodge)
+            if (input.buttons.IsSet(InputButtons.Run))
             {
-                float heldTime = Runner.DeltaTime - shiftPressTime;
-                if (heldTime <= 0.2f) // Si se soltó rápido
+                shiftHeldTime += Runner.DeltaTime;
+            }
+            if (input.buttons.WasReleased(previousButtons, InputButtons.Run) && CanDodge)
+            {
+                if (shiftHeldTime <= 0.2f)
                 {
                     StartCoroutine(Dodge());
                 }
             }
-            
+
             float verticalInput = input.movement.y;
             // Cuando se presiona la flecha abajo (empieza a agacharse)
-            if (verticalInput < 0 && !isCrouching)
+            if (verticalInput < 0 && !IsCrouching)
             {
-                isInteracting = true;
-                isCrouching = true;
+                IsInteracting = true;
+                IsCrouching = true;
                 rb.linearVelocityX = 0;
                 animator.Play("StarCrouch");
                 animator.SetBool("Crouch", true);   // Mantiene pose de agachado
@@ -274,9 +271,9 @@ public class PlayerControler : NetworkBehaviour
                 weaponManager.anim.SetBool("Crouch", true);
             }
             // Cuando se suelta la flecha abajo (empieza a levantarse)
-            if (verticalInput >= 0 && isCrouching)
+            if (verticalInput >= 0 && IsCrouching)
             {
-                isCrouching = false;
+                IsCrouching = false;
                 animator.SetBool("Crouch", false);  // Termina pose de agachado
                 animatorP.SetBool("Crouch", false);
                 animatorC.SetBool("Crouch", false);
@@ -286,16 +283,16 @@ public class PlayerControler : NetworkBehaviour
         }
 
         // Detectar inicio de caída
-        if (!isGrounded && rb.linearVelocity.y < 0 && !isFalling)
+        if (!isGrounded && rb.linearVelocity.y < 0 && !IsFalling)
         {
-            isFalling = true;
+            IsFalling = true;
             fallStartTime = Runner.DeltaTime; ; // Guardar cuando empezó a caer
         }
 
         // Detectar aterrizaje
-        if (isGrounded && isFalling)
+        if (isGrounded && IsFalling)
         {
-            isFalling = false;
+            IsFalling = false;
             float fallDuration = Runner.DeltaTime - fallStartTime;
 
             if (fallDuration >= fallThreshold)
@@ -320,15 +317,34 @@ public class PlayerControler : NetworkBehaviour
         previousButtons = input.buttons;
     }
 
+    // 3. Render() se ejecuta localmente en cada frame (ideal para cambios visuales fluídos)
+    public override void Render()
+    {
+        ActualizarOrientacionVisual(IsFacingLeft);
+    }
+
+    private void ActualizarOrientacionVisual(bool facingLeft)
+    {
+        spriteRenderer.flipX = facingLeft;
+        spritePiernas.flipX = facingLeft;
+        spriteCabeza.flipX = facingLeft;
+        spriteBrazo.flipX = facingLeft;
+
+        // Scale del pivote
+        Vector3 scale = espadaPivot.localScale;
+        scale.x = facingLeft ? -1f : 1f;
+        espadaPivot.localScale = scale;
+    }
+
     void SetAnimatorParameters()
     {
-        isInteracting = animator.GetBool("isInteracting");
-        isBlocking = animator.GetBool("blocking");
-        animator.SetBool("isAttacking", isAttacking);
-        animatorP.SetBool("isAttacking", isAttacking);
-        animatorC.SetBool("isAttacking", isAttacking);
-        animatorB.SetBool("isAttacking", isAttacking);
-        weaponManager.anim.SetBool("isAttacking", isAttacking);
+        IsInteracting = animator.GetBool("isInteracting");
+        IsBlocking = animator.GetBool("blocking");
+        animator.SetBool("isAttacking", IsAttacking);
+        animatorP.SetBool("isAttacking", IsAttacking);
+        animatorC.SetBool("isAttacking", IsAttacking);
+        animatorB.SetBool("isAttacking", IsAttacking);
+        weaponManager.anim.SetBool("isAttacking", IsAttacking);
     }
 
     void AttackPlayer()
@@ -359,11 +375,11 @@ public class PlayerControler : NetworkBehaviour
             }
         }
         //Ataque normal
-        if (!isAttacking && !isInteracting)
+        if (!IsAttacking && !IsInteracting)
         {
             Debug.Log("Attack button");
-            isAttacking = true;
-            comboStep = 1;
+            IsAttacking = true;
+            ComboStep = 1;
             comboTimer = comboDelay;
             animator.Play("Attack");
             if (!animatorP.GetBool("Walk") && !animatorP.GetBool("Run"))
@@ -373,34 +389,35 @@ public class PlayerControler : NetworkBehaviour
             animatorC.Play("Attack");
             animatorB.Play("Attack");
             weaponManager.anim.Play("Attack");
+
         }
-        else if (comboStep == 1 && comboTimer > 0)
+        else if (ComboStep == 1 && comboTimer > 0)
         {
             Debug.Log("Attack1 button");
-            comboStep = 2;
+            ComboStep = 2;
             comboTimer = comboDelay;
-            isAttacking = true;
+            IsAttacking = true;
             //animator.Play("Attack1");
         }
-        else if (comboStep == 2 && comboTimer > 0)
+        else if (ComboStep == 2 && comboTimer > 0)
         {
             Debug.Log("Attack2 button");
-            comboStep = 3;
+            ComboStep = 3;
             comboTimer = comboDelay;
             //animator.Play("Attack2");
-            isAttacking = true;
-            animator.SetBool("isInteracting", true);
+            IsAttacking = true;
+            //animator.SetBool("isInteracting", true);
         }
     }
 
     IEnumerator Dodge()
     {
-        canDodge = false;
+        CanDodge = false;
         Debug.Log("Dodgeeee");
 
         // Reproducir la animación
         animator.SetBool("isInteracting", true);
-        if(!isCrouching)
+        if(!IsCrouching)
         {
             animator.Play("Dodge");
             animatorP.Play("Dodge");
@@ -444,13 +461,13 @@ public class PlayerControler : NetworkBehaviour
 
         // Esperar el cooldown antes de permitir otro dodge
         yield return new WaitForSeconds(dodgeCooldown);
-        canDodge = true;
+        CanDodge = true;
     }   
 
     public void StopVelocity()
     {
+        animator.SetBool("isInteracting", true);
         rb.linearVelocity = Vector2.zero;
-        //rb.gravityScale = 0;
     }
 
     private void FixedUpdate()

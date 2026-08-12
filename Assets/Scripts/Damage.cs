@@ -8,7 +8,9 @@ public class Damage : MonoBehaviour
     public bool damageToPlayer, damageToEnemy;
     public bool heavyAttack;
     public GameObject enemyObject;
+    [HideInInspector]
     public NetworkObject attacker;
+    [HideInInspector]
     public EnemyBehavior behavior;
 
 

@@ -21,6 +21,8 @@ public class ChunkManagerByName : NetworkBehaviour
 
     private HashSet<Vector2Int> currentPlayersChunks = new HashSet<Vector2Int>();
 
+    public SpawnObjects spawnObjects;
+
     public override void Spawned()
     {
         Debug.Log("Spawn Manager");
@@ -183,6 +185,12 @@ public class ChunkManagerByName : NetworkBehaviour
 
         loadedChunks.Add(chunkCoord, newChunk);
 
+        //SpawnObjects by chunks
+        SpawnPoints spawnPoints = newChunk.GetComponentInChildren<SpawnPoints>();
+        if(spawnPoints != null)
+        {
+            spawnObjects.SpawnBychunks(spawnPoints);
+        }
     }
 
     void UnloadChunk(Vector2Int chunkCoord)
