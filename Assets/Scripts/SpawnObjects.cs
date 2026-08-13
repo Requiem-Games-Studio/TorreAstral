@@ -20,7 +20,7 @@ public class SpawnObjects : NetworkBehaviour
             string type = data[2];
             int idObject = int.Parse(data[3]);
 
-            Debug.Log("Spawn: " + $"ID: {idSpawn}" + $"Tipo: {type}" + $"ID Object: {idObject}");
+            //Debug.Log("Spawn: " + $"ID: {idSpawn}" + $"Tipo: {type}" + $"ID Object: {idObject}");
 
             // Ya existe un enemigo en este punto
             if (idSpawnList.Contains(idSpawn))

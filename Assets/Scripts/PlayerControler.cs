@@ -19,6 +19,7 @@ public class PlayerControler : NetworkBehaviour
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     private float shiftHeldTime;
+    private bool _lastIsCrouching;
 
     public float dodgeSpeed = 5f;  // Velocidad del dodge
     public float dodgeDuration = 0.5f;
@@ -43,8 +44,10 @@ public class PlayerControler : NetworkBehaviour
     [Header("Combate")]
     //Combate
     [Networked] public int ComboStep { get; set; }
+    [Networked] public NetworkBool IsAttacking { get; set; }
     public float comboTimer = 0f;
     public float comboDelay = 0.5f; // tiempo máximo entre ataques
+    private bool lastIsAttacking = false;
 
     public float rayDistance = 1.5f;
     public LayerMask enemyLayer;
@@ -64,7 +67,6 @@ public class PlayerControler : NetworkBehaviour
     [Networked] public NetworkBool IsCrouching { get; set; }
     [Networked] public NetworkBool IsFalling { get; set; }
     [Networked] public NetworkBool CanDodge { get; set; }
-    [Networked] public NetworkBool IsAttacking { get; set; }
     [Networked] public NetworkBool IsBlocking { get; set; }
 
     public override void Spawned()
@@ -103,8 +105,6 @@ public class PlayerControler : NetworkBehaviour
             // Actualizamos la variable de red
             IsFacingLeft = moveInput < 0;
         }
-
-        SetAnimatorParameters();
 
         //Interaccion 
         if (input.buttons.WasPressed(previousButtons, InputButtons.Interact) && !IsInteracting)
@@ -198,12 +198,6 @@ public class PlayerControler : NetworkBehaviour
             IsJumping = false;
             rb.gravityScale = normalGravity;
         }
-        // Activar la animación de salto
-        animator.SetBool("isJumping", IsJumping);
-        animatorP.SetBool("isJumping", IsJumping);
-        animatorC.SetBool("isJumping", IsJumping);
-        animatorB.SetBool("isJumping", IsJumping);
-        weaponManager.anim.SetBool("isJumping", IsJumping);
         // **Coyote Time**
         if (isGrounded)
         {
@@ -246,6 +240,7 @@ public class PlayerControler : NetworkBehaviour
 
 
 
+
         //Agacharse y caida
         if (isGrounded)
         {
@@ -266,33 +261,23 @@ public class PlayerControler : NetworkBehaviour
                 }
             }
 
+            // =========================================================
+            // INICIO DEL AGACHARSE 
+            // =========================================================
             float verticalInput = input.movement.y;
-            // Cuando se presiona la flecha abajo (empieza a agacharse)
+
+            // Cuando se presiona abajo
             if (verticalInput < 0 && !IsCrouching)
             {
                 IsInteracting = true;
                 IsCrouching = true;
-                rb.linearVelocityX = 0;
-                animator.Play("StarCrouch");
-                animator.SetBool("Crouch", true);   // Mantiene pose de agachado
-                animatorP.Play("StarCrouch");
-                animatorP.SetBool("Crouch", true);
-                animatorC.Play("StarCrouch");
-                animatorC.SetBool("Crouch", true);
-                animatorB.Play("StarCrouch");
-                animatorB.SetBool("Crouch", true);
-                weaponManager.anim.Play("StarCrouch");
-                weaponManager.anim.SetBool("Crouch", true);
+                rb.linearVelocityX = 0; // Lógica de física/movimiento
             }
-            // Cuando se suelta la flecha abajo (empieza a levantarse)
-            if (verticalInput >= 0 && IsCrouching)
+            // Cuando se suelta abajo
+            else if (verticalInput >= 0 && IsCrouching)
             {
                 IsCrouching = false;
-                animator.SetBool("Crouch", false);  // Termina pose de agachado
-                animatorP.SetBool("Crouch", false);
-                animatorC.SetBool("Crouch", false);
-                animatorB.SetBool("Crouch", false);
-                weaponManager.anim.SetBool("Crouch", false);
+                // Si necesitas resetear IsInteracting aquí o al levantarte, hazlo según tu lógica
             }
         }
 
@@ -335,6 +320,80 @@ public class PlayerControler : NetworkBehaviour
     public override void Render()
     {
         ActualizarOrientacionVisual(IsFacingLeft);
+
+        // =========================================================
+        // SINCRONIZAR CON EL ANIMATOR
+        // =========================================================
+        IsInteracting = animator.GetBool("isInteracting");
+        IsBlocking = animator.GetBool("blocking");
+        SetBoolOnAll("isAttacking", IsAttacking);
+        SetBoolOnAll("isJumping", IsJumping);
+
+        // =========================================================
+        // INICIO DEL AGACHARSE 
+        // =========================================================
+        if (IsCrouching != _lastIsCrouching)
+        {
+            if (IsCrouching)
+            {
+                // Transición de inicio (StartCrouch)
+                PlayAnimationOnAll("StarCrouch");
+                SetBoolOnAll("Crouch", true);
+            }
+            else
+            {
+                // Transición al levantarse
+                SetBoolOnAll("Crouch", false);
+            }
+
+            // Actualizamos la memoria local del cliente
+            _lastIsCrouching = IsCrouching;
+        }
+
+        // =========================================================
+        // INICIO DEL ATAQUE
+        // =========================================================
+
+        if (IsAttacking && !lastIsAttacking)
+        {           
+            if (!animatorP.GetBool("Walk") &&
+                !animatorP.GetBool("Run"))
+            {
+                animatorP.Play("Attack");
+            }
+            animator.Play("Attack");
+            animatorC.Play("Attack");
+            animatorB.Play("Attack");
+
+            if (weaponManager != null &&
+                weaponManager.anim != null)
+            {
+                weaponManager.anim.Play("Attack");
+            }
+        }
+
+        // Guardamos el estado anterior
+
+        lastIsAttacking = IsAttacking;
+    }
+
+    // Métodos auxiliares para no repetir código de tus múltiples animadores
+    private void SetBoolOnAll(string paramName, bool value)
+    {
+        if (animator) animator.SetBool(paramName, value);
+        if (animatorP) animatorP.SetBool(paramName, value);
+        if (animatorC) animatorC.SetBool(paramName, value);
+        if (animatorB) animatorB.SetBool(paramName, value);
+        if (weaponManager && weaponManager.anim) weaponManager.anim.SetBool(paramName, value);
+    }
+
+    private void PlayAnimationOnAll(string stateName)
+    {
+        if (animator) animator.Play(stateName);
+        if (animatorP) animatorP.Play(stateName);
+        if (animatorC) animatorC.Play(stateName);
+        if (animatorB) animatorB.Play(stateName);
+        if (weaponManager && weaponManager.anim) weaponManager.anim.Play(stateName);
     }
 
     private void ActualizarOrientacionVisual(bool facingLeft)
@@ -348,17 +407,6 @@ public class PlayerControler : NetworkBehaviour
         Vector3 scale = espadaPivot.localScale;
         scale.x = facingLeft ? -1f : 1f;
         espadaPivot.localScale = scale;
-    }
-
-    void SetAnimatorParameters()
-    {
-        IsInteracting = animator.GetBool("isInteracting");
-        IsBlocking = animator.GetBool("blocking");
-        animator.SetBool("isAttacking", IsAttacking);
-        animatorP.SetBool("isAttacking", IsAttacking);
-        animatorC.SetBool("isAttacking", IsAttacking);
-        animatorB.SetBool("isAttacking", IsAttacking);
-        weaponManager.anim.SetBool("isAttacking", IsAttacking);
     }
 
     void AttackPlayer()
@@ -391,33 +439,32 @@ public class PlayerControler : NetworkBehaviour
         //Ataque normal
         if (!IsAttacking && !IsInteracting)
         {
+            // Comienza el combo
+
             IsAttacking = true;
+
             ComboStep = 1;
+
             comboTimer = comboDelay;
-            animator.Play("Attack");
-            if (!animatorP.GetBool("Walk") && !animatorP.GetBool("Run"))
-            {
-                animatorP.Play("Attack");
-            }
-            animatorC.Play("Attack");
-            animatorB.Play("Attack");
-            weaponManager.anim.Play("Attack");
+
+            return;
 
         }
         else if (ComboStep == 1 && comboTimer > 0)
         {
             ComboStep = 2;
+
             comboTimer = comboDelay;
-            IsAttacking = true;
-            //animator.Play("Attack1");
+
+            return;
         }
         else if (ComboStep == 2 && comboTimer > 0)
         {
             ComboStep = 3;
+
             comboTimer = comboDelay;
-            //animator.Play("Attack2");
-            IsAttacking = true;
-            //animator.SetBool("isInteracting", true);
+
+            return;
         }
     }
 
@@ -429,19 +476,11 @@ public class PlayerControler : NetworkBehaviour
         animator.SetBool("isInteracting", true);
         if(!IsCrouching)
         {
-            animator.Play("Dodge");
-            animatorP.Play("Dodge");
-            animatorC.Play("Dodge");
-            animatorB.Play("Dodge");
-            weaponManager.anim.Play("Dodge");
+            PlayAnimationOnAll("Dodge");
         }
         else
         {
-            animator.Play("CrouchSlide");
-            animatorP.Play("CrouchSlide");
-            animatorC.Play("CrouchSlide");
-            animatorB.Play("CrouchSlide");
-            weaponManager.anim.Play("CrouchSlide");
+            PlayAnimationOnAll("CrouchSlide");
         }
 
         // Desactivar colisión con enemigos
