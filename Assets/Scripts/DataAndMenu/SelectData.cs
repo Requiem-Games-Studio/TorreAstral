@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEditor.Overlays;
 
 public class SelectData : MonoBehaviour
 {
@@ -19,7 +18,7 @@ public class SelectData : MonoBehaviour
 
     public void CheckSlot()
     {
-        for (int i = 0; i < 4; i++) // 4 slots
+        for (int i = 0; i < 3; i++) // 4 slots
         {
             if (SaveManager.Instance.SaveExists(i))
             {

@@ -3,8 +3,9 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using TMPro;
 
-public class VideoSettingsMenu : MonoBehaviour
+public class VideoSettings : MonoBehaviour
 {
+    public TMP_Dropdown resolutionDropdown;
     public Toggle fullscreenToggle;
 
     Resolution[] resolutions;
@@ -13,6 +14,7 @@ public class VideoSettingsMenu : MonoBehaviour
     {
         resolutions = Screen.resolutions;
 
+        resolutionDropdown.ClearOptions();
         List<string> options = new List<string>();
 
         int currentResolutionIndex = 0;
@@ -29,10 +31,13 @@ public class VideoSettingsMenu : MonoBehaviour
             }
         }
 
+        resolutionDropdown.AddOptions(options);
+
         // Cargar guardado
         int savedRes = PlayerPrefs.GetInt("ResolutionIndex", currentResolutionIndex);
         bool savedFullscreen = PlayerPrefs.GetInt("Fullscreen", 1) == 1;
 
+        resolutionDropdown.value = savedRes;
         fullscreenToggle.isOn = savedFullscreen;
 
         ApplySettings();
@@ -52,7 +57,10 @@ public class VideoSettingsMenu : MonoBehaviour
 
     void ApplySettings()
     {
+        int index = PlayerPrefs.GetInt("ResolutionIndex", resolutionDropdown.value);
         bool fullscreen = PlayerPrefs.GetInt("Fullscreen", fullscreenToggle.isOn ? 1 : 0) == 1;
 
+        Resolution res = resolutions[index];
+        Screen.SetResolution(res.width, res.height, fullscreen);
     }
 }

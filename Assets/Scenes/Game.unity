@@ -240,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab:
   - {fileID: 754421207521079545, guid: 1205b72b0edb31d43b92589c875a2b9e, type: 3}
+  - {fileID: 2676433045332270646, guid: b2134c8c2a6f3b1439826243c1a1602e, type: 3}
   idSpawnList: 
 --- !u!1 &234385864
 GameObject:

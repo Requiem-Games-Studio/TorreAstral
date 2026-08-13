@@ -13,4 +13,5 @@ public enum InputButtons
     Attack,
     Block,
     Run,
+    Interact
 }

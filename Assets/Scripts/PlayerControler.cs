@@ -106,10 +106,24 @@ public class PlayerControler : NetworkBehaviour
 
         SetAnimatorParameters();
 
+        //Interaccion 
+        if (input.buttons.WasPressed(previousButtons, InputButtons.Interact) && !IsInteracting)
+        {
+            if (IsCrouching)
+            {
+                Debug.Log("Act Crouching");
+            }
+            else
+            {
+                animator.Play("Act");
+                animatorC.Play("Act");
+                animatorB.Play("Act");
+            }
+        }
+
         // Attack Player
         if (input.buttons.WasPressed(previousButtons, InputButtons.Attack))
         {
-            Debug.Log("FUSION Ataque presionado");
             AttackPlayer();
         }
         // Reducir tiempo de combo
@@ -377,7 +391,6 @@ public class PlayerControler : NetworkBehaviour
         //Ataque normal
         if (!IsAttacking && !IsInteracting)
         {
-            Debug.Log("Attack button");
             IsAttacking = true;
             ComboStep = 1;
             comboTimer = comboDelay;
@@ -393,7 +406,6 @@ public class PlayerControler : NetworkBehaviour
         }
         else if (ComboStep == 1 && comboTimer > 0)
         {
-            Debug.Log("Attack1 button");
             ComboStep = 2;
             comboTimer = comboDelay;
             IsAttacking = true;
@@ -401,7 +413,6 @@ public class PlayerControler : NetworkBehaviour
         }
         else if (ComboStep == 2 && comboTimer > 0)
         {
-            Debug.Log("Attack2 button");
             ComboStep = 3;
             comboTimer = comboDelay;
             //animator.Play("Attack2");
@@ -413,7 +424,6 @@ public class PlayerControler : NetworkBehaviour
     IEnumerator Dodge()
     {
         CanDodge = false;
-        Debug.Log("Dodgeeee");
 
         // Reproducir la animación
         animator.SetBool("isInteracting", true);

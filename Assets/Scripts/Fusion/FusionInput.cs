@@ -47,6 +47,7 @@ public class FusionInput : MonoBehaviour, INetworkRunnerCallbacks
         data.buttons.Set(InputButtons.Attack, Input.GetMouseButton(0));
         data.buttons.Set(InputButtons.Block, Input.GetMouseButton(1));
         data.buttons.Set(InputButtons.Run, Input.GetKey(KeyCode.LeftShift));
+        data.buttons.Set(InputButtons.Interact, Input.GetKey(KeyCode.E));
 
         input.Set(data);
 
