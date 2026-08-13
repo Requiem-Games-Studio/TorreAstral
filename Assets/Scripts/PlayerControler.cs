@@ -15,11 +15,32 @@ public class PlayerControler : NetworkBehaviour
     public Transform groundCheck; // Punto en los pies para detectar el suelo
     public LayerMask groundLayer; // Capa del suelo
 
+    // Para detectar cambios en Render
+    private ChangeDetector _changeDetector;
+
+    public GameObject cameraPlayer, canvas;
+    [HideInInspector]
+    public CameraFollow cameraFollow;
+    public ChunkManagerByName chunkManager;
+
+    private NetworkButtons previousButtons;
+
     [Header("Velocidades")]
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     private float shiftHeldTime;
     private bool _lastIsCrouching;
+
+    [Networked] private float MoveInput { get; set; }
+    [Networked] private NetworkBool IsRunning { get; set; }
+
+    [Networked] private NetworkBool IsDodging { get; set; }
+    [Networked] private TickTimer DodgeTimer { get; set; }
+    [Networked] private TickTimer DodgeCooldownTimer { get; set; }
+
+    // Contador que se incrementa cada vez que se dispara un esquive.
+    // Sirve para detectar el disparo instantáneo en Render().
+    [Networked] private int DodgeCount { get; set; }
 
     public float dodgeSpeed = 5f;  // Velocidad del dodge
     public float dodgeDuration = 0.5f;
@@ -30,15 +51,25 @@ public class PlayerControler : NetworkBehaviour
     public float maxJumpTime = 0.2f; // Tiempo máximo de salto variable
     public float coyoteTime = 0.15f; // Tiempo extra después de dejar el suelo
     public float normalGravity;
+    [Networked] private NetworkBool IsJumping { get; set; }
+    [Networked] private int JumpCount { get; set; }
+    [Networked] private int InteractCount { get; set; }
 
-
-    private float jumpTimeCounter;
-    private float coyoteTimeCounter;
+    // Tiempos y contadores manejados en FUN
+    [Networked] private float CoyoteTimeCounter { get; set; }
+    [Networked] private float JumpTimeCounter { get; set; }
 
     //Caida
     bool isGrounded;
     public float fallThreshold = 0.5f; // Tiempo mínimo de caída para animación de aterrizaje
     private float fallStartTime;
+
+    [Networked] private NetworkBool IsFalling { get; set; }
+    [Networked] private float FallStartTime { get; set; }
+
+    // Contadores de eventos para Render()
+    [Networked] private int HardLandCount { get; set; } // Aterrizaje pesado (Land)
+    [Networked] private int SoftLandCount { get; set; } // Aterrizaje ligero (Idle)
 
 
     [Header("Combate")]
@@ -54,20 +85,14 @@ public class PlayerControler : NetworkBehaviour
     public Transform rayOrigin;
     public float criticalDamage;
 
-    public GameObject cameraPlayer,canvas;
-    [HideInInspector]
-    public CameraFollow cameraFollow;
-    public ChunkManagerByName chunkManager;
-
-    private NetworkButtons previousButtons;
-
     [Networked] public NetworkBool IsFacingLeft { get; set; }
-    [Networked] public NetworkBool IsJumping { get; set; }
     [Networked] public NetworkBool IsInteracting { get; set; }
     [Networked] public NetworkBool IsCrouching { get; set; }
-    [Networked] public NetworkBool IsFalling { get; set; }
     [Networked] public NetworkBool CanDodge { get; set; }
     [Networked] public NetworkBool IsBlocking { get; set; }
+    [Networked] private int BlockStartCount { get; set; }
+
+    private bool _lastIsBlocking;
 
     public override void Spawned()
     {
@@ -82,6 +107,9 @@ public class PlayerControler : NetworkBehaviour
             cameraFollow.player = this.gameObject.transform;
             cameraFollow.StartCamera();
         }
+
+        // En Fusion 2 pasas directamente ChangeDetector.Source.SimulationState
+        _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)
@@ -97,13 +125,31 @@ public class PlayerControler : NetworkBehaviour
     {       
         if (!GetInput(out NetworkInputData input))
             return;
-       
-        float moveInput = input.movement.x;
 
-        if (moveInput != 0)
+        if (!IsInteracting)
         {
-            // Actualizamos la variable de red
-            IsFacingLeft = moveInput < 0;
+            // Guardamos el input de movimiento horizontal (-1, 0, 1) y si presiona correr
+            MoveInput = input.movement.x;
+            IsRunning = input.buttons.IsSet(InputButtons.Run);
+
+            // Cambiar velocidad física según estado
+            float speed = IsRunning ? runSpeed : walkSpeed;
+
+            if (MoveInput != 0)
+            {
+                // Actualizamos la variable de red
+                IsFacingLeft = MoveInput < 0;
+            }
+            
+            if (!IsCrouching && !IsInteracting)
+            {
+                rb.linearVelocity = new Vector2(MoveInput * speed, rb.linearVelocity.y);
+            }
+        }
+        else
+        {
+            MoveInput = 0f;
+            IsRunning = false;
         }
 
         //Interaccion 
@@ -115,9 +161,7 @@ public class PlayerControler : NetworkBehaviour
             }
             else
             {
-                animator.Play("Act");
-                animatorC.Play("Act");
-                animatorB.Play("Act");
+                InteractCount++;
             }
         }
 
@@ -137,55 +181,56 @@ public class PlayerControler : NetworkBehaviour
                 IsAttacking = false;
             }
         }
-      
+
         // Block Down and Up
+        // 1. Al presionar el botón de bloqueo
         if (input.buttons.WasPressed(previousButtons, InputButtons.Block))
         {
             if (!IsAttacking && !IsInteracting)
             {
-                animator.Play("StartBlock");
-                animator.SetBool("blocking", true);
-                if (!animatorP.GetBool("Walk") && !animatorP.GetBool("Run"))
-                {
-                    animatorP.Play("StartBlock");
-                    animatorP.SetBool("blocking", true);
-                }
-                animatorC.Play("StartBlock");
-                animatorC.SetBool("blocking", true);
-                animatorB.Play("StartBlock");
-                animatorB.SetBool("blocking", true);
-                weaponManager.anim.Play("StartBlock");
-                weaponManager.anim.SetBool("blocking", true);
+                IsBlocking = true;
+                BlockStartCount++; // Avisa a Render()
             }
         }
+        // 2. Al soltar el botón de bloqueo
         if (input.buttons.WasReleased(previousButtons, InputButtons.Block))
         {
-            animator.SetBool("blocking", false);
-            animatorP.SetBool("blocking", false);
-            animatorC.SetBool("blocking", false);
-            animatorB.SetBool("blocking", false);
-            weaponManager.anim.SetBool("blocking", false);
+            IsBlocking = false; // Se vuelve false -> Render() pondrá "blocking" = false
         }
 
-        // Salto
-        if (input.buttons.WasPressed(previousButtons, InputButtons.Jump) && coyoteTimeCounter > 0f)
+        // =========================================================
+        // SALTO
+        // =========================================================
+        // 1. Manejo de Coyote Time
+        if (isGrounded)
         {
-            animator.Play("Jump");
-            animatorP.Play("Jump");
-            animatorC.Play("Jump");
-            animatorB.Play("Jump");
-            weaponManager.anim.Play("Jump");
-            IsJumping = true;
-            jumpTimeCounter = maxJumpTime;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            CoyoteTimeCounter = coyoteTime;
         }
+        else
+        {
+            CoyoteTimeCounter -= Runner.DeltaTime;
+        }
+        // 2. Inicio del Salto (WasPressed)
+        if (input.buttons.WasPressed(previousButtons, InputButtons.Jump) && CoyoteTimeCounter > 0f)
+        {
+            IsJumping = true;
+            JumpTimeCounter = maxJumpTime;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+            // Incrementamos el contador para avisarle a Render()
+            JumpCount++;
+
+            // Consumimos el coyote time para evitar saltos dobles en el mismo frame
+            CoyoteTimeCounter = 0f;
+        }
+        // 3. Salto Sostenido (Mapeo de fuerza variable)
         if (input.buttons.IsSet(InputButtons.Jump) && IsJumping)
         {
-            if (jumpTimeCounter > 0)
+            if (JumpTimeCounter > 0)
             {
                 rb.gravityScale = 0.1f;
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-                jumpTimeCounter -= Runner.DeltaTime;
+                JumpTimeCounter -= Runner.DeltaTime;
             }
             else
             {
@@ -193,58 +238,16 @@ public class PlayerControler : NetworkBehaviour
                 rb.gravityScale = normalGravity;
             }
         }
+        // 4. Cancelar Salto (WasReleased)
         if (input.buttons.WasReleased(previousButtons, InputButtons.Jump))
         {
             IsJumping = false;
             rb.gravityScale = normalGravity;
         }
-        // **Coyote Time**
+
+        //Agacharse 
         if (isGrounded)
         {
-            coyoteTimeCounter = coyoteTime;
-        }
-        else
-        {
-            coyoteTimeCounter -= Runner.DeltaTime; ;
-        }
-
-        //Movimiento y vista del jugador solo si no esta iteractuando
-        if (!IsInteracting)
-        {
-            
-            // --- Detectar si corre ---
-            bool isRunning = input.buttons.IsSet(InputButtons.Run);
-
-
-            // --- Animaciones Walk y Run ---
-            animator.SetBool("Walk", moveInput != 0 && !isRunning);
-            animatorP.SetBool("Walk", moveInput != 0 && !isRunning);
-            animatorC.SetBool("Walk", moveInput != 0 && !isRunning);
-            animatorB.SetBool("Walk", moveInput != 0 && !isRunning);
-            weaponManager.anim.SetBool("Walk", moveInput != 0 && !isRunning);
-
-
-            animator.SetBool("Run", moveInput != 0 && isRunning);
-            animatorP.SetBool("Run", moveInput != 0 && isRunning);
-            animatorC.SetBool("Run", moveInput != 0 && isRunning);
-            animatorB.SetBool("Run", moveInput != 0 && isRunning);
-            weaponManager.anim.SetBool("Run", moveInput != 0 && isRunning);
-
-            // Cambiar velocidad según estado (caminar/correr)
-            float speed = isRunning ? runSpeed : walkSpeed;
-            if (!IsCrouching && !IsInteracting)
-            {
-                rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
-            }
-        }
-
-
-
-
-        //Agacharse y caida
-        if (isGrounded)
-        {
-            //Roll
             if (input.buttons.WasPressed(previousButtons, InputButtons.Run))
             {
                 shiftHeldTime = 0f;
@@ -253,11 +256,39 @@ public class PlayerControler : NetworkBehaviour
             {
                 shiftHeldTime += Runner.DeltaTime;
             }
-            if (input.buttons.WasReleased(previousButtons, InputButtons.Run) && CanDodge)
+
+            // Comprobamos si puede esquivar mediante el TickTimer de Fusion
+            bool canDodge = DodgeCooldownTimer.ExpiredOrNotRunning(Runner) && !IsDodging;
+
+            if (input.buttons.WasReleased(previousButtons, InputButtons.Run) && canDodge)
             {
                 if (shiftHeldTime <= 0.2f)
                 {
-                    StartCoroutine(Dodge());
+                    TriggerDodge();
+                }
+            }
+
+            // B) Lógica MIENTRAS está esquivando
+            if (IsDodging)
+            {
+                if (!DodgeTimer.Expired(Runner))
+                {
+                    // Aplicar velocidad del dodge durante el tiempo activo
+                    float dodgeDirection = spriteRenderer.flipX ? -1 : 1;
+                    rb.linearVelocity = new Vector2(dodgeDirection * dodgeSpeed, 0);
+                }
+                else
+                {
+                    // El dodge ha terminado
+                    IsDodging = false;
+                    rb.linearVelocity = Vector2.zero;
+                    rb.gravityScale = normalGravity;
+
+                    // Iniciar cooldown
+                    DodgeCooldownTimer = TickTimer.CreateFromSeconds(Runner, dodgeCooldown);
+
+                    // Volvemos a ignorar la capa de enemigos (restaurar colisión)
+                    SetEnemyCollision(false);
                 }
             }
 
@@ -281,35 +312,32 @@ public class PlayerControler : NetworkBehaviour
             }
         }
 
-        // Detectar inicio de caída
-        if (!isGrounded && rb.linearVelocity.y < 0 && !IsFalling)
+        // A) DETECTAR INICIO DE CAÍDA REAL
+        // Aseguramos que no esté tocando suelo Y que su velocidad vertical vaya hacia abajo (caída)
+        if (!isGrounded && !IsFalling && rb.linearVelocity.y < -0.1f)
         {
             IsFalling = true;
-            fallStartTime = Runner.DeltaTime; ; // Guardar cuando empezó a caer
+            FallStartTime = Runner.SimulationTime; // Guardamos el tiempo exacto en que empezó a caer
         }
 
-        // Detectar aterrizaje
+        // B) DETECTAR ATERRIZAJE
         if (isGrounded && IsFalling)
         {
-            IsFalling = false;
-            float fallDuration = Runner.DeltaTime - fallStartTime;
+            IsFalling = false; // Desactivamos el estado de caída
 
+            // Calculamos la duración total en segundos que estuvo cayendo
+            float fallDuration = Runner.SimulationTime - FallStartTime;
+
+            // Si cayó durante un tiempo igual o mayor al umbral -> Impacto Pesado
             if (fallDuration >= fallThreshold)
             {
-                rb.linearVelocityX = 0;
-                animatorP.Play("Land"); // Animación de aterrizaje
-                animator.Play("Land");
-                animatorC.Play("Land");
-                animatorB.Play("Land");
-                weaponManager.anim.Play("Land");
+                rb.linearVelocityX = 0; // Frenado físico por impacto
+                HardLandCount++;       // Transición a "Land" en Render()
             }
             else
             {
-                animatorP.Play("idle"); // Vuelve a idle normal
-                animator.Play("idle");
-                animatorC.Play("idle");
-                animatorB.Play("idle");
-                weaponManager.anim.Play("idle");
+                // Caída corta (un salto pequeño o bajó un escalón) -> Transición a Idle suave
+                SoftLandCount++;       // Transición a "idle" en Render()
             }
         }
 
@@ -325,10 +353,41 @@ public class PlayerControler : NetworkBehaviour
         // SINCRONIZAR CON EL ANIMATOR
         // =========================================================
         IsInteracting = animator.GetBool("isInteracting");
-        IsBlocking = animator.GetBool("blocking");
         SetBoolOnAll("isAttacking", IsAttacking);
-        SetBoolOnAll("isJumping", IsJumping);
+        //SetBoolOnAll("isJumping", IsJumping);
+        // 1. Calculamos el estado visual de movimiento
+        bool isMoving = MoveInput != 0 && !IsInteracting;
+        bool walkingState = isMoving && !IsRunning;
+        bool runningState = isMoving && IsRunning;
 
+        // 2. Asignamos a todos los animadores
+        SetBoolOnAll("Walk", walkingState);
+        SetBoolOnAll("Run", runningState);
+
+        // =========================================================
+        // CHANGE DETECTOR  FALL - JUMP - DODGE - ACT - BLOCK 
+        // =========================================================
+        foreach (var change in _changeDetector.DetectChanges(this))
+        {
+            if (change == nameof(BlockStartCount))
+            {
+                // 2. FORZAMOS el bool "blocking" a true inmediatamente en los animadores
+                SetBoolOnAll("blocking", true);
+
+                // 1. Iniciamos el clip de transición "StartBlock"
+                SetBlockStartAnimations();
+
+                // Sincronizamos nuestro rastreador local para evitar duplicados
+                _lastIsBlocking = true;
+            }
+
+            if (change == nameof(HardLandCount)) PlayAnimationOnAll("Land");
+            if (change == nameof(SoftLandCount)) PlayAnimationOnAll("idle");
+
+            if (change == nameof(JumpCount)) PlayAnimationOnAll("Jump");
+            if (change == nameof(DodgeCount)) PlayAnimationOnAll(IsCrouching ? "CrouchSlide" : "Dodge");
+            if (change == nameof(InteractCount)) PlayAnimationOnAll("Act");
+        }
         // =========================================================
         // INICIO DEL AGACHARSE 
         // =========================================================
@@ -349,11 +408,22 @@ public class PlayerControler : NetworkBehaviour
             // Actualizamos la memoria local del cliente
             _lastIsCrouching = IsCrouching;
         }
+        // B) Sincronización continua de la postura sostenida
+        if (IsBlocking != _lastIsBlocking)
+        {
+            SetBoolOnAll("blocking", IsBlocking);
+            _lastIsBlocking = IsBlocking;
+        }
+        // Mantener la sincronización de estados continuos (por ejemplo, Crouch)
+        if (IsCrouching != _lastIsCrouching)
+        {
+            SetBoolOnAll("Crouch", IsCrouching);
+            _lastIsCrouching = IsCrouching;
+        }
 
         // =========================================================
         // INICIO DEL ATAQUE
         // =========================================================
-
         if (IsAttacking && !lastIsAttacking)
         {           
             if (!animatorP.GetBool("Walk") &&
@@ -371,9 +441,7 @@ public class PlayerControler : NetworkBehaviour
                 weaponManager.anim.Play("Attack");
             }
         }
-
         // Guardamos el estado anterior
-
         lastIsAttacking = IsAttacking;
     }
 
@@ -394,6 +462,22 @@ public class PlayerControler : NetworkBehaviour
         if (animatorC) animatorC.Play(stateName);
         if (animatorB) animatorB.Play(stateName);
         if (weaponManager && weaponManager.anim) weaponManager.anim.Play(stateName);
+    }
+
+    private void SetBlockStartAnimations()
+    {
+        animator.Play("StartBlock");
+
+        // Verificación especial que tenías para animatorP
+        if (!animatorP.GetBool("Walk") && !animatorP.GetBool("Run"))
+        {
+            animatorP.Play("StartBlock");
+        }
+
+        animatorC.Play("StartBlock");
+        animatorB.Play("StartBlock");
+        if (weaponManager && weaponManager.anim) weaponManager.anim.Play("StartBlock");
+
     }
 
     private void ActualizarOrientacionVisual(bool facingLeft)
@@ -468,50 +552,28 @@ public class PlayerControler : NetworkBehaviour
         }
     }
 
-    IEnumerator Dodge()
+    private void TriggerDodge()
     {
-        CanDodge = false;
+        IsDodging = true;
+        IsInteracting = true;
 
-        // Reproducir la animación
-        animator.SetBool("isInteracting", true);
-        if(!IsCrouching)
-        {
-            PlayAnimationOnAll("Dodge");
-        }
-        else
-        {
-            PlayAnimationOnAll("CrouchSlide");
-        }
+        // Incrementamos el contador para alertar a Render() en todos los clientes
+        DodgeCount++;
 
-        // Desactivar colisión con enemigos
-        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), true);
+        // Creamos los timers sincronizados con los ticks del Runner
+        DodgeTimer = TickTimer.CreateFromSeconds(Runner, dodgeDuration);
 
-        // Determinar dirección del dodge
-        float dodgeDirection = spriteRenderer.flipX ? -1 : 1;
+        // Ignorar colisión con enemigos localmente/en red
+        SetEnemyCollision(true);
+    }
 
-        // Desactivar gravedad para evitar caída
-        //rb.gravityScale = 0;
-
-        // Aplicar movimiento durante el dodge
-        float startTime = Time.time;
-        while (Time.time < startTime + dodgeDuration)
-        {
-            rb.linearVelocity = new Vector2(dodgeDirection * dodgeSpeed, 0); // Velocidad en Y se mantiene en 0
-            yield return null;
-        }
-
-        rb.linearVelocity = Vector2.zero; // Detener el movimiento después del dodge
-
-        // Reactivar la gravedad
-        rb.gravityScale = normalGravity;
-
-        // Reactivar colisión con enemigos después del dodge
-        Physics2D.IgnoreLayerCollision(gameObject.layer, LayerMask.NameToLayer("Enemy"), false);
-
-        // Esperar el cooldown antes de permitir otro dodge
-        yield return new WaitForSeconds(dodgeCooldown);
-        CanDodge = true;
-    }   
+    // Nota sobre colisiones: Es preferible usar Physics2D.IgnoreCollision entre Colliders específicos
+    // para evitar desactivar la colisión a nivel global para todos los personajes.
+    private void SetEnemyCollision(bool ignore)
+    {
+        // Ejemplo si tienes la referencia a tus colliders:
+        // Physics2D.IgnoreCollision(myCollider, enemyCollider, ignore);
+    }
 
     public void StopVelocity()
     {
