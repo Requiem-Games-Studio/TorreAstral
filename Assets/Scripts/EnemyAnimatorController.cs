@@ -6,6 +6,6 @@ public class EnemyAnimatorController : MonoBehaviour
 
     public void StopAttack()
     {
-        enemy.Attacking = false;
+        enemy.attacking = false;
     }
 }

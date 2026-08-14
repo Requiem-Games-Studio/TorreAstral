@@ -1969,7 +1969,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 140.20892, y: -23.100006}
+  m_AnchoredPosition: {x: 140.20892, y: -23.099976}
   m_SizeDelta: {x: 158.9183, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8645850617146944445
@@ -2618,6 +2618,10 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  cameraPlayer: {fileID: 644494887135801860}
+  canvas: {fileID: 6721168192971547266}
+  cameraFollow: {fileID: 0}
+  chunkManager: {fileID: 0}
   walkSpeed: 2
   runSpeed: 4
   dodgeSpeed: 6
@@ -2629,6 +2633,8 @@ MonoBehaviour:
   normalGravity: 3
   fallThreshold: 0.5
   _ComboStep: 0
+  _IsAttacking:
+    RawValue: 0
   comboTimer: 0
   comboDelay: 0.5
   rayDistance: 1.5
@@ -2637,24 +2643,14 @@ MonoBehaviour:
     m_Bits: 64
   rayOrigin: {fileID: 8270392624658335719}
   criticalDamage: 5
-  cameraPlayer: {fileID: 644494887135801860}
-  canvas: {fileID: 6721168192971547266}
-  cameraFollow: {fileID: 0}
-  chunkManager: {fileID: 0}
   _IsFacingLeft:
-    RawValue: 0
-  _IsJumping:
     RawValue: 0
   _IsInteracting:
     RawValue: 0
   _IsCrouching:
     RawValue: 0
-  _IsFalling:
-    RawValue: 0
   _CanDodge:
     RawValue: 1
-  _IsAttacking:
-    RawValue: 0
   _IsBlocking:
     RawValue: 0
 --- !u!50 &3986657837030566230

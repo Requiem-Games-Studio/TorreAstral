@@ -19,12 +19,18 @@ public class EnemyBehavior : NetworkBehaviour
     private Vector2 startPos;
     private float lastAttackTime = 0;
     private bool MovingRight = true;
-    public bool Attacking;
+    public bool attacking;
 
-
+    [Networked] private float Direction { get; set; }
     [Networked] public NetworkBool Dead { get; set; }
-    [Networked] public NetworkBool IsWalking { get; set; }
     [Networked] public NetworkBool FacingRight { get; set; }
+
+    [Networked] public NetworkBool IsWalking { get; set; }
+    private bool _lastIsWalking;
+
+    [Networked] public int IsAttackingCount { get; set; }
+
+    private ChangeDetector _changeDetector;
 
 
     public override void Spawned()
@@ -34,6 +40,7 @@ public class EnemyBehavior : NetworkBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = spriteEnemy.GetComponent<Animator>();
         startPos = transform.position;
+        _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
     }
 
     public void SetTarget(NetworkObject attacker)
@@ -46,7 +53,6 @@ public class EnemyBehavior : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        Debug.Log("Enemy Tick");
         if (!HasStateAuthority)
             return;
 
@@ -57,57 +63,38 @@ public class EnemyBehavior : NetworkBehaviour
 
         if (distance <= attackRange)
         { 
-            AttackPlayer();
+            AttackPlayer();          
         }
-        else if (distance <= patrolRange && !Attacking)
+        else if (distance <= patrolRange && !attacking)
         {
-            ChasePlayer();
+            ChasePlayer();            
         }
         else
         {
-            if (!Attacking)
+            if (!attacking)
             {
-                Patrol();
+                Patrol();                
             }
         }
     }
 
-    void Patrol()
+    public override void Render()
     {
-        animator.SetBool("isWalking", true);
+        Flip(Direction);
 
-        float moveDirection = MovingRight ? 1 : -1;
-        rb.linearVelocity = new Vector2(moveDirection * patrolSpeed, rb.linearVelocity.y);
-
-        if (MovingRight && transform.position.x >= startPos.x + patrolRange)
-            MovingRight = false;
-        else if (!MovingRight && transform.position.x <= startPos.x - patrolRange)
-            MovingRight = true;
-
-        Flip(moveDirection);
-    }
-    void ChasePlayer()
-    {
-        animator.SetBool("isWalking", true);
-
-        float direction = Target.transform.position.x - transform.position.x;
-        rb.linearVelocity = new Vector2(Mathf.Sign(direction) * chaseSpeed, rb.linearVelocity.y);
-
-        Flip(direction);
-    }
-    void AttackPlayer()
-    {
-        Attacking = true;
-        rb.linearVelocity = Vector2.zero;
-        animator.SetBool("isWalking", false);
-
-        if (Runner.SimulationTime - lastAttackTime > attackCooldown)
+        foreach (var change in _changeDetector.DetectChanges(this))
         {
-            animator.SetTrigger("attack");
-            lastAttackTime = Runner.SimulationTime;
+            if (change == nameof(IsAttackingCount))
+            {
+                animator.Play("Attack");
+            }
         }
 
-        //Flip(player.position.x - transform.position.x);
+        if (IsWalking != _lastIsWalking)
+        {
+            animator.SetBool("isWalking", IsWalking);
+            _lastIsWalking = IsWalking;
+        }
     }
 
     void Flip(float direction)
@@ -120,6 +107,39 @@ public class EnemyBehavior : NetworkBehaviour
         }
     }
 
+    void Patrol()
+    {
+        float moveDirection = MovingRight ? 1 : -1;
+        rb.linearVelocity = new Vector2(moveDirection * patrolSpeed, rb.linearVelocity.y);
+
+        if (MovingRight && transform.position.x >= startPos.x + patrolRange)
+            MovingRight = false;
+        else if (!MovingRight && transform.position.x <= startPos.x - patrolRange)
+            MovingRight = true;
+
+        Direction = moveDirection;
+        IsWalking = true;
+    }
+    void ChasePlayer()
+    {        
+        float direction = Target.transform.position.x - transform.position.x;
+        rb.linearVelocity = new Vector2(Mathf.Sign(direction) * chaseSpeed, rb.linearVelocity.y);
+        IsWalking = true;
+        Direction = direction;
+    }
+    void AttackPlayer()
+    {
+        attacking = true;
+        rb.linearVelocity = Vector2.zero;
+        IsWalking = false;
+
+        if (Runner.SimulationTime - lastAttackTime > attackCooldown)
+        {
+            IsAttackingCount++;
+            lastAttackTime = Runner.SimulationTime;
+        }
+    }
+   
     public void DeadEvent()
     {       
         Dead = true;

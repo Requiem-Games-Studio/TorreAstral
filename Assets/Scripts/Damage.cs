@@ -42,5 +42,10 @@ public class Damage : MonoBehaviour
                 Debug.Log("Damage Set Targer");
             }
         }
+
+        if (collision.gameObject.CompareTag("Object"))
+        {
+            collision.SendMessage("Damage",damage);
+        }
     }
 }

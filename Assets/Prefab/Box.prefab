@@ -15,9 +15,11 @@ GameObject:
   - component: {fileID: 2676433045332270646}
   - component: {fileID: 4764754959153650243}
   - component: {fileID: 8544328846846527283}
+  - component: {fileID: -5718027915120034265}
+  - component: {fileID: 3295339381054846797}
   m_Layer: 3
   m_Name: Box
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,6 +186,7 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 4764754959153650243}
+  - {fileID: -5718027915120034265}
   ForceRemoteRenderTimeframe: 0
 --- !u!114 &4764754959153650243
 MonoBehaviour:
@@ -237,3 +240,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f9d73fb50abec4f93578053d22e380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5718027915120034265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5086044649893513771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a2e60080ee04e741906ad1a265a2dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 40
+  _currentHealth: 0
+  particle: {fileID: 5640735852901059785, guid: 9880c8bc615f15a4cbfc856543d89bfa, type: 3}
+  flashSprite: {fileID: 3295339381054846797}
+--- !u!114 &3295339381054846797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5086044649893513771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c81e7d841338114f81ec9f35004d980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: b4f9dbab3ac8d364e9b3e9fc20a8bc42, type: 2}
+  originalMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  sr:
+  - {fileID: 82031060334743629}
