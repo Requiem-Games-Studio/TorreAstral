@@ -189,7 +189,12 @@ public class ChunkManagerByName : NetworkBehaviour
         SpawnPoints spawnPoints = newChunk.GetComponentInChildren<SpawnPoints>();
         if(spawnPoints != null)
         {
+            Debug.Log("Si se encontro SpawnObject");
             spawnObjects.SpawnBychunks(spawnPoints);
+        }
+        else
+        {
+            Debug.Log("No se encontro SpawnObject");
         }
     }
 

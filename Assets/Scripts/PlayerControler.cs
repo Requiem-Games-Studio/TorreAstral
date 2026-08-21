@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using Fusion;
 using Photon.Realtime;
+using System.Security.Cryptography.X509Certificates;
 
 public class PlayerControler : NetworkBehaviour
 {
@@ -54,6 +55,7 @@ public class PlayerControler : NetworkBehaviour
     [Networked] private NetworkBool IsJumping { get; set; }
     [Networked] private int JumpCount { get; set; }
     [Networked] private int InteractCount { get; set; }
+    [Networked] private float VerticalInput { get; set; }
 
     // Tiempos y contadores manejados en FUN
     [Networked] private float CoyoteTimeCounter { get; set; }
@@ -211,17 +213,25 @@ public class PlayerControler : NetworkBehaviour
             CoyoteTimeCounter -= Runner.DeltaTime;
         }
         // 2. Inicio del Salto (WasPressed)
-        if (input.buttons.WasPressed(previousButtons, InputButtons.Jump) && CoyoteTimeCounter > 0f)
+        if (input.buttons.WasPressed(previousButtons, InputButtons.Jump))
         {
-            IsJumping = true;
-            JumpTimeCounter = maxJumpTime;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            if (VerticalInput <0)
+            {
+                this.gameObject.layer = 2;
+            }
+            else if(CoyoteTimeCounter > 0f)
+            {
+                IsJumping = true;
+                animatorP.SetBool("isJumping", true);
+                JumpTimeCounter = maxJumpTime;
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
 
-            // Incrementamos el contador para avisarle a Render()
-            JumpCount++;
+                // Incrementamos el contador para avisarle a Render()
+                JumpCount++;
 
-            // Consumimos el coyote time para evitar saltos dobles en el mismo frame
-            CoyoteTimeCounter = 0f;
+                // Consumimos el coyote time para evitar saltos dobles en el mismo frame
+                CoyoteTimeCounter = 0f;
+            }          
         }
         // 3. Salto Sostenido (Mapeo de fuerza variable)
         if (input.buttons.IsSet(InputButtons.Jump) && IsJumping)
@@ -245,7 +255,7 @@ public class PlayerControler : NetworkBehaviour
             rb.gravityScale = normalGravity;
         }
 
-        //Agacharse 
+        //Rodar y agacharse
         if (isGrounded)
         {
             if (input.buttons.WasPressed(previousButtons, InputButtons.Run))
@@ -295,19 +305,20 @@ public class PlayerControler : NetworkBehaviour
             // =========================================================
             // INICIO DEL AGACHARSE 
             // =========================================================
-            float verticalInput = input.movement.y;
+            VerticalInput = input.movement.y;
 
             // Cuando se presiona abajo
-            if (verticalInput < 0 && !IsCrouching)
+            if (VerticalInput < 0 && !IsCrouching)
             {
                 IsInteracting = true;
                 IsCrouching = true;
                 rb.linearVelocityX = 0; // Lógica de física/movimiento
             }
             // Cuando se suelta abajo
-            else if (verticalInput >= 0 && IsCrouching)
+            else if (VerticalInput >= 0 && IsCrouching)
             {
                 IsCrouching = false;
+                this.gameObject.layer = 0;
                 // Si necesitas resetear IsInteracting aquí o al levantarte, hazlo según tu lógica
             }
         }
@@ -382,11 +393,16 @@ public class PlayerControler : NetworkBehaviour
             }
 
             if (change == nameof(HardLandCount)) PlayAnimationOnAll("Land");
-            if (change == nameof(SoftLandCount)) PlayAnimationOnAll("idle");
+            if (change == nameof(SoftLandCount)) PlayAnimationWithAttack("idle");
 
-            if (change == nameof(JumpCount)) PlayAnimationOnAll("Jump");
+            if (change == nameof(JumpCount)) PlayAnimationWithAttack("Jump");
             if (change == nameof(DodgeCount)) PlayAnimationOnAll(IsCrouching ? "CrouchSlide" : "Dodge");
-            if (change == nameof(InteractCount)) PlayAnimationOnAll("Act");
+            if (change == nameof(InteractCount))
+            {
+                if (animator) animator.Play("Act");
+                if (animatorC) animatorC.Play("Act");
+                if (animatorB) animatorB.Play("Act");
+            }
         }
         // =========================================================
         // INICIO DEL AGACHARSE 
@@ -425,21 +441,19 @@ public class PlayerControler : NetworkBehaviour
         // INICIO DEL ATAQUE
         // =========================================================
         if (IsAttacking && !lastIsAttacking)
-        {           
-            if (!animatorP.GetBool("Walk") &&
-                !animatorP.GetBool("Run"))
+        {
+            if (VerticalInput > 0)
             {
-                animatorP.Play("Attack");
+                PlayAnimationWithoutLegs("AttackUp");
             }
-            animator.Play("Attack");
-            animatorC.Play("Attack");
-            animatorB.Play("Attack");
-
-            if (weaponManager != null &&
-                weaponManager.anim != null)
+            else if(VerticalInput < 0)
             {
-                weaponManager.anim.Play("Attack");
+                PlayAnimationOnAll("AttackD");
             }
+            else
+            {
+                PlayAnimationWithoutLegs("Attack");
+            }           
         }
         // Guardamos el estado anterior
         lastIsAttacking = IsAttacking;
@@ -455,10 +469,26 @@ public class PlayerControler : NetworkBehaviour
         if (weaponManager && weaponManager.anim) weaponManager.anim.SetBool(paramName, value);
     }
 
+    private void PlayAnimationWithAttack(string stateName)
+    {
+        if (!IsAttacking && animator) animator.Play(stateName);
+        if (animatorP) animatorP.Play(stateName);
+        if (!IsAttacking && animatorC) animatorC.Play(stateName);
+        if (!IsAttacking && animatorB) animatorB.Play(stateName);
+        if (!IsAttacking && weaponManager && weaponManager.anim) weaponManager.anim.Play(stateName);
+    }
     private void PlayAnimationOnAll(string stateName)
     {
         if (animator) animator.Play(stateName);
         if (animatorP) animatorP.Play(stateName);
+        if (animatorC) animatorC.Play(stateName);
+        if (animatorB) animatorB.Play(stateName);
+        if (weaponManager && weaponManager.anim) weaponManager.anim.Play(stateName);
+    }
+    private void PlayAnimationWithoutLegs(string stateName)
+    {
+        if (!animatorP.GetBool("Walk") && !animatorP.GetBool("Run") && !animatorP.GetBool("isJumping")) animatorP.Play(stateName);
+        if (animator) animator.Play(stateName);
         if (animatorC) animatorC.Play(stateName);
         if (animatorB) animatorB.Play(stateName);
         if (weaponManager && weaponManager.anim) weaponManager.anim.Play(stateName);
@@ -534,9 +564,17 @@ public class PlayerControler : NetworkBehaviour
             return;
 
         }
-        else if (ComboStep == 1 && comboTimer > 0)
+        else if (ComboStep == 1 && comboTimer > 0 && VerticalInput == 0)
         {
             ComboStep = 2;
+
+            comboTimer = comboDelay;
+
+            return;
+        }
+        else if (ComboStep == 1 && comboTimer > 0 && VerticalInput != 0)
+        {
+            ComboStep = 0;
 
             comboTimer = comboDelay;
 
