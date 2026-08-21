@@ -1,29 +1,18 @@
-using System.Collections;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI.Table;
 
-public class Equipment : MonoBehaviour
+public class Inventory : MonoBehaviour
 {
-
     [Header("Inventory Size")]
     public int rows = 4;
     public int columns = 6;
 
     [Header("UI Slots")]
     public Slot[] slotsUI;
-    public Slot weaponSlot,helmentSlot,armorSlot,glovesSlot,bootsSlot;
-
-    private InventorySlot weaponInv, helmentInv, armorInv, glovesInv, bootsInv;
 
     private InventorySlot[,] inventory;
 
     private void Awake()
     {
-        weaponInv = new InventorySlot();
-        helmentInv = new InventorySlot();
-        armorInv = new InventorySlot();
-        glovesInv = new InventorySlot();
-        bootsInv = new InventorySlot();
         inventory = new InventorySlot[rows, columns];
 
         InitializeInventory();
@@ -45,42 +34,6 @@ public class Equipment : MonoBehaviour
     {
         if (item == null)
             return false;
-
-        if(item.itemType == ItemType.Weapon && weaponInv.item == null)
-        {
-            weaponInv.item = item;
-            weaponInv.quantity = 1;
-            UpdateUI();
-            return true;
-        }
-        if (item.itemType == ItemType.Helmet && helmentInv.item == null)
-        {
-            helmentInv.item = item;
-            helmentInv.quantity = 1;
-            UpdateUI();
-            return true;
-        }
-        if (item.itemType == ItemType.Armor && armorInv.item == null)
-        {
-            armorInv.item = item;
-            armorInv.quantity = 1;
-            UpdateUI();
-            return true;
-        }
-        if (item.itemType == ItemType.Gloves && glovesInv.item == null)
-        {
-            glovesInv.item = item;
-            glovesInv.quantity = 1;
-            UpdateUI();
-            return true;
-        }
-        if (item.itemType == ItemType.Boots && bootsInv.item == null)
-        {
-            bootsInv.item = item;
-            bootsInv.quantity = 1;
-            UpdateUI();
-            return true;
-        }
 
         // Primero intenta encontrar un stack existente
         for (int row = 0; row < rows; row++)
@@ -160,12 +113,6 @@ public class Equipment : MonoBehaviour
 
     private void UpdateUI()
     {
-        weaponSlot.UpdateSlot(weaponInv);
-        helmentSlot.UpdateSlot(helmentInv);
-        armorSlot.UpdateSlot(armorInv);
-        glovesSlot.UpdateSlot(glovesInv);
-        bootsSlot.UpdateSlot(bootsInv);
-
         int index = 0;
 
         for (int row = 0; row < rows; row++)

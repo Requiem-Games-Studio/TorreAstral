@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0599c5717da28a14e94fdf3cac45ac41, type: 3}
-  m_Name: Potion
+  m_Name: Boots
   m_EditorClassIdentifier: 
-  id: 4
-  itemName: Potion
-  icon: {fileID: -602353410, guid: a79ae9a12bb3eac40bfbbe23e3207187, type: 3}
-  maxStack: 4
-  itemType: 5
+  id: 1
+  itemName: Boots
+  icon: {fileID: -186227701, guid: 4beae5c48a3d7fe4188180af7638e107, type: 3}
+  maxStack: 1
+  itemType: 3
