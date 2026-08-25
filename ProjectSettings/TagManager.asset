@@ -8,6 +8,9 @@ TagManager:
   - Manager
   - LocalManager
   - Object
+  - Concrete
+  - Wood
+  - Grass
   layers:
   - Default
   - TransparentFX

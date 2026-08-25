@@ -10,6 +10,7 @@ public class EnemyStats : NetworkBehaviour
 
     [Header("Posture / Resistance")]
     public float maxPosture = 100f;
+    [Networked] public float poiseDefence { get; set; }
     [Networked] public float currentPosture { get; set; }
     public float postureRecoveryRate = 8f; // Recuperación por segundo
     public float postureBreakTime = 2f;
@@ -38,7 +39,7 @@ public class EnemyStats : NetworkBehaviour
     }
 
     // Recibir daño
-    public void Damage(float damage, float postureDamage)
+    public void Damage(float damage, float postureDamage,bool heavy)
     {
         if (!isAlive) return;
 
@@ -51,7 +52,10 @@ public class EnemyStats : NetworkBehaviour
         }
         else
         {
-            animator.Play("Damage");
+            if (postureDamage > poiseDefence)
+            {
+                animator.Play("Damage");
+            }
             currentHealth -= damage;
             UpdateHealthBar();
             currentPosture -= postureDamage;
@@ -128,6 +132,7 @@ public class EnemyStats : NetworkBehaviour
     System.Collections.IEnumerator Stagger()
     {
         isStaggered = true;
+        animator.SetBool("isInteracting", true);
         animator.Play("Stagger"); // Agrega esta animación
         Debug.Log("¡Enemigo tambaleado!");
         yield return new WaitForSeconds(postureBreakTime);
@@ -140,9 +145,17 @@ public class EnemyStats : NetworkBehaviour
     {
         isAlive = false;
         enemyBehavior.DeadEvent();
+        animator.Play("Die");
         animator.SetBool("dead", true);
         canvas.SetActive(false);
         Debug.Log("Enemigo muerto.");
         // Aquí puedes desactivar IA, colisiones, etc.
+    }
+
+
+    public void CriticalImpact()
+    {
+        Instantiate(bloodParticle, transform.position, Quaternion.identity);
+        GameFeelManager.Instance.DoImpactToKill();
     }
 }

@@ -86,7 +86,22 @@ public class EnemyBehavior : NetworkBehaviour
         {
             if (change == nameof(IsAttackingCount))
             {
-                animator.Play("Attack");
+                int randomAttack = UnityEngine.Random.Range(0, 3);
+
+                switch (randomAttack)
+                {
+                    case 0:
+                        animator.Play("Attack");
+                        break;
+
+                    case 1:
+                        animator.Play("Attack2");
+                        break;
+
+                    case 2:
+                        animator.Play("Attack");
+                        break;
+                }
             }
         }
 
@@ -129,6 +144,11 @@ public class EnemyBehavior : NetworkBehaviour
     }
     void AttackPlayer()
     {
+        if (animator.GetBool("isInteracting"))
+        {
+            return;
+        }
+
         attacking = true;
         rb.linearVelocity = Vector2.zero;
         IsWalking = false;

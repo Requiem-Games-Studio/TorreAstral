@@ -25,4 +25,9 @@ public class PlayerAnimatorController : MonoBehaviour
         playerControler.animatorP.Play(animation);
         playerControler.StopVelocity();
     }
+
+    public void StopVelocityByAnimation()
+    {
+        playerControler.StopVelocity();
+    }
 }

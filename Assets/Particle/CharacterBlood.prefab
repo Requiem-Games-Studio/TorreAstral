@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8884505097511898708}
   - component: {fileID: 1238158119959732455}
   - component: {fileID: 3270485877194331670}
+  - component: {fileID: 7874873911171856170}
   m_Layer: 0
   m_Name: CharacterBlood
   m_TagString: Untagged
@@ -4845,10 +4846,10 @@ AudioSource:
   m_GameObject: {fileID: 2894347033598683775}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0fc40b96ac3c6724595749a7ea11cf7d, type: 3}
-  m_Resource: {fileID: 8300000, guid: 0fc40b96ac3c6724595749a7ea11cf7d, type: 3}
-  m_PlayOnAwake: 1
+  OutputAudioMixerGroup: {fileID: -1725517651274803353, guid: 7bfd041fb417ad44f966d160f8d68e2c, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4933,6 +4934,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7874873911171856170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2894347033598683775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed7d121b3f76ec4a8693ffe2b4bcc55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 3270485877194331670}
+  sounds:
+  - {fileID: 8300000, guid: 5ab1713e8aa270146bac32764dc1bde3, type: 3}
+  - {fileID: 8300000, guid: 3323bea7731423d458e973a9430d0982, type: 3}
+  - {fileID: 8300000, guid: 675eed176a477a94b85706f077036962, type: 3}
+  pitchVariation: 0.343
 --- !u!1001 &1452163295755195232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4981,6 +5000,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5432818511286414855, guid: 9880c8bc615f15a4cbfc856543d89bfa, type: 3}
+      propertyPath: UVModule.sprites.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: -10496864, guid: 926b24c6784070045981fc6601a9fb60, type: 3}
+    - target: {fileID: 5432818511286414855, guid: 9880c8bc615f15a4cbfc856543d89bfa, type: 3}
+      propertyPath: UVModule.sprites.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: -1437750144, guid: 926b24c6784070045981fc6601a9fb60, type: 3}
+    - target: {fileID: 5432818511286414855, guid: 9880c8bc615f15a4cbfc856543d89bfa, type: 3}
+      propertyPath: UVModule.sprites.Array.data[2].sprite
+      value: 
+      objectReference: {fileID: -845610163, guid: 926b24c6784070045981fc6601a9fb60, type: 3}
+    - target: {fileID: 5432818511286414855, guid: 9880c8bc615f15a4cbfc856543d89bfa, type: 3}
+      propertyPath: UVModule.sprites.Array.data[3].sprite
+      value: 
+      objectReference: {fileID: 1906070464, guid: 926b24c6784070045981fc6601a9fb60, type: 3}
     - target: {fileID: 5640735852901059785, guid: 9880c8bc615f15a4cbfc856543d89bfa, type: 3}
       propertyPath: m_Name
       value: Hit
@@ -5033,7 +5068,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1952963556545905966, guid: 45321d454251f684ebe9fba8c82a6570, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1952963556545905966, guid: 45321d454251f684ebe9fba8c82a6570, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -5041,12 +5076,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1952963556545905966, guid: 45321d454251f684ebe9fba8c82a6570, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1952963556545905966, guid: 45321d454251f684ebe9fba8c82a6570, type: 3}
       propertyPath: InitialModule.startSpeed.minScalar
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1952963556545905966, guid: 45321d454251f684ebe9fba8c82a6570, type: 3}
+      propertyPath: UVModule.sprites.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: -2116277315, guid: 4a756c73552f2074b80f87677944a446, type: 3}
     - target: {fileID: 4122531155145296432, guid: 45321d454251f684ebe9fba8c82a6570, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

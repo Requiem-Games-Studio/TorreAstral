@@ -1548,7 +1548,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: -1463524143, guid: 332e257dc78d4ec468bcfb486189485c, type: 3}
+    - sprite: {fileID: 1656813520, guid: 4a756c73552f2074b80f87677944a446, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -4903,7 +4903,7 @@ AudioSource:
   m_GameObject: {fileID: 8736935566856717279}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -1725517651274803353, guid: 7bfd041fb417ad44f966d160f8d68e2c, type: 2}
   m_audioClip: {fileID: 8300000, guid: fcdb8148aa8c9184eb107ce7088dd567, type: 3}
   m_Resource: {fileID: 8300000, guid: fcdb8148aa8c9184eb107ce7088dd567, type: 3}
   m_PlayOnAwake: 1

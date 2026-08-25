@@ -35,7 +35,7 @@ public class PlayerControler : NetworkBehaviour
     [Networked] private float MoveInput { get; set; }
     [Networked] private NetworkBool IsRunning { get; set; }
 
-    [Networked] private NetworkBool IsDodging { get; set; }
+    [Networked] public NetworkBool IsDodging { get; set; }
     [Networked] private TickTimer DodgeTimer { get; set; }
     [Networked] private TickTimer DodgeCooldownTimer { get; set; }
 
@@ -46,6 +46,8 @@ public class PlayerControler : NetworkBehaviour
     public float dodgeSpeed = 5f;  // Velocidad del dodge
     public float dodgeDuration = 0.5f;
     public float dodgeCooldown = 1f;
+
+    public LayerMask myCollider;
 
     [Header("Salto")]
     public float jumpForce = 7f;
@@ -143,7 +145,7 @@ public class PlayerControler : NetworkBehaviour
                 IsFacingLeft = MoveInput < 0;
             }
             
-            if (!IsCrouching && !IsInteracting)
+            if (!IsCrouching)
             {
                 rb.linearVelocity = new Vector2(MoveInput * speed, rb.linearVelocity.y);
             }
@@ -310,7 +312,7 @@ public class PlayerControler : NetworkBehaviour
             // Cuando se presiona abajo
             if (VerticalInput < 0 && !IsCrouching)
             {
-                IsInteracting = true;
+                //IsInteracting = true;
                 IsCrouching = true;
                 rb.linearVelocityX = 0; // Lógica de física/movimiento
             }
@@ -477,7 +479,7 @@ public class PlayerControler : NetworkBehaviour
         if (!IsAttacking && animatorB) animatorB.Play(stateName);
         if (!IsAttacking && weaponManager && weaponManager.anim) weaponManager.anim.Play(stateName);
     }
-    private void PlayAnimationOnAll(string stateName)
+    public void PlayAnimationOnAll(string stateName)
     {
         if (animator) animator.Play(stateName);
         if (animatorP) animatorP.Play(stateName);
@@ -605,12 +607,9 @@ public class PlayerControler : NetworkBehaviour
         SetEnemyCollision(true);
     }
 
-    // Nota sobre colisiones: Es preferible usar Physics2D.IgnoreCollision entre Colliders específicos
-    // para evitar desactivar la colisión a nivel global para todos los personajes.
     private void SetEnemyCollision(bool ignore)
-    {
-        // Ejemplo si tienes la referencia a tus colliders:
-        // Physics2D.IgnoreCollision(myCollider, enemyCollider, ignore);
+    {        
+        gameObject.layer = ignore ? 2 : 0;
     }
 
     public void StopVelocity()

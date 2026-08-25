@@ -21,7 +21,7 @@ public class Damage : MonoBehaviour
             PlayerStats stats = collision.GetComponent<PlayerStats>();
             if (stats != null)
             {
-                stats.Damage(damage, postureDamage, enemyObject);
+                stats.Damage(damage, postureDamage, enemyObject, heavyAttack);
             
             }           
         }
@@ -33,7 +33,7 @@ public class Damage : MonoBehaviour
 
             if (stats != null)
             {               
-                stats.Damage(damage, postureDamage);
+                stats.Damage(damage, postureDamage, heavyAttack);
             }
 
             if (behavior != null && attacker != null)

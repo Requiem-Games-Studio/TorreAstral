@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class PlayerStats : NetworkBehaviour
 {
+    public PlayerControler controler;
+    
     [Header("Health")]
     public float maxHealth = 100f;
     [Networked] public float currentHealth { get; set; }
@@ -11,9 +13,15 @@ public class PlayerStats : NetworkBehaviour
     [Header("Posture / Resistance")]
     public float maxPosture = 100f;
     [Networked] public float currentPosture { get; set; }
+    [Networked] public float poiseDefence { get; set; }
     public float postureRecoveryRate = 10f; // Por segundo
     public float postureBreakTime = 2f; // Tiempo que dura tambaleado
     private bool isStaggered = false;
+
+    public Rigidbody2D rb;
+
+    public float knockbackForce = 12f;
+    float knockbackUpForce = 2f;
 
     [Header("Parry Settings")]
     public bool isBlocking = false;
@@ -40,16 +48,27 @@ public class PlayerStats : NetworkBehaviour
     }
 
     // Recibir Daño
-    public void Damage(float damage, float postureDamage, GameObject enemyTransform)
+    public void Damage(float damage, float postureDamage, GameObject enemyTransform, bool heavy)
     {
-        if (isStaggered) return;
+        if (controler.IsDodging) return;
+
+        float dirX = transform.position.x < enemyTransform.transform.position.x ? -1f : 1f;
 
         if (isBlocking)
         {
             if (isPerfectBlock)
             {
-                Debug.Log("Parry perfecto: No se recibe daño y se rompe la postura del enemigo");
-                animator.Play("Parry");
+                if (heavy)
+                {
+                    controler.PlayAnimationOnAll("Parry2");
+                    rb.AddForce(new Vector2(dirX * (knockbackForce * 1.4f), knockbackUpForce), ForceMode2D.Impulse);
+                }
+                else
+                {
+                    //animator.Play("Parry");
+                    controler.PlayAnimationOnAll("Parry");
+                }
+
                 GameFeelManager.Instance.DoParryImpact();
                 Instantiate(parryParticle,gameObject.transform);
                 // Aquí deberías llamar algo como enemy.ReducePosture()
@@ -61,7 +80,7 @@ public class PlayerStats : NetworkBehaviour
                 }
                 return;
             }
-            else
+            else if(!heavy)
             {
                 currentPosture -= postureDamage;
                 UpdatePostureBar();
@@ -74,6 +93,11 @@ public class PlayerStats : NetworkBehaviour
 
         // Daño normal
         Debug.Log("Daño al juagdor");
+        if(postureDamage > poiseDefence)
+        {           
+            controler.PlayAnimationOnAll("Damage");
+            rb.AddForce(new Vector2(dirX * knockbackForce, knockbackUpForce),ForceMode2D.Impulse);
+        }
         currentHealth -= damage;
         currentPosture -= postureDamage;
         UpdatePostureBar();
