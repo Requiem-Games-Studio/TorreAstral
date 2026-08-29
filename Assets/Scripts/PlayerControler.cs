@@ -4,14 +4,16 @@ using System;
 using Fusion;
 using Photon.Realtime;
 using System.Security.Cryptography.X509Certificates;
+using UnityEditor.Rendering;
 
 public class PlayerControler : NetworkBehaviour
 {
     private Rigidbody2D rb;
     public WeaponManager weaponManager;
+    public HandScript handScript;
     public Animator animator,animatorP,animatorC,animatorB;
     public SpriteRenderer spriteRenderer,spritePiernas,spriteCabeza,spriteBrazo;
-    public Transform espadaPivot; // arrastra aquí tu EspadaPivot en el inspector
+    public Transform espadaPivot,handPivot; // arrastra aquí tu EspadaPivot en el inspector
 
     public Transform groundCheck; // Punto en los pies para detectar el suelo
     public LayerMask groundLayer; // Capa del suelo
@@ -47,7 +49,7 @@ public class PlayerControler : NetworkBehaviour
     public float dodgeDuration = 0.5f;
     public float dodgeCooldown = 1f;
 
-    public LayerMask myCollider;
+    //public LayerMask myCollider;
 
     [Header("Salto")]
     public float jumpForce = 7f;
@@ -56,6 +58,8 @@ public class PlayerControler : NetworkBehaviour
     public float normalGravity;
     [Networked] private NetworkBool IsJumping { get; set; }
     [Networked] private int JumpCount { get; set; }
+    [Networked] private int AddCount { get; set; }
+    [Networked] private int ConsumCount { get; set; }
     [Networked] private int InteractCount { get; set; }
     [Networked] private float VerticalInput { get; set; }
 
@@ -190,11 +194,7 @@ public class PlayerControler : NetworkBehaviour
         // 1. Al presionar el botón de bloqueo
         if (input.buttons.WasPressed(previousButtons, InputButtons.Block))
         {
-            if (!IsAttacking && !IsInteracting)
-            {
-                IsBlocking = true;
-                BlockStartCount++; // Avisa a Render()
-            }
+            BlockPlayer();
         }
         // 2. Al soltar el botón de bloqueo
         if (input.buttons.WasReleased(previousButtons, InputButtons.Block))
@@ -396,7 +396,18 @@ public class PlayerControler : NetworkBehaviour
 
             if (change == nameof(HardLandCount)) PlayAnimationOnAll("Land");
             if (change == nameof(SoftLandCount)) PlayAnimationWithAttack("idle");
-
+            if (change == nameof(AddCount))
+            {
+                if (animator) animator.Play("Add");
+                if (animatorC) animatorC.Play("Add");
+                if (animatorB) animatorB.Play("Add");
+            }
+            if (change == nameof(ConsumCount))
+            {
+                if (animator) animator.Play("Consum");
+                if (animatorC) animatorC.Play("Consum");
+                if (animatorB) animatorB.Play("Consum");
+            }
             if (change == nameof(JumpCount)) PlayAnimationWithAttack("Jump");
             if (change == nameof(DodgeCount)) PlayAnimationOnAll(IsCrouching ? "CrouchSlide" : "Dodge");
             if (change == nameof(InteractCount))
@@ -519,14 +530,44 @@ public class PlayerControler : NetworkBehaviour
         spriteCabeza.flipX = facingLeft;
         spriteBrazo.flipX = facingLeft;
 
+        handScript.left = facingLeft;
+
         // Scale del pivote
         Vector3 scale = espadaPivot.localScale;
         scale.x = facingLeft ? -1f : 1f;
         espadaPivot.localScale = scale;
     }
 
+    void BlockPlayer()
+    {
+        if (handScript.taken)
+        {            
+            AddCount++;
+            return;
+        }
+
+        if (!IsAttacking && !IsInteracting)
+        {
+            IsBlocking = true;
+            BlockStartCount++; // Avisa a Render()
+        }
+    }
+
     void AttackPlayer()
     {
+        if (handScript.taken)
+        {
+            if(handScript.itemObject != null && handScript.itemObject.consumable)
+            {
+                ConsumCount++;
+                Debug.Log("Consumable object");
+                return;
+            }
+            
+            PlayAnimationOnAll("Trow");
+            return;
+        }
+        
         // Determina dirección basada en flipX
         Vector2 direction = spriteRenderer.flipX ? Vector2.left : Vector2.right;
 
@@ -542,11 +583,12 @@ public class PlayerControler : NetworkBehaviour
                 if (enemy.isStaggered)
                 {
                     Debug.Log("¡Ataque crítico!");
-                    animator.Play("Critical");
-                    animatorP.Play("Critical");
-                    animatorC.Play("Critical");
-                    animatorB.Play("Critical");
-                    weaponManager.anim.Play("Critical");
+                    PlayAnimationOnAll("Critical");
+                    //animator.Play("Critical");
+                    //animatorP.Play("Critical");
+                    //animatorC.Play("Critical");
+                    //animatorB.Play("Critical");
+                    //weaponManager.anim.Play("Critical");
                     enemy.CriticalDamage(criticalDamage);
                     return;
                 }

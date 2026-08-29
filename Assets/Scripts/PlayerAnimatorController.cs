@@ -5,6 +5,8 @@ public class PlayerAnimatorController : MonoBehaviour
     public PlayerStats playerStats;
     public PlayerControler playerControler;
 
+    public HandScript hand;
+
     public void SetBlock()
     {
         playerStats.SetBlock(false);
@@ -29,5 +31,25 @@ public class PlayerAnimatorController : MonoBehaviour
     public void StopVelocityByAnimation()
     {
         playerControler.StopVelocity();
+    }
+
+    public void ActiveHand()
+    {
+        hand.ActiveHand(true);
+    }
+
+    public void DesactiveHand()
+    {
+        hand.ActiveHand(false);
+    }
+
+    public void HandTrowObject()
+    {
+        hand.TrowObject();
+    }
+
+    public void HandAddOrDrop()
+    {
+        hand.AddOrDrop();
     }
 }

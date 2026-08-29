@@ -2,19 +2,20 @@ using UnityEngine;
 
 public class ItemObject : MonoBehaviour
 {
-
+    //Scriptable object del item
     public Item item;
 
+    //Script del jugador que gaurda el item
+    //[HideInInspector]
     public Equipment equipment;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public bool consumable;
+
+    public void AddItemToPlayer()
     {
-        if (collision.CompareTag("Player"))
+        if (equipment.AddItem(item))
         {
-            if (equipment.AddItem(item))
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
 
