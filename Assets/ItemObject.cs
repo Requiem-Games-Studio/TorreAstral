@@ -13,7 +13,7 @@ public class ItemObject : MonoBehaviour
 
     public void AddItemToPlayer()
     {
-        if (equipment.AddItem(item))
+        if (equipment != null && equipment.AddItem(item))
         {
             Destroy(gameObject);
         }

@@ -1,22 +1,25 @@
 using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
 public class HandScript : MonoBehaviour
 {
 
     public Equipment equipment;
+    public PlayerControler playerControler;
 
+    [HideInInspector]
     public GameObject objectTaken;
     public Transform hand,leftHand;
-    public CapsuleCollider2D triggerCollider;
+    public CapsuleCollider2D colliderUp,colliderDown;
     public bool taken;
 
     //Controlado desde PlayerAnimatorController
     public bool active,left;
-
     public float trowSpeed;
-
+    [HideInInspector]
     public ItemObject itemObject;
+
 
     public void TakeObject(GameObject obect)
     {
@@ -48,9 +51,17 @@ public class HandScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (active)
+        if (active && objectTaken == null)
         {
-            if (objectTaken == null && collision.CompareTag("Object") && !taken)
+            if (collision.CompareTag("Chest"))
+            {
+                Chest currentChest = collision.GetComponent<Chest>();
+                StartCoroutine(OpeningChest(currentChest, currentChest.dificult));
+                return;
+            }
+
+
+            if (collision.CompareTag("Object") && !taken)
             {
                 taken = true;
                 TakeObject(collision.gameObject);
@@ -62,7 +73,14 @@ public class HandScript : MonoBehaviour
     {
         active = activen;
 
-        triggerCollider.enabled = active;
+        colliderUp.enabled = active;
+
+    }
+    public void ActiveHandDown(bool activen)
+    {
+        active = activen;
+
+        colliderDown.enabled = active;
 
     }
 
@@ -90,6 +108,7 @@ public class HandScript : MonoBehaviour
     {       
         if (itemObject != null)
         {
+            itemObject.equipment = equipment;
             itemObject.AddItemToPlayer();
         }
         else
@@ -100,6 +119,18 @@ public class HandScript : MonoBehaviour
         taken = false;
         objectTaken = null;
         itemObject = null;
+    }
+
+
+    IEnumerator OpeningChest(Chest currentChest, int dificult)
+    {
+        playerControler.StartApplying();
+
+        yield return new WaitForSeconds(1f + dificult);
+
+        currentChest.OpenChest();
+        playerControler.StopApplying();
+
     }
 
 }

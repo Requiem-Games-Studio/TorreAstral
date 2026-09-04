@@ -33,14 +33,23 @@ public class PlayerAnimatorController : MonoBehaviour
         playerControler.StopVelocity();
     }
 
+    //Hand controller
     public void ActiveHand()
     {
         hand.ActiveHand(true);
     }
-
     public void DesactiveHand()
     {
         hand.ActiveHand(false);
+    }
+
+    public void ActiveHand2()
+    {
+        hand.ActiveHandDown(true);
+    }
+    public void DesactiveHand2()
+    {
+        hand.ActiveHandDown(false);
     }
 
     public void HandTrowObject()

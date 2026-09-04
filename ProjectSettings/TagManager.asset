@@ -11,6 +11,7 @@ TagManager:
   - Concrete
   - Wood
   - Grass
+  - Chest
   layers:
   - Default
   - TransparentFX

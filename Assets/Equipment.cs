@@ -17,6 +17,10 @@ public class Equipment : MonoBehaviour
 
     private InventorySlot[,] inventory;
 
+    public Transform pivotWeapon;
+    public WeaponManager weaponManager;
+
+
     private void Awake()
     {
         weaponInv = new InventorySlot();
@@ -50,6 +54,8 @@ public class Equipment : MonoBehaviour
         {
             weaponInv.item = item;
             weaponInv.quantity = 1;
+            GameObject newWeapon = Instantiate(item.itemPrefab,pivotWeapon.position,pivotWeapon.rotation,pivotWeapon);
+            weaponManager.SetNewWeapon(newWeapon);
             UpdateUI();
             return true;
         }

@@ -13,7 +13,7 @@ public class PlayerControler : NetworkBehaviour
     public HandScript handScript;
     public Animator animator,animatorP,animatorC,animatorB;
     public SpriteRenderer spriteRenderer,spritePiernas,spriteCabeza,spriteBrazo;
-    public Transform espadaPivot,handPivot; // arrastra aquí tu EspadaPivot en el inspector
+    public Transform espadaPivot,damagePivot; // arrastra aquí tu EspadaPivot en el inspector
 
     public Transform groundCheck; // Punto en los pies para detectar el suelo
     public LayerMask groundLayer; // Capa del suelo
@@ -32,7 +32,6 @@ public class PlayerControler : NetworkBehaviour
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     private float shiftHeldTime;
-    private bool _lastIsCrouching;
 
     [Networked] private float MoveInput { get; set; }
     [Networked] private NetworkBool IsRunning { get; set; }
@@ -96,11 +95,14 @@ public class PlayerControler : NetworkBehaviour
     [Networked] public NetworkBool IsFacingLeft { get; set; }
     [Networked] public NetworkBool IsInteracting { get; set; }
     [Networked] public NetworkBool IsCrouching { get; set; }
+    [Networked] public NetworkBool IsApplying { get; set; }
     [Networked] public NetworkBool CanDodge { get; set; }
     [Networked] public NetworkBool IsBlocking { get; set; }
     [Networked] private int BlockStartCount { get; set; }
 
     private bool _lastIsBlocking;
+    private bool _lastIsCrouching;
+    private bool _lastIsApplying;
 
     public override void Spawned()
     {
@@ -138,10 +140,14 @@ public class PlayerControler : NetworkBehaviour
         {
             // Guardamos el input de movimiento horizontal (-1, 0, 1) y si presiona correr
             MoveInput = input.movement.x;
-            IsRunning = input.buttons.IsSet(InputButtons.Run);
-
+            if (!IsCrouching)
+            {
+                IsRunning = input.buttons.IsSet(InputButtons.Run);
+            }
             // Cambiar velocidad física según estado
             float speed = IsRunning ? runSpeed : walkSpeed;
+
+            rb.linearVelocity = new Vector2(MoveInput * speed, rb.linearVelocity.y);
 
             if (MoveInput != 0)
             {
@@ -149,10 +155,6 @@ public class PlayerControler : NetworkBehaviour
                 IsFacingLeft = MoveInput < 0;
             }
             
-            if (!IsCrouching)
-            {
-                rb.linearVelocity = new Vector2(MoveInput * speed, rb.linearVelocity.y);
-            }
         }
         else
         {
@@ -163,14 +165,7 @@ public class PlayerControler : NetworkBehaviour
         //Interaccion 
         if (input.buttons.WasPressed(previousButtons, InputButtons.Interact) && !IsInteracting)
         {
-            if (IsCrouching)
-            {
-                Debug.Log("Act Crouching");
-            }
-            else
-            {
-                InteractCount++;
-            }
+            InteractCount++;
         }
 
         // Attack Player
@@ -412,13 +407,22 @@ public class PlayerControler : NetworkBehaviour
             if (change == nameof(DodgeCount)) PlayAnimationOnAll(IsCrouching ? "CrouchSlide" : "Dodge");
             if (change == nameof(InteractCount))
             {
-                if (animator) animator.Play("Act");
-                if (animatorC) animatorC.Play("Act");
-                if (animatorB) animatorB.Play("Act");
+                if (IsCrouching)
+                {                    
+                    if (animator) animator.Play("Act1");
+                    if (animatorC) animatorC.Play("Act1");
+                    if (animatorB) animatorB.Play("Act1");
+                }
+                else
+                {
+                    if (animator) animator.Play("Act");
+                    if (animatorC) animatorC.Play("Act");
+                    if (animatorB) animatorB.Play("Act");
+                }
             }
         }
         // =========================================================
-        // INICIO DEL AGACHARSE 
+        // START OF CROUCHING
         // =========================================================
         if (IsCrouching != _lastIsCrouching)
         {
@@ -426,16 +430,23 @@ public class PlayerControler : NetworkBehaviour
             {
                 // Transición de inicio (StartCrouch)
                 PlayAnimationOnAll("StarCrouch");
-                SetBoolOnAll("Crouch", true);
             }
-            else
-            {
-                // Transición al levantarse
-                SetBoolOnAll("Crouch", false);
-            }
-
+            SetBoolOnAll("Crouch", IsCrouching);
             // Actualizamos la memoria local del cliente
             _lastIsCrouching = IsCrouching;
+        }
+        // START OF APPLYING
+        // =========================================================
+        if (IsApplying != _lastIsApplying)
+        {
+            if (IsApplying)
+            {
+                // Transición de inicio (StartCrouch)
+                PlayAnimationOnAll("Apply");
+            }
+            SetBoolOnAll("Applying", IsApplying);
+            // Actualizamos la memoria local del cliente
+            _lastIsApplying = IsApplying;
         }
         // B) Sincronización continua de la postura sostenida
         if (IsBlocking != _lastIsBlocking)
@@ -443,35 +454,37 @@ public class PlayerControler : NetworkBehaviour
             SetBoolOnAll("blocking", IsBlocking);
             _lastIsBlocking = IsBlocking;
         }
-        // Mantener la sincronización de estados continuos (por ejemplo, Crouch)
-        if (IsCrouching != _lastIsCrouching)
-        {
-            SetBoolOnAll("Crouch", IsCrouching);
-            _lastIsCrouching = IsCrouching;
-        }
-
         // =========================================================
         // INICIO DEL ATAQUE
         // =========================================================
         if (IsAttacking && !lastIsAttacking)
         {
-            if (VerticalInput > 0)
+            if(weaponManager.anim != null)
             {
-                PlayAnimationWithoutLegs("AttackUp");
-            }
-            else if(VerticalInput < 0)
-            {
-                PlayAnimationOnAll("AttackD");
+                if (VerticalInput > 0)
+                {
+                    PlayAnimationWithoutLegs("AttackUp");
+                }
+                else if (VerticalInput < 0)
+                {
+                    PlayAnimationOnAll("AttackD");
+                }
+                else
+                {
+                    PlayAnimationWithoutLegs("Attack");
+                }
             }
             else
             {
-                PlayAnimationWithoutLegs("Attack");
-            }           
+                if (!animatorP.GetBool("Walk") && !animatorP.GetBool("Run") && !animatorP.GetBool("isJumping")) animatorP.Play("Attack");
+                if (animator) animator.Play("Fist");
+                if (animatorC) animatorC.Play("Fist");
+                if (animatorB) animatorB.Play("Fist");
+            }                     
         }
         // Guardamos el estado anterior
         lastIsAttacking = IsAttacking;
     }
-
     // Métodos auxiliares para no repetir código de tus múltiples animadores
     private void SetBoolOnAll(string paramName, bool value)
     {
@@ -488,7 +501,7 @@ public class PlayerControler : NetworkBehaviour
         if (animatorP) animatorP.Play(stateName);
         if (!IsAttacking && animatorC) animatorC.Play(stateName);
         if (!IsAttacking && animatorB) animatorB.Play(stateName);
-        if (!IsAttacking && weaponManager && weaponManager.anim) weaponManager.anim.Play(stateName);
+        if (!IsAttacking && weaponManager.anim != null) weaponManager.anim.Play(stateName);
     }
     public void PlayAnimationOnAll(string stateName)
     {
@@ -496,7 +509,7 @@ public class PlayerControler : NetworkBehaviour
         if (animatorP) animatorP.Play(stateName);
         if (animatorC) animatorC.Play(stateName);
         if (animatorB) animatorB.Play(stateName);
-        if (weaponManager && weaponManager.anim) weaponManager.anim.Play(stateName);
+        if (weaponManager.anim != null) weaponManager.anim.Play(stateName);
     }
     private void PlayAnimationWithoutLegs(string stateName)
     {
@@ -504,7 +517,7 @@ public class PlayerControler : NetworkBehaviour
         if (animator) animator.Play(stateName);
         if (animatorC) animatorC.Play(stateName);
         if (animatorB) animatorB.Play(stateName);
-        if (weaponManager && weaponManager.anim) weaponManager.anim.Play(stateName);
+        if (weaponManager.anim != null) weaponManager.anim.Play(stateName);
     }
 
     private void SetBlockStartAnimations()
@@ -536,6 +549,7 @@ public class PlayerControler : NetworkBehaviour
         Vector3 scale = espadaPivot.localScale;
         scale.x = facingLeft ? -1f : 1f;
         espadaPivot.localScale = scale;
+        damagePivot.localScale = scale;
     }
 
     void BlockPlayer()
@@ -546,7 +560,7 @@ public class PlayerControler : NetworkBehaviour
             return;
         }
 
-        if (!IsAttacking && !IsInteracting)
+        if (!IsAttacking && !IsInteracting && weaponManager.anim != null)
         {
             IsBlocking = true;
             BlockStartCount++; // Avisa a Render()
@@ -584,11 +598,6 @@ public class PlayerControler : NetworkBehaviour
                 {
                     Debug.Log("¡Ataque crítico!");
                     PlayAnimationOnAll("Critical");
-                    //animator.Play("Critical");
-                    //animatorP.Play("Critical");
-                    //animatorC.Play("Critical");
-                    //animatorB.Play("Critical");
-                    //weaponManager.anim.Play("Critical");
                     enemy.CriticalDamage(criticalDamage);
                     return;
                 }
@@ -669,7 +678,19 @@ public class PlayerControler : NetworkBehaviour
             animatorP.SetBool("Ground", isGrounded);
             animatorC.SetBool("Ground", isGrounded);
             animatorB.SetBool("Ground", isGrounded);
-            weaponManager.anim.SetBool("Ground", isGrounded);
+            if (weaponManager.anim != null) weaponManager.anim.SetBool("Ground", isGrounded);
         }
+    }
+
+    public void StartApplying()
+    {
+        IsApplying = true;
+        animator.SetBool("isInteracting", true);
+    }
+
+    public void StopApplying()
+    {
+        IsApplying = false;
+        animator.SetBool("isInteracting", false);
     }
 }
