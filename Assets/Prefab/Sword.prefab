@@ -283,6 +283,9 @@ MonoBehaviour:
   enemyObject: {fileID: 0}
   attacker: {fileID: 0}
   behavior: {fileID: 0}
+  damageData:
+    damage: 5
+    type: 2
 --- !u!60 &5387172036411181129
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -392,6 +395,9 @@ MonoBehaviour:
   enemyObject: {fileID: 0}
   attacker: {fileID: 0}
   behavior: {fileID: 0}
+  damageData:
+    damage: 6
+    type: 2
 --- !u!60 &8432208705869347678
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -501,6 +507,9 @@ MonoBehaviour:
   enemyObject: {fileID: 0}
   attacker: {fileID: 0}
   behavior: {fileID: 0}
+  damageData:
+    damage: 5
+    type: 2
 --- !u!60 &4404643466752743088
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -611,6 +620,9 @@ MonoBehaviour:
   enemyObject: {fileID: 0}
   attacker: {fileID: 0}
   behavior: {fileID: 0}
+  damageData:
+    damage: 6
+    type: 2
 --- !u!60 &8427522466731814962
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -721,6 +733,9 @@ MonoBehaviour:
   enemyObject: {fileID: 0}
   attacker: {fileID: 0}
   behavior: {fileID: 0}
+  damageData:
+    damage: 8
+    type: 1
 --- !u!70 &7361679435959522007
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -811,6 +826,9 @@ MonoBehaviour:
   enemyObject: {fileID: 0}
   attacker: {fileID: 0}
   behavior: {fileID: 0}
+  damageData:
+    damage: 5
+    type: 2
 --- !u!60 &8217343696636463334
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -32,6 +32,8 @@ public class EnemyBehavior : NetworkBehaviour
 
     private ChangeDetector _changeDetector;
 
+   PlayerControler _playerControler;
+
 
     public override void Spawned()
     {
@@ -49,6 +51,7 @@ public class EnemyBehavior : NetworkBehaviour
             return;
         Debug.Log("Set Target");
         Target = attacker;
+        _playerControler = attacker.GetComponent<PlayerControler>();
     }
 
     public override void FixedUpdateNetwork()
@@ -146,6 +149,13 @@ public class EnemyBehavior : NetworkBehaviour
     {
         if (animator.GetBool("isInteracting"))
         {
+            return;
+        }
+
+        if(_playerControler != null && _playerControler.IsBeating)
+        {
+            _playerControler = null;
+            Target = null;
             return;
         }
 

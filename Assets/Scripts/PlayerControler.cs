@@ -31,7 +31,9 @@ public class PlayerControler : NetworkBehaviour
     [Header("Velocidades")]
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
+    public float crawlSpeed = 1f;
     private float shiftHeldTime;
+    private float speed;
 
     [Networked] private float MoveInput { get; set; }
     [Networked] private NetworkBool IsRunning { get; set; }
@@ -59,6 +61,8 @@ public class PlayerControler : NetworkBehaviour
     [Networked] private int JumpCount { get; set; }
     [Networked] private int AddCount { get; set; }
     [Networked] private int ConsumCount { get; set; }
+    [Networked] public int CrawlCount { get; set; }
+    [Networked] public int EndCrawlCount { get; set; }
     [Networked] private int InteractCount { get; set; }
     [Networked] private float VerticalInput { get; set; }
 
@@ -94,6 +98,7 @@ public class PlayerControler : NetworkBehaviour
 
     [Networked] public NetworkBool IsFacingLeft { get; set; }
     [Networked] public NetworkBool IsInteracting { get; set; }
+    [Networked] public NetworkBool IsBeating { get; set; }
     [Networked] public NetworkBool IsCrouching { get; set; }
     [Networked] public NetworkBool IsApplying { get; set; }
     [Networked] public NetworkBool CanDodge { get; set; }
@@ -102,6 +107,7 @@ public class PlayerControler : NetworkBehaviour
 
     private bool _lastIsBlocking;
     private bool _lastIsCrouching;
+    private bool _lastIsBeating;
     private bool _lastIsApplying;
 
     public override void Spawned()
@@ -138,29 +144,70 @@ public class PlayerControler : NetworkBehaviour
 
         if (!IsInteracting)
         {
-            // Guardamos el input de movimiento horizontal (-1, 0, 1) y si presiona correr
-            MoveInput = input.movement.x;
-            if (!IsCrouching)
+            if (IsBeating)
             {
-                IsRunning = input.buttons.IsSet(InputButtons.Run);
+                speed = crawlSpeed;
             }
-            // Cambiar velocidad física según estado
-            float speed = IsRunning ? runSpeed : walkSpeed;
+            else
+            {
+                if (!IsCrouching)
+                {
+                    IsRunning = input.buttons.IsSet(InputButtons.Run);
+                }
+                // Cambiar velocidad física según estado
+                speed = IsRunning ? runSpeed : walkSpeed;
+            }
 
+            MoveInput = input.movement.x;
             rb.linearVelocity = new Vector2(MoveInput * speed, rb.linearVelocity.y);
 
             if (MoveInput != 0)
             {
                 // Actualizamos la variable de red
                 IsFacingLeft = MoveInput < 0;
-            }
-            
+            }          
         }
         else
         {
             MoveInput = 0f;
             IsRunning = false;
         }
+
+
+        ////////////// DETENER LAS ACCIONES DEL JUGADOR CUANDO ESTE ABATIDO ///////////
+        if (IsBeating) return;
+        ////////////// DETENER LAS ACCIONES DEL JUGADOR CUANDO ESTE ABATIDO ///////////
+
+        // A) DETECTAR INICIO DE CAÍDA REAL
+        // Aseguramos que no esté tocando suelo Y que su velocidad vertical vaya hacia abajo (caída)
+        if (!isGrounded && !IsFalling && rb.linearVelocity.y < -0.1f)
+        {
+            IsFalling = true;
+            FallStartTime = Runner.SimulationTime; // Guardamos el tiempo exacto en que empezó a caer
+        }
+
+        // B) DETECTAR ATERRIZAJE
+        if (isGrounded && IsFalling)
+        {
+            IsFalling = false; // Desactivamos el estado de caída
+
+            // Calculamos la duración total en segundos que estuvo cayendo
+            float fallDuration = Runner.SimulationTime - FallStartTime;
+
+            // Si cayó durante un tiempo igual o mayor al umbral -> Impacto Pesado
+            if (fallDuration >= fallThreshold)
+            {
+                rb.linearVelocityX = 0; // Frenado físico por impacto
+                HardLandCount++;       // Transición a "Land" en Render()
+            }
+            else
+            {
+                // Caída corta (un salto pequeño o bajó un escalón) -> Transición a Idle suave
+                SoftLandCount++;       // Transición a "idle" en Render()
+            }
+        }
+
+
 
         //Interaccion 
         if (input.buttons.WasPressed(previousButtons, InputButtons.Interact) && !IsInteracting)
@@ -320,35 +367,6 @@ public class PlayerControler : NetworkBehaviour
             }
         }
 
-        // A) DETECTAR INICIO DE CAÍDA REAL
-        // Aseguramos que no esté tocando suelo Y que su velocidad vertical vaya hacia abajo (caída)
-        if (!isGrounded && !IsFalling && rb.linearVelocity.y < -0.1f)
-        {
-            IsFalling = true;
-            FallStartTime = Runner.SimulationTime; // Guardamos el tiempo exacto en que empezó a caer
-        }
-
-        // B) DETECTAR ATERRIZAJE
-        if (isGrounded && IsFalling)
-        {
-            IsFalling = false; // Desactivamos el estado de caída
-
-            // Calculamos la duración total en segundos que estuvo cayendo
-            float fallDuration = Runner.SimulationTime - FallStartTime;
-
-            // Si cayó durante un tiempo igual o mayor al umbral -> Impacto Pesado
-            if (fallDuration >= fallThreshold)
-            {
-                rb.linearVelocityX = 0; // Frenado físico por impacto
-                HardLandCount++;       // Transición a "Land" en Render()
-            }
-            else
-            {
-                // Caída corta (un salto pequeño o bajó un escalón) -> Transición a Idle suave
-                SoftLandCount++;       // Transición a "idle" en Render()
-            }
-        }
-
         previousButtons = input.buttons;
     }
 
@@ -388,9 +406,10 @@ public class PlayerControler : NetworkBehaviour
                 // Sincronizamos nuestro rastreador local para evitar duplicados
                 _lastIsBlocking = true;
             }
-
             if (change == nameof(HardLandCount)) PlayAnimationOnAll("Land");
             if (change == nameof(SoftLandCount)) PlayAnimationWithAttack("idle");
+            if (change == nameof(CrawlCount)) PlayAnimationOnAll("StarCrawl");
+            if (change == nameof(EndCrawlCount)) PlayAnimationOnAll("EndCrawl");
             if (change == nameof(AddCount))
             {
                 if (animator) animator.Play("Add");
@@ -434,6 +453,17 @@ public class PlayerControler : NetworkBehaviour
             SetBoolOnAll("Crouch", IsCrouching);
             // Actualizamos la memoria local del cliente
             _lastIsCrouching = IsCrouching;
+        }
+        if (IsBeating != _lastIsBeating)
+        {
+            if (IsBeating)
+            {
+                // Transición de inicio (StartCrouch)
+                animator.SetBool("isInteracting",true);
+                PlayAnimationOnAll("Beaten");
+            }
+            // Actualizamos la memoria local del cliente
+            _lastIsBeating = IsBeating;
         }
         // START OF APPLYING
         // =========================================================

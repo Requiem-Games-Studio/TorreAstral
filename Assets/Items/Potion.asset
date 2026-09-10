@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   itemName: Potion
-  icon: {fileID: -602353410, guid: a79ae9a12bb3eac40bfbbe23e3207187, type: 3}
+  icon: {fileID: 4639506938558671751, guid: d6695658ec50c1b4f89931884ffc8e05, type: 3}
   maxStack: 4
   itemType: 5
+  itemPrefab: {fileID: 0}

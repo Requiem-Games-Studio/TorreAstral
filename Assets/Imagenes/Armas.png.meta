@@ -125,12 +125,12 @@ TextureImporter:
       name: Armas_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 211
-        width: 44
-        height: 44
+        x: 8
+        y: 212
+        width: 42
+        height: 42
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -147,12 +147,12 @@ TextureImporter:
       name: Armas_1
       rect:
         serializedVersion: 2
-        x: 67
-        y: 211
-        width: 37
-        height: 36
+        x: 68
+        y: 212
+        width: 35
+        height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -169,12 +169,12 @@ TextureImporter:
       name: Armas_2
       rect:
         serializedVersion: 2
-        x: 116
-        y: 211
-        width: 31
-        height: 30
+        x: 117
+        y: 212
+        width: 29
+        height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -191,12 +191,12 @@ TextureImporter:
       name: Armas_3
       rect:
         serializedVersion: 2
-        x: 162
-        y: 211
-        width: 21
-        height: 20
+        x: 163
+        y: 212
+        width: 19
+        height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,11 +209,99 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Armas_4
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 191
+        width: 21
+        height: 63
+      alignment: 9
+      pivot: {x: 0.49999928, y: 0.082681805}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4398e305026300c46bceedf44055c7bc
+      internalID: 152556318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armas_5
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 162
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59094c54c20b268429a250226c3e3437
+      internalID: -114955319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armas_6
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 159
+        width: 35
+        height: 34
+      alignment: 9
+      pivot: {x: 0.10482548, y: 0.12125711}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb152099356d28944a2bdbb10adbd74d
+      internalID: -1049234476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armas_7
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dea56d4e3801c264dade97c8d4adfaba
+      internalID: 755732398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 908f79d88faeb624da7281bd3f54a2ed
     internalID: 0
     vertices: []
     indices: 
@@ -227,6 +315,10 @@ TextureImporter:
       Armas_1: 9108163279018641820
       Armas_2: -6266116242694421834
       Armas_3: -1277141773960996178
+      Armas_4: 152556318
+      Armas_5: -114955319
+      Armas_6: -1049234476
+      Armas_7: 755732398
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

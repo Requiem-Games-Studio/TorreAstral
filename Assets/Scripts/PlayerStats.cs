@@ -1,19 +1,28 @@
 using Fusion;
 using UnityEngine;
 using UnityEngine.UI;
+using static DamageSystem;
 
 public class PlayerStats : NetworkBehaviour
 {
     public PlayerControler controler;
-    
+
+    [SerializeField]
+    public ArmorManager armorManager;
+
     [Header("Health")]
     public float maxHealth = 100f;
-    [Networked] public float currentHealth { get; set; }
+    [Networked] public float CurrentHealth { get; set; }
+
+    [Header("Recovery")]
+    public float maxRecovery = 100f;
+    [Networked] public float CurrentRecovery { get; set; }
+    [Networked] public float RecoveryTime { get; set; }
 
     [Header("Posture / Resistance")]
     public float maxPosture = 100f;
-    [Networked] public float currentPosture { get; set; }
-    [Networked] public float poiseDefence { get; set; }
+    [Networked] public float CurrentPosture { get; set; }
+    [Networked] public float PoiseDefence { get; set; }
     public float postureRecoveryRate = 10f; // Por segundo
     public float postureBreakTime = 2f; // Tiempo que dura tambaleado
     private bool isStaggered = false;
@@ -31,6 +40,7 @@ public class PlayerStats : NetworkBehaviour
 
     public Slider healthBar;
     public Slider postureBar;
+    public Slider recoveryBar;
 
     public GameObject blockParticle,parryParticle,bloodParticle;
 
@@ -38,17 +48,19 @@ public class PlayerStats : NetworkBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
-        currentPosture = maxPosture;
+        CurrentHealth = maxHealth;
+        CurrentPosture = maxPosture;
+        CurrentRecovery = maxRecovery;
     }
 
     void Update()
     {
         RecoverPosture();
+        Recovery();
     }
 
     // Recibir Daño
-    public void Damage(float damage, float postureDamage, GameObject enemyTransform, bool heavy)
+    public void Damage(DamageData damageData, float postureDamage, GameObject enemyTransform, bool heavy)
     {
         if (controler.IsDodging) return;
 
@@ -82,7 +94,7 @@ public class PlayerStats : NetworkBehaviour
             }
             else if(!heavy)
             {
-                currentPosture -= postureDamage;
+                CurrentPosture -= postureDamage;
                 UpdatePostureBar();
                 CheckPostureBreak();
                 Debug.Log("Bloqueo normal: daño a la resistencia");
@@ -93,42 +105,80 @@ public class PlayerStats : NetworkBehaviour
 
         // Daño normal
         Debug.Log("Daño al juagdor");
-        if(postureDamage > poiseDefence)
-        {           
-            controler.PlayAnimationOnAll("Damage");
-            rb.AddForce(new Vector2(dirX * knockbackForce, knockbackUpForce),ForceMode2D.Impulse);
-        }
-        currentHealth -= damage;
-        currentPosture -= postureDamage;
-        UpdatePostureBar();
-        CheckPostureBreak();
-        UpdateHealthBar();
         flashSprite.Flash();
         Instantiate(bloodParticle, transform.position, Quaternion.identity);
-
-        if (currentHealth <= 0)
-        {
-            Die();
-            GameFeelManager.Instance.DoImpactToKill();
-            return;
+        if (controler.IsBeating)
+        {            
+            if(!animator.GetBool("isInteracting")) controler.PlayAnimationOnAll("DamageC");
         }
+        else
+        {
+            if (postureDamage > PoiseDefence)
+            {
+                controler.PlayAnimationOnAll("Damage");
+                rb.AddForce(new Vector2(dirX * knockbackForce, knockbackUpForce), ForceMode2D.Impulse);
+            }
+
+            ///Defensa de Armadura
+            float defense = armorManager.GetDefense(damageData.type);
+
+            float finalDamage =
+                DamageCalculator.CalculateDamage(
+                    damageData.damage,
+                    defense
+                );
+
+            Debug.Log(
+                $"Daño: {damageData.damage} | " +
+                $"Tipo: {damageData.type} | " +
+                $"Defensa: {defense} | " +
+                $"Final: {finalDamage}"
+            );
+
+            CurrentHealth -= finalDamage;
+            CurrentPosture -= postureDamage;
+            UpdatePostureBar();
+            CheckPostureBreak();
+            UpdateHealthBar();
+
+            if (CurrentHealth <= 0)
+            {
+                StartCoroutine(Beating());
+                GameFeelManager.Instance.DoImpactToKill();
+                return;
+            }
+        }     
         GameFeelManager.Instance.DoImpactPlayer();
     }
 
     // Recuperación de resistencia si no está siendo golpeado
     void RecoverPosture()
     {
-        if (!isBlocking && !isStaggered && currentPosture < maxPosture)
+        if (!isBlocking && !isStaggered && CurrentPosture < maxPosture)
         {
-            currentPosture += postureRecoveryRate * Time.deltaTime;
+            CurrentPosture += postureRecoveryRate * Time.deltaTime;
             UpdatePostureBar();
+        }
+    }
+
+    void Recovery()
+    {
+        if (CurrentRecovery < maxRecovery)
+        {
+            CurrentRecovery += 3 * Time.deltaTime;
+            UpdateRecoveryBar();
+            if(CurrentRecovery >= maxRecovery)
+            {
+                controler.EndCrawlCount++;
+                controler.IsBeating = false;
+            }
         }
     }
 
     // Revisar si se rompe la resistencia
     void CheckPostureBreak()
     {
-        if (currentPosture <= 0 && !isStaggered)
+        if (CurrentPosture <= 0 && !isStaggered)
         {
             StartCoroutine(Stagger());
         }
@@ -141,29 +191,38 @@ public class PlayerStats : NetworkBehaviour
         animator.Play("Stagger"); // Asegúrate de tener esta animación
         Debug.Log("¡Jugador tambaleado!");
         yield return new WaitForSeconds(postureBreakTime);
-        currentPosture = maxPosture * 0.5f; // Empieza a la mitad
+        CurrentPosture = maxPosture * 0.5f; // Empieza a la mitad
         isStaggered = false;
     }
 
-    // Muerte
-    void Die()
+    // Derrotado
+
+    // Timepo de recuperacion
+    System.Collections.IEnumerator Beating()
     {
-        Debug.Log("Jugador ha muerto.");
-        //animator.SetTrigger("die");
-        // Aquí puedes desactivar controles, mostrar UI de muerte, etc.
+        Debug.Log("Jugador ha Caido");
+        controler.IsBeating = true;
+        CurrentRecovery = 0;
+        yield return new WaitForSeconds(RecoveryTime);
+        controler.CrawlCount ++;
     }
 
     private void UpdateHealthBar()
     {
         if (healthBar != null)
         {
-            healthBar.value = (float)currentHealth / maxHealth;
+            healthBar.value = (float)CurrentHealth / maxHealth;
         }
     }
     private void UpdatePostureBar()
     {
-        currentPosture = Mathf.Min(currentPosture, maxPosture);
-        postureBar.value = currentPosture / maxPosture;
+        CurrentPosture = Mathf.Min(CurrentPosture, maxPosture);
+        postureBar.value = CurrentPosture / maxPosture;
+    }
+    private void UpdateRecoveryBar()
+    {
+        CurrentRecovery = Mathf.Min(CurrentRecovery, maxRecovery);
+        recoveryBar.value = CurrentRecovery / maxRecovery;
     }
 
     // Llamado desde la aniamcion de bloqueo

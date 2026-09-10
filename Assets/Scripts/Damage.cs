@@ -1,6 +1,7 @@
 using Fusion;
 using UnityEngine;
 using Photon.Realtime;
+using static DamageSystem;
 
 public class Damage : MonoBehaviour
 {
@@ -8,10 +9,17 @@ public class Damage : MonoBehaviour
     public bool damageToPlayer, damageToEnemy;
     public bool heavyAttack;
     public GameObject enemyObject;
-    [HideInInspector]
+
     public NetworkObject attacker;
     [HideInInspector]
     public EnemyBehavior behavior;
+
+    public DamageData damageData;
+
+    private void Awake()
+    {
+        attacker = GetComponentInParent<NetworkObject>();
+    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,13 +29,14 @@ public class Damage : MonoBehaviour
             PlayerStats stats = collision.GetComponent<PlayerStats>();
             if (stats != null)
             {
-                stats.Damage(damage, postureDamage, enemyObject, heavyAttack);
+                stats.Damage(damageData, postureDamage, enemyObject, heavyAttack);
             
             }           
         }
 
         if (damageToEnemy && collision.gameObject.CompareTag("Enemy"))
         {
+
             EnemyStats stats = collision.GetComponent<EnemyStats>();
             behavior = collision.GetComponent<EnemyBehavior>();
 
@@ -45,7 +54,11 @@ public class Damage : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Object"))
         {
-            collision.SendMessage("Damage",damage);
+            ObjectStats stats = collision.GetComponent<ObjectStats>();
+            if(stats != null)
+            {
+                collision.SendMessage("Damage", damage);
+            }
         }
     }
 }

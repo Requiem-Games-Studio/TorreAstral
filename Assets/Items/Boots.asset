@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   itemName: Boots
-  icon: {fileID: -186227701, guid: 4beae5c48a3d7fe4188180af7638e107, type: 3}
+  icon: {fileID: -8700347722689439309, guid: d6695658ec50c1b4f89931884ffc8e05, type: 3}
   maxStack: 1
   itemType: 3
+  itemPrefab: {fileID: 0}

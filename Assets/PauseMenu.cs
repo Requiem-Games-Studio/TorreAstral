@@ -3,7 +3,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
 
-    public GameObject menu;
+    public GameObject menu,equipment;
 
 
     void Update()
@@ -12,6 +12,12 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             menu.SetActive(!menu.activeSelf);
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            equipment.SetActive(!equipment.activeSelf);
         }
     }
 
