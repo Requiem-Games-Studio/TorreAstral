@@ -427,16 +427,12 @@ public class PlayerControler : NetworkBehaviour
             if (change == nameof(InteractCount))
             {
                 if (IsCrouching)
-                {                    
-                    if (animator) animator.Play("Act1");
-                    if (animatorC) animatorC.Play("Act1");
-                    if (animatorB) animatorB.Play("Act1");
+                {
+                    PlayAnimationOnAll("Act1");
                 }
                 else
                 {
-                    if (animator) animator.Play("Act");
-                    if (animatorC) animatorC.Play("Act");
-                    if (animatorB) animatorB.Play("Act");
+                    PlayAnimationOnAll("Act");
                 }
             }
         }
