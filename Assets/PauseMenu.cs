@@ -5,6 +5,10 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject menu,equipment;
 
+    private void Awake()
+    {
+        equipment.SetActive(false);
+    }
 
     void Update()
     {

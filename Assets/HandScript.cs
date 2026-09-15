@@ -15,10 +15,12 @@ public class HandScript : MonoBehaviour
     public bool taken;
 
     //Controlado desde PlayerAnimatorController
-    public bool active,left;
+    public bool active,left,flip;
     public float trowSpeed;
     [HideInInspector]
     public ItemObject itemObject;
+
+    Rigidbody2D rb;
 
 
     public void TakeObject(GameObject obect)
@@ -26,6 +28,11 @@ public class HandScript : MonoBehaviour
         Debug.Log("Objecto Tomado!!!");
         objectTaken = obect;
         objectTaken.layer = 8;
+
+        objectTaken.transform.rotation = Quaternion.identity;
+        rb = objectTaken.GetComponent<Rigidbody2D>();
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
         itemObject = objectTaken.GetComponent<ItemObject>();
         if(itemObject != null )
         {
@@ -41,12 +48,29 @@ public class HandScript : MonoBehaviour
             if(left)
             {
                 objectTaken.transform.position = leftHand.position;
+                if (!flip)
+                {
+                    flip = true;
+                    FlipObject();
+                }
             }
             else
             {
                 objectTaken.transform.position = hand.position;
+                if (flip)
+                {
+                    flip = false;
+                    FlipObject();
+                }
             }          
         }
+    }
+
+    public void FlipObject()
+    {
+        Vector3 scale = objectTaken.transform.localScale;
+        scale.x *= -1;
+        objectTaken.transform.localScale = scale;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -114,6 +138,7 @@ public class HandScript : MonoBehaviour
         else
         {
             objectTaken.layer = 3;
+            rb.constraints = RigidbodyConstraints2D.None;
         }
         
         taken = false;

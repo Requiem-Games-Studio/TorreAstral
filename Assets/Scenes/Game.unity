@@ -3841,11 +3841,11 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.26}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.49999928, y: 0.082681805}
-    oldSize: {x: 0.21, y: 0.63}
+    pivot: {x: 0.10482548, y: 0.12125711}
+    oldSize: {x: 0.35, y: 0.34}
     newSize: {x: 0.37, y: 0.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3853,18 +3853,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.03165498, y: -0.17321533}
-      - {x: -0.09528731, y: -0.1744415}
-      - {x: -0.09494171, y: -0.21504454}
-      - {x: -0.027312368, y: -0.21957298}
-      - {x: -0.015163397, y: -0.31550354}
-      - {x: 0.014436411, y: -0.3147038}
-      - {x: 0.02810912, y: -0.21774122}
-      - {x: 0.09484164, y: -0.21466735}
-      - {x: 0.09444317, y: -0.17444593}
-      - {x: 0.028394947, y: -0.17393121}
-      - {x: 0.017738698, y: 0.3192075}
-      - {x: -0.0067816763, y: 0.31674138}
+    - - {x: 0.07841453, y: 0.0955609}
+      - {x: -0.027499499, y: 0.08785854}
+      - {x: -0.036688916, y: -0.041227415}
+      - {x: 0.09230404, y: -0.031213816}
+      - {x: 0.10801146, y: 0.073813096}
+      - {x: 0.31101346, y: 0.27634493}
+      - {x: 0.31331107, y: 0.29877257}
+      - {x: 0.280981, y: 0.27809334}
   m_UseDelaunayMesh: 0
 --- !u!114 &473987514
 MonoBehaviour:
@@ -3925,7 +3921,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 152556318, guid: ff3b315d2c7cbe548b73d580f158ceef, type: 3}
+  m_Sprite: {fileID: -1049234476, guid: ff3b315d2c7cbe548b73d580f158ceef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3946,7 +3942,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.008726558, y: 0, z: 0, w: 0.999962}
   m_LocalPosition: {x: 4.32, y: -1.54, z: 0}
-  m_LocalScale: {x: 1.8738197, y: 1.8738197, z: 1.8738197}
+  m_LocalScale: {x: 2.315479, y: 2.315479, z: 2.315479}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
