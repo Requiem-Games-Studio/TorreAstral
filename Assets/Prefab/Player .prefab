@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 6125321779418999677}
   - component: {fileID: 4872012519330607737}
   m_Layer: 0
-  m_Name: spriteBrazo
+  m_Name: spriteArms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -581,11 +581,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resistance:
-    contundente: 10
-    perforante: 10
-    cortante: 10
-    fuego: 10
-    escarcha: 10
+    contundente: 0
+    perforante: 0
+    cortante: 0
+    fuego: 0
+    escarcha: 0
 --- !u!1 &644494887135801860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,7 +1098,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3461352184163159120}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: RemoveBoots
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3311854372899268643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1372,7 +1384,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6416649640024608568}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: OnClickRemove
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 2,0
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &858061344776526773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1646,7 +1670,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8030605672640552139}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: RemoveArms
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6081146959368343795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2090,7 +2126,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6690230383584882718}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: OnClickRemove
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 1,3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7032026363233730644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2526,7 +2574,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7219591552388840134}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: OnClickRemove
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 1,2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7294421532708614615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4120,7 +4180,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5882069247613019261}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: RemoveHelment
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7672890963963436627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4258,7 +4330,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5361241401635607854}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: OnClickRemove
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 1,0
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3278487061052675320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4396,7 +4480,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6414181206260203940}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: OnClickRemove
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 0,1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5007223088070688436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4820,7 +4916,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7298087652753994350}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: OnClickRemove
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 0,0
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2466467858429551320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4850,7 +4958,7 @@ GameObject:
   - component: {fileID: 1802303984304861682}
   - component: {fileID: 5721915441219600341}
   m_Layer: 0
-  m_Name: spriteCabeza
+  m_Name: spriteHelment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4979,11 +5087,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resistance:
-    contundente: 10
-    perforante: 10
-    cortante: 10
-    fuego: 10
-    escarcha: 10
+    contundente: 0
+    perforante: 0
+    cortante: 0
+    fuego: 0
+    escarcha: 0
 --- !u!1 &5681755967405026758
 GameObject:
   m_ObjectHideFlags: 0
@@ -5094,6 +5202,7 @@ MonoBehaviour:
   bootsSlot: {fileID: 3311854372899268643}
   pivotWeapon: {fileID: 395715520084334620}
   weaponManager: {fileID: 1475727028017514231}
+  armorManager: {fileID: 4632346431484274086}
 --- !u!1 &5727857409643254663
 GameObject:
   m_ObjectHideFlags: 0
@@ -5539,7 +5648,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1498594807423675505}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: OnClickRemove
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 4,0
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8712983870443184098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6255,7 +6376,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 800326023601287982}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: RemoveWeapon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1307360493438137368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6739,7 +6872,7 @@ GameObject:
   - component: {fileID: 2239210669883077833}
   - component: {fileID: 3641688675732202806}
   m_Layer: 0
-  m_Name: spritePiernas
+  m_Name: spriteLegs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6995,11 +7128,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resistance:
-    contundente: 10
-    perforante: 10
-    cortante: 10
-    fuego: 10
-    escarcha: 10
+    contundente: 0
+    perforante: 0
+    cortante: 0
+    fuego: 0
+    escarcha: 0
 --- !u!1 &7219460177259906543
 GameObject:
   m_ObjectHideFlags: 0
@@ -7310,7 +7443,7 @@ MonoBehaviour:
   active: 0
   left: 0
   flip: 0
-  trowSpeed: 120
+  trowSpeed: 50
   itemObject: {fileID: 0}
 --- !u!70 &9054525719802993523
 CapsuleCollider2D:
@@ -7508,7 +7641,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4090621837466403976}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: OnClickRemove
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 1,4
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8182420950502938237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7646,7 +7791,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2027507036656027873}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: OnClickRemove
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 3,0
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2618987445258976414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7677,7 +7834,7 @@ GameObject:
   - component: {fileID: 4008745232610244195}
   - component: {fileID: 4193559618804959198}
   m_Layer: 0
-  m_Name: spriteTorzo
+  m_Name: spriteChest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7823,11 +7980,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resistance:
-    contundente: 10
-    perforante: 10
-    cortante: 10
-    fuego: 10
-    escarcha: 10
+    contundente: 0
+    perforante: 0
+    cortante: 0
+    fuego: 0
+    escarcha: 0
 --- !u!1 &7725326234221055087
 GameObject:
   m_ObjectHideFlags: 0
@@ -8086,7 +8243,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6154593050684888167}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: RemoveChest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7110024575265688496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8854,7 +9023,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9050702181147359446}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2530526331505758381}
+        m_TargetAssemblyTypeName: Equipment, Assembly-CSharp
+        m_MethodName: OnClickRemove
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 1,1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7253295069391787940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9292,6 +9473,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8847a57bc09489c46b7faba20fddba36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player_h: {fileID: 5656213715144745493}
+  player_c: {fileID: 7678595709813240470}
+  player_a: {fileID: 518620371384133990}
+  player_l: {fileID: 7076469234066943550}
+  animators:
+  - {fileID: 8960772295371103621}
+  - {fileID: 2568768961291431627}
+  - {fileID: 7655971880408410874}
+  - {fileID: 3677897170165220480}
+  defaultController:
+  - {fileID: 9100000, guid: b3762a3ad72ab92468bfa7e8257f9d92, type: 2}
+  - {fileID: 9100000, guid: 44974386e6d19094a8f78437bd693316, type: 2}
+  - {fileID: 9100000, guid: 7c7c20ae2cf1a1840936f93aade23b26, type: 2}
+  - {fileID: 9100000, guid: 256c7313691c42242825b70d84215b55, type: 2}
+  defaultRes:
+    contundente: 0
+    perforante: 0
+    cortante: 0
+    fuego: 0
+    escarcha: 0
   helmet: {fileID: 5721915441219600341}
   chest: {fileID: 4193559618804959198}
   arms: {fileID: 4872012519330607737}

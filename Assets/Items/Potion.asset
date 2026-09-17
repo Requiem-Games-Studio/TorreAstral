@@ -17,4 +17,5 @@ MonoBehaviour:
   icon: {fileID: 4639506938558671751, guid: d6695658ec50c1b4f89931884ffc8e05, type: 3}
   maxStack: 4
   itemType: 5
-  itemPrefab: {fileID: 0}
+  playerObject: {fileID: 0}
+  worldObject: {fileID: 3332976989877310749, guid: bf18345f971c74648b3abda901a2d222, type: 3}

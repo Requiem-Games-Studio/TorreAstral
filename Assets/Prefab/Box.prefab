@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 5771038878662321279}
   - component: {fileID: 2676433045332270646}
   - component: {fileID: 4764754959153650243}
-  - component: {fileID: 8544328846846527283}
   - component: {fileID: -5718027915120034265}
   - component: {fileID: 3295339381054846797}
   - component: {fileID: 3884217357477684981}
@@ -184,18 +183,6 @@ MonoBehaviour:
     MinImpactfulCollisionAlignment: 0.3
     ImpactStartCorrectionTime: 0.1
     ImpactCorrectionTimeComplete: 0.3
---- !u!114 &8544328846846527283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5086044649893513771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72f9d73fb50abec4f93578053d22e380, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-5718027915120034265
 MonoBehaviour:
   m_ObjectHideFlags: 0
