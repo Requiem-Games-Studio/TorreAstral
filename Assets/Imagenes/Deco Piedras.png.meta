@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 42984d63e9d243645b670dbfc07e9906
+guid: 0b739f8563f7dac4d94b5df3c4e89a58
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5364233727520946129
-    second: Fondo2_0
+      213: 1584803775955053531
+    second: Deco Piedras_0
+  - first:
+      213: 7717912510723772926
+    second: Deco Piedras_1
+  - first:
+      213: -5911223782049734494
+    second: Deco Piedras_2
+  - first:
+      213: 6298242654009577561
+    second: Deco Piedras_3
+  - first:
+      213: 6141203301454875501
+    second: Deco Piedras_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fondo2_0
+      name: Deco Piedras_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 640
-        height: 360
+        y: 259
+        width: 291
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +140,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f28c1f288d96e85b0800000000000000
-      internalID: -5364233727520946129
+      spriteID: bdbaf7833aa5ef510800000000000000
+      internalID: 1584803775955053531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco Piedras_1
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 264
+        width: 132
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef1db3989888b1b60800000000000000
+      internalID: 7717912510723772926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco Piedras_2
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 265
+        width: 47
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a0a51b0a4d17fda0800000000000000
+      internalID: -5911223782049734494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco Piedras_3
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 243
+        width: 100
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9505475035ad76750800000000000000
+      internalID: 6298242654009577561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deco Piedras_4
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 582
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6b8cac7ddfe93550800000000000000
+      internalID: 6141203301454875501
       vertices: []
       indices: 
       edges: []
@@ -148,7 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fondo2_0: -5364233727520946129
+      Deco Piedras_0: 1584803775955053531
+      Deco Piedras_1: 7717912510723772926
+      Deco Piedras_2: -5911223782049734494
+      Deco Piedras_3: 6298242654009577561
+      Deco Piedras_4: 6141203301454875501
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

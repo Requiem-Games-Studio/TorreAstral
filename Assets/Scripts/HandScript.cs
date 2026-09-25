@@ -79,11 +79,26 @@ public class HandScript : MonoBehaviour
         {
             if (collision.CompareTag("Chest"))
             {
+                Debug.Log("Chest opening");
                 Chest currentChest = collision.GetComponent<Chest>();
                 StartCoroutine(OpeningChest(currentChest, currentChest.dificult));
                 return;
             }
 
+            if (collision.CompareTag("Door"))
+            {
+                Door currentDoor = collision.GetComponent<Door>();
+                if (currentDoor.isLocking)
+                {
+                    StartCoroutine(OpeningDoor(currentDoor, currentDoor.dificult));                    
+                }
+                else
+                {
+                    currentDoor.InteractingDoor();
+                }
+
+                return;
+            }
 
             if (collision.CompareTag("Object") && !taken)
             {
@@ -154,6 +169,17 @@ public class HandScript : MonoBehaviour
         yield return new WaitForSeconds(1f + dificult);
 
         currentChest.OpenChest();
+        playerControler.StopApplying();
+
+    }
+
+    IEnumerator OpeningDoor(Door currentDoor, int dificult)
+    {
+        playerControler.StartApplying();
+
+        yield return new WaitForSeconds(1f + dificult);
+
+        currentDoor.InteractingDoor();
         playerControler.StopApplying();
 
     }

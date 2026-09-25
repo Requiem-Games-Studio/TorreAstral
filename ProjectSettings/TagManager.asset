@@ -12,6 +12,7 @@ TagManager:
   - Wood
   - Grass
   - Chest
+  - Door
   layers:
   - Default
   - TransparentFX

@@ -4,7 +4,7 @@ using System;
 using Fusion;
 using Photon.Realtime;
 using System.Security.Cryptography.X509Certificates;
-using UnityEditor.Rendering;
+//using UnityEditor.Rendering;
 
 public class PlayerControler : NetworkBehaviour
 {
@@ -50,6 +50,7 @@ public class PlayerControler : NetworkBehaviour
     public float dodgeDuration = 0.5f;
     public float dodgeCooldown = 1f;
 
+    public BoxCollider2D normalCollider, crounchCollider;
     //public LayerMask myCollider;
 
     [Header("Salto")]
@@ -446,6 +447,7 @@ public class PlayerControler : NetworkBehaviour
                 // Transición de inicio (StartCrouch)
                 PlayAnimationOnAll("StarCrouch");
             }
+            ChangeCollider();
             SetBoolOnAll("Crouch", IsCrouching);
             // Actualizamos la memoria local del cliente
             _lastIsCrouching = IsCrouching;
@@ -519,6 +521,20 @@ public class PlayerControler : NetworkBehaviour
         if (animatorC) animatorC.SetBool(paramName, value);
         if (animatorB) animatorB.SetBool(paramName, value);
         if (weaponManager && weaponManager.anim) weaponManager.anim.SetBool(paramName, value);
+    }
+
+    public void ChangeCollider()
+    {
+        if (IsCrouching)
+        {
+            normalCollider.enabled = false;
+            crounchCollider.enabled = true;
+        }
+        else
+        {
+            normalCollider.enabled = true;
+            crounchCollider.enabled = false;
+        }
     }
 
     private void PlayAnimationWithAttack(string stateName)

@@ -1853,7 +1853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a882e3aa795b18419803016b5272a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScene: Game
+  gameScene: SelectData
 --- !u!1 &850505624
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,12 +1,12 @@
 using UnityEngine;
 using static DamageSystem;
-using UnityEditor.Animations;
+//using UnityEditor.Animations;
 
 public class ArmorManager : MonoBehaviour
 {
     public GameObject player_h, player_c,player_a, player_l;
     public Animator[] animators;
-    public AnimatorController[] defaultController;
+    public RuntimeAnimatorController[] defaultController;
 
     public ArmorResistance defaultRes;
  

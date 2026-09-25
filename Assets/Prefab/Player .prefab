@@ -2441,7 +2441,7 @@ SpriteRenderer:
   m_SortingLayerID: 2006485701
   m_SortingLayer: -2
   m_SortingOrder: -50
-  m_Sprite: {fileID: -5130558894233647175, guid: eeace931d8c2d89439d755571e8b9546, type: 3}
+  m_Sprite: {fileID: 626387772460964884, guid: 5fdccf88d4edfa54da84831d3cf27086, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -9145,6 +9145,8 @@ GameObject:
   - component: {fileID: 9190664089563162739}
   - component: {fileID: 1797219506598494534}
   - component: {fileID: 4632346431484274086}
+  - component: {fileID: 3816314816739732837}
+  - component: {fileID: 2684903243229689671}
   m_Layer: 0
   m_Name: 'Player '
   m_TagString: Player
@@ -9216,6 +9218,8 @@ MonoBehaviour:
   dodgeSpeed: 6
   dodgeDuration: 0.5
   dodgeCooldown: 0.1
+  normalCollider: {fileID: 3816314816739732837}
+  crounchCollider: {fileID: 2684903243229689671}
   jumpForce: 4
   maxJumpTime: 0.3
   coyoteTime: 0.15
@@ -9260,11 +9264,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.6229907
+  m_Mass: 0.6225108
   m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 6200000, guid: 3efc10c700fd07049a8371eaf8ce6ba4, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9321,7 +9325,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1431ff3963dae4847a91101868f9582f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9345,8 +9349,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0012225509, y: -0.24328953}
-  m_Size: {x: 0.37, y: 1.1589328}
+  m_Offset: {x: 0, y: -0.68294317}
+  m_Size: {x: 0.3044356, y: 0.3044356}
   m_Direction: 0
 --- !u!114 &1475727028017514231
 MonoBehaviour:
@@ -9497,6 +9501,98 @@ MonoBehaviour:
   chest: {fileID: 4193559618804959198}
   arms: {fileID: 4872012519330607737}
   legs: {fileID: 3641688675732202806}
+--- !u!61 &3816314816739732837
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8920193556659171520}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 3efc10c700fd07049a8371eaf8ce6ba4, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.1715755}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.29867792, y: 1.0885721}
+  m_EdgeRadius: 0
+--- !u!61 &2684903243229689671
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8920193556659171520}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 3efc10c700fd07049a8371eaf8ce6ba4, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -0.47003657}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.29867792, y: 0.4929819}
+  m_EdgeRadius: 0
 --- !u!1 &9105815606258480752
 GameObject:
   m_ObjectHideFlags: 0

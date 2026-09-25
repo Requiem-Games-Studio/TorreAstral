@@ -21,7 +21,7 @@ public class ChunkManagerByName : NetworkBehaviour
 
     private HashSet<Vector2Int> currentPlayersChunks = new HashSet<Vector2Int>();
 
-    public SpawnObjects spawnObjects;
+    public NetworkObject[] objectSpawned;
 
     public override void Spawned()
     {
@@ -186,22 +186,32 @@ public class ChunkManagerByName : NetworkBehaviour
         loadedChunks.Add(chunkCoord, newChunk);
 
         //SpawnObjects by chunks
-        SpawnPoints spawnPoints = newChunk.GetComponentInChildren<SpawnPoints>();
-        if(spawnPoints != null)
+        SpawByChunk spawByChunk = newChunk.GetComponentInChildren<SpawByChunk>();
+        if(spawByChunk != null)
         {
-            Debug.Log("Si se encontro SpawnObject");
-            spawnObjects.SpawnBychunks(spawnPoints);
+            Debug.Log("Si se encontro SpawChunk");
+            foreach (SavedObject objeto in spawByChunk.objetos)
+            {
+                NetworkObject prefab = System.Array.Find(
+                    objectSpawned,
+                    x => x.name == objeto.nombre
+                );
+
+                if (prefab != null) Runner.Spawn(prefab, objeto.posicion, Quaternion.identity);
+            }
         }
         else
         {
-            Debug.Log("No se encontro SpawnObject");
-        }
+            Debug.Log("No se encontro SpawByChunk");
+        }        
     }
 
     void UnloadChunk(Vector2Int chunkCoord)
     {
         if (loadedChunks.TryGetValue(chunkCoord, out GameObject chunk))
         {
+            chunk.SendMessage("SaveEnemiesAndItems",SendMessageOptions.DontRequireReceiver);
+            
             Destroy(chunk);
             loadedChunks.Remove(chunkCoord);
         }
