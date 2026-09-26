@@ -1,9 +1,7 @@
-using Fusion;
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawByChunk : MonoBehaviour
+public class SaveObjectsByChunk : MonoBehaviour
 {
     public Collider2D col;
 
@@ -11,15 +9,13 @@ public class SpawByChunk : MonoBehaviour
 
 
     [ContextMenu("Save Enemies And Items")]
-    public void SaveEnemiesAndItems()
+    public List<SavedObject> SaveEnemiesAndItems()
     {
         Debug.Log("Save Enemies And Items");
 
-        // Limpiamos los datos anteriores
         objetos.Clear();
 
         Collider2D[] results = new Collider2D[50];
-
         ContactFilter2D filter = new ContactFilter2D();
         filter.useTriggers = true;
 
@@ -31,27 +27,14 @@ public class SpawByChunk : MonoBehaviour
             {
                 SavedObject objeto = new SavedObject();
 
-                objeto.nombre = results[i].name;
+                // Limpiamos el "(Clone)" del nombre si es un objeto instanciado
+                objeto.nombre = results[i].name.Replace("(Clone)", "").Trim();
                 objeto.posicion = results[i].transform.position;
 
                 objetos.Add(objeto);
-
-                Debug.Log(
-                    "Guardado: " +
-                    objeto.nombre +
-                    " | Posición: " +
-                    objeto.posicion
-                );
             }
         }
 
-        Debug.Log("Objetos guardados: " + objetos.Count);
+        return objetos; // Retornamos la lista capturada
     }
-}
-
-[System.Serializable]
-public class SavedObject
-{
-    public string nombre;
-    public Vector3 posicion;
 }

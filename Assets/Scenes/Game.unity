@@ -545,6 +545,15 @@ MonoBehaviour:
   - {fileID: 2676433045332270646, guid: b2134c8c2a6f3b1439826243c1a1602e, type: 3}
   - {fileID: 6901656289428008172, guid: 6e5f355ebf3b4ed46ad68faa413d436e, type: 3}
   - {fileID: 754421207521079545, guid: 1205b72b0edb31d43b92589c875a2b9e, type: 3}
+  data:
+    playerName: 
+    playTime: 0
+    playProgress: 0
+    playerPosition: {x: -547, y: -48.4}
+    health: 0
+    exploredChunks: []
+    takenCollectables: []
+    chunkDataList: []
 --- !u!114 &75759680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10299,14 +10308,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RunnerPrefab: {fileID: 1863818111}
-  StartMode: 0
-  AutoStartAs: 2
+  StartMode: 1
+  AutoStartAs: 1
   AutoHideGUI: 1
   AutoClients: 1
   ClientStartDelay: 0.1
   ServerPort: 0
   DefaultRoomName: 
-  InitialScenePath: 
+  InitialScenePath: Assets/Scenes/Menu.unity
   _currentStage: 0
   AutoConnectVirtualInstances: 1
   VirtualInstanceConnectDelay: 1
@@ -11108,6 +11117,8 @@ MonoBehaviour:
     health: 0
     exploredChunks: []
     takenCollectables: []
+    chunkDataList: []
+  chunkManager: {fileID: 75759679}
 --- !u!1 &1870836359
 GameObject:
   m_ObjectHideFlags: 0

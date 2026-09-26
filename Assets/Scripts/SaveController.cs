@@ -6,6 +6,7 @@ public class SaveController : MonoBehaviour
 {
     public GameObject player;
     public SaveData data;
+    public ChunkManagerByName chunkManager;
     //public WorldMapManager chunkManager;
 
     void Start()
@@ -35,15 +36,18 @@ public class SaveController : MonoBehaviour
 
     public void SavePlayerData()
     {
+        if (player == null) return;
         // Llenar datos
-        data.playerName = "Roper";
         data.playTime += Time.deltaTime;
         data.playProgress = GetProgress();
-        if(player != null)
-        {
-            data.playerPosition = player.transform.position;
-        }
+        data.playerPosition = player.transform.position;
         data.health = GetHealth();
+
+        // NUEVO: Guardar el estado actual de los chunks que están en pantalla
+        if (chunkManager != null)
+        {
+            chunkManager.SaveAllActiveChunks();
+        }
         //Debug.Log("Chunks guardados: " + chunkManager.exploredChunks.Count);
         //data.exploredChunks = chunkManager.exploredChunks.ToList();
 

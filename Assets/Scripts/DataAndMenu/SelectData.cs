@@ -51,16 +51,7 @@ public class SelectData : MonoBehaviour
         else
         {
             Debug.Log("Slot vacío, creando nueva partida...");
-            SaveData newData = new SaveData();
-            newData.playerName = "";
-            newData.playTime = 0f;
-            newData.playProgress = 0f;
-            newData.playerPosition = new Vector2(0, 0);
-
-            SaveManager.Instance.SaveGame(slotIndex, newData);
-
-            SaveManager.Instance.currentSlot = slotIndex;
-            SaveManager.Instance.currentData = newData;
+            SaveManager.Instance.NewGame(slotIndex);
         }
 
         SceneManager.LoadScene("Game");

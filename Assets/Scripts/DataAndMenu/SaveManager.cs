@@ -8,8 +8,9 @@ public class SaveManager : MonoBehaviour
 
     public int currentSlot;
     public SaveData currentData;
+    [Header("Valores por Defecto")]
+    public SaveData initialData; // Configuras todo esto desde el Inspector
 
-    public Vector2 defaultStartPosition = new Vector2(-547, -48.4f);
 
     private void Awake()
     {
@@ -28,10 +29,7 @@ public class SaveManager : MonoBehaviour
     public void NewGame(int slotIndex)
     {
         currentSlot = slotIndex;
-        currentData = new SaveData();
-
-        // Posición inicial correcta
-        currentData.playerPosition = defaultStartPosition;
+        currentData = initialData;
 
         SaveGame();
     }
@@ -63,8 +61,7 @@ public class SaveManager : MonoBehaviour
         if (currentData == null)
         {
             Debug.Log("No había save, creando nuevo...");
-            currentData = new SaveData();
-            SaveGame();
+           NewGame(slotIndex);
         }
 
         if (currentData.takenCollectables == null)

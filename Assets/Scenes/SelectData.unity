@@ -2593,14 +2593,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentSlot: 0
   currentData:
-    playerName: 
+    playerName: 0
     playTime: 0
     playProgress: 0
-    playerPosition: {x: -547, y: -48.4}
-    health: 0
+    playerPosition: {x: 0, y: 0}
+    health: 100
     exploredChunks: []
     takenCollectables: []
-  defaultStartPosition: {x: 0, y: 0}
+    chunkDataList:
+    - chunkPosition: {x: 0, y: 0}
+      savedObjects:
+      - nombre: Box
+        posicion: {x: -1, y: 0, z: 0}
+      - nombre: Box
+        posicion: {x: 1, y: 0, z: 0}
+  initialData:
+    playerName: Marco
+    playTime: 0
+    playProgress: 0
+    playerPosition: {x: 3, y: 0}
+    health: 100
+    exploredChunks: []
+    takenCollectables: []
+    chunkDataList:
+    - chunkPosition: {x: 0, y: 0}
+      savedObjects:
+      - nombre: Box
+        posicion: {x: -1, y: 0, z: 0}
+      - nombre: Box
+        posicion: {x: 1, y: 0, z: 0}
 --- !u!4 &1754882268
 Transform:
   m_ObjectHideFlags: 0

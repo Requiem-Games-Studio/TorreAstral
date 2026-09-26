@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Linq; // Necesario para comparar los conjuntos de forma eficiente
 using Fusion;
 using Photon.Realtime;
+using System;
 
 public class ChunkManagerByName : NetworkBehaviour
 {
@@ -23,11 +24,25 @@ public class ChunkManagerByName : NetworkBehaviour
 
     public NetworkObject[] objectSpawned;
 
+    private Dictionary<string, NetworkObject> prefabDictionary = new Dictionary<string, NetworkObject>();
+
+    public SaveData data;
+
     public override void Spawned()
     {
-        Debug.Log("Spawn Manager");
+        Debug.Log("Spawn Manager");        
         CheckPlayers();
         InitializeChunkMap();
+
+        // Llenamos el diccionario cuando el NetworkBehaviour aparece en la red
+        prefabDictionary.Clear();
+        foreach (NetworkObject prefab in objectSpawned)
+        {
+            if (prefab != null && !prefabDictionary.ContainsKey(prefab.name))
+            {
+                prefabDictionary.Add(prefab.name, prefab);
+            }
+        }
     }
 
     public void CheckPlayers()
@@ -185,33 +200,79 @@ public class ChunkManagerByName : NetworkBehaviour
 
         loadedChunks.Add(chunkCoord, newChunk);
 
-        //SpawnObjects by chunks
-        SpawByChunk spawByChunk = newChunk.GetComponentInChildren<SpawByChunk>();
-        if(spawByChunk != null)
-        {
-            Debug.Log("Si se encontro SpawChunk");
-            foreach (SavedObject objeto in spawByChunk.objetos)
-            {
-                NetworkObject prefab = System.Array.Find(
-                    objectSpawned,
-                    x => x.name == objeto.nombre
-                );
 
-                if (prefab != null) Runner.Spawn(prefab, objeto.posicion, Quaternion.identity);
+
+        // Obtienes la lista de objetos guardados en este chunk
+        List<SavedObject> objectsInChunk = data.GetObjectsInChunk(chunkCoord);
+
+        if (objectsInChunk.Count > 0)
+        {
+            // Le pasas la lista completa a tu método de spawneo
+            SpawnSavedObjects(objectsInChunk);
+        }       
+    }
+
+    public void SpawnSavedObjects(List<SavedObject> objetosGuardados)
+    {
+        // Solo el Host o StateAuthority debe spawnear en red
+        if (!HasStateAuthority) return;
+
+        foreach (SavedObject objeto in objetosGuardados)
+        {
+            if (prefabDictionary.TryGetValue(objeto.nombre, out NetworkObject prefab))
+            {
+                Runner.Spawn(prefab, objeto.posicion, Quaternion.identity);
+            }
+            else
+            {
+                Debug.LogWarning($"No se encontró el prefab en el diccionario: {objeto.nombre}");
             }
         }
-        else
+    }
+
+    public void SaveAllActiveChunks()
+    {
+        data = SaveManager.Instance.currentData;
+
+        // Recorremos solo los chunks que están activos en escena en este instante
+        foreach (var kvp in loadedChunks)
         {
-            Debug.Log("No se encontro SpawByChunk");
-        }        
+            Vector2Int chunkCoord = kvp.Key;
+            GameObject chunkGO = kvp.Value;
+
+            if (chunkGO != null)
+            {
+                SaveObjectsByChunk chunkScript = chunkGO.GetComponent<SaveObjectsByChunk>();
+                if (chunkScript != null)
+                {
+                    // Escaneamos los objetos actuales de este chunk
+                    List<SavedObject> savedObjects = chunkScript.SaveEnemiesAndItems();
+
+                    // Actualizamos la lista global en el SaveData
+                    data.SaveObjectsInChunk(chunkCoord, savedObjects);
+                }
+            }
+        }
     }
 
     void UnloadChunk(Vector2Int chunkCoord)
     {
+        data = SaveManager.Instance.currentData;
+
         if (loadedChunks.TryGetValue(chunkCoord, out GameObject chunk))
         {
-            chunk.SendMessage("SaveEnemiesAndItems",SendMessageOptions.DontRequireReceiver);
-            
+            SaveObjectsByChunk chunkScript = chunk.GetComponent<SaveObjectsByChunk>();
+
+            if (chunkScript != null)
+            {
+                // 1. Ejecutas el escaneo y obtienes la lista de objetos
+                List<SavedObject> savedObjects = chunkScript.SaveEnemiesAndItems();
+
+                // 2. Guardas la lista en tu SaveData para esta coordenada
+                data.SaveObjectsInChunk(chunkCoord, savedObjects);
+            }
+
+
             Destroy(chunk);
             loadedChunks.Remove(chunkCoord);
         }
