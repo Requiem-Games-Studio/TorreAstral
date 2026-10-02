@@ -104,10 +104,13 @@ public class PlayerControler : NetworkBehaviour
     [Networked] public NetworkBool IsApplying { get; set; }
     [Networked] public NetworkBool CanDodge { get; set; }
     [Networked] public NetworkBool IsBlocking { get; set; }
+    [Networked] public NetworkBool ItsComfortable { get; set; }
+    [Networked] public NetworkBool IsSitting{ get; set; }
     [Networked] private int BlockStartCount { get; set; }
 
     private bool _lastIsBlocking;
     private bool _lastIsCrouching;
+    private bool _lastIsSitting;
     private bool _lastIsBeating;
     private bool _lastIsApplying;
 
@@ -207,7 +210,6 @@ public class PlayerControler : NetworkBehaviour
                 SoftLandCount++;       // Transición a "idle" en Render()
             }
         }
-
 
 
         //Interaccion 
@@ -352,19 +354,32 @@ public class PlayerControler : NetworkBehaviour
             // =========================================================
             VerticalInput = input.movement.y;
 
-            // Cuando se presiona abajo
-            if (VerticalInput < 0 && !IsCrouching)
+            if (VerticalInput < 0 && ItsComfortable)
             {
-                //IsInteracting = true;
-                IsCrouching = true;
+                IsSitting = true;
+                IsInteracting = true;
+                Debug.Log("Is Sitting!!!!");
+                return;
+            }
+                // Cuando se presiona abajo
+            if (VerticalInput < 0 && !IsCrouching && !ItsComfortable)
+            {
                 rb.linearVelocityX = 0; // Lógica de física/movimiento
+
+                IsCrouching = true;
+
             }
             // Cuando se suelta abajo
-            else if (VerticalInput >= 0 && IsCrouching)
+            else if (VerticalInput >= 0 && IsCrouching && !IsSitting)
             {
                 IsCrouching = false;
                 this.gameObject.layer = 0;
                 // Si necesitas resetear IsInteracting aquí o al levantarte, hazlo según tu lógica
+            }
+
+            if(VerticalInput > 0 && IsSitting)
+            {
+                IsSitting = false;
             }
         }
 
@@ -416,6 +431,7 @@ public class PlayerControler : NetworkBehaviour
                 if (animator) animator.Play("Add");
                 if (animatorC) animatorC.Play("Add");
                 if (animatorB) animatorB.Play("Add");
+                if (animatorP) animatorP.Play("Add");
             }
             if (change == nameof(ConsumCount))
             {
@@ -440,6 +456,19 @@ public class PlayerControler : NetworkBehaviour
         // =========================================================
         // START OF CROUCHING
         // =========================================================
+        if (IsSitting != _lastIsSitting)
+        {
+            if (IsSitting)
+            {
+                Debug.Log("Play Animation SitDown");
+                PlayAnimationOnAll("SitDown");
+            }
+            else
+            {
+                PlayAnimationOnAll("StandUp");
+            }
+            _lastIsSitting = IsSitting;
+        }
         if (IsCrouching != _lastIsCrouching)
         {
             if (IsCrouching)
@@ -735,4 +764,23 @@ public class PlayerControler : NetworkBehaviour
         IsApplying = false;
         animator.SetBool("isInteracting", false);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("SoftPlace"))
+        {
+            Debug.Log("Entró a SoftPlace");
+            ItsComfortable = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("SoftPlace"))
+        {
+            Debug.Log("Salio de SoftPlace");
+            ItsComfortable = false;
+        }
+    }
+
 }

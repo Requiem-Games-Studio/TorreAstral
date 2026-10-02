@@ -529,12 +529,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunkPrefabs:
+  - {fileID: 8274936719305097702, guid: b930229ea0033754797c2520677ec4d8, type: 3}
   - {fileID: 8627731808148339785, guid: 701c1f352cccc7e4fa5befa0f6f86735, type: 3}
   - {fileID: 4829151389225626087, guid: f249eef58c04a5047bc03f434c3673dc, type: 3}
   - {fileID: 8274936719305097702, guid: 9ae6267def7b75c4b8c9e0a1da6f9d85, type: 3}
   - {fileID: 1601403859045479982, guid: 71a4cdf135d41a747a4d60328e9d34ed, type: 3}
   - {fileID: 4829151389225626087, guid: 63bc75c68c23d244f86c5c69641b7495, type: 3}
   - {fileID: 4829151389225626087, guid: a6359a20fed4bb54ab56ff4a83db921d, type: 3}
+  - {fileID: 4829151389225626087, guid: e9b90a893048dd54c84d2f7362fa5244, type: 3}
+  - {fileID: 8274936719305097702, guid: d1538a16fed12984692ab1f99aec83e9, type: 3}
   chunkWidth: 17
   chunkHeight: 12
   loadRadius: 1

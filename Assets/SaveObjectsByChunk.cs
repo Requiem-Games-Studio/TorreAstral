@@ -7,9 +7,11 @@ public class SaveObjectsByChunk : MonoBehaviour
 
     public List<SavedObject> objetos = new List<SavedObject>();
 
+    public List<GameObject> gameObjects = new List<GameObject>();
+
 
     [ContextMenu("Save Enemies And Items")]
-    public List<SavedObject> SaveEnemiesAndItems()
+    public List<SavedObject> SaveEnemiesAndItems(bool destroyObjects = true)
     {
         Debug.Log("Save Enemies And Items");
 
@@ -32,9 +34,25 @@ public class SaveObjectsByChunk : MonoBehaviour
                 objeto.posicion = results[i].transform.position;
 
                 objetos.Add(objeto);
+
+                gameObjects.Add(results[i].gameObject);
             }
         }
 
+        if (destroyObjects)
+        {
+            DeleteObjects();
+        }
+
         return objetos; // Retornamos la lista capturada
+
+    }
+
+    public void DeleteObjects()
+    {
+        for (int i = 0;i < gameObjects.Count; i++)
+        {
+            Destroy(gameObjects[i]);
+        }
     }
 }

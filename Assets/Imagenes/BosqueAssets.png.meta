@@ -87,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -172,8 +172,8 @@ TextureImporter:
       name: BosqueAssets_2
       rect:
         serializedVersion: 2
-        x: 21
-        y: 81
+        x: 217
+        y: 202
         width: 42
         height: 26
       alignment: 0
@@ -194,8 +194,8 @@ TextureImporter:
       name: BosqueAssets_3
       rect:
         serializedVersion: 2
-        x: 71
-        y: 85
+        x: 269
+        y: 204
         width: 38
         height: 23
       alignment: 0
@@ -216,8 +216,8 @@ TextureImporter:
       name: BosqueAssets_4
       rect:
         serializedVersion: 2
-        x: 27
-        y: 52
+        x: 224
+        y: 174
         width: 31
         height: 15
       alignment: 0
@@ -256,6 +256,116 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: BosqueAssets_6
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 122
+        width: 211
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 635021ecdcb96c94dacebdd6e5ddb3e3
+      internalID: -2092511777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BosqueAssets_7
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 249
+        width: 211
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa90283dc1d2b91448fa2970360fb3e8
+      internalID: 214812392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BosqueAssets_8
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 112
+        width: 85
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cbdc417e63c7cd4eae8d9e316eb1437
+      internalID: -2091068009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BosqueAssets_9
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 6
+        width: 231
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9337aab0005353f4a8fbbd44f0ba2777
+      internalID: 1458435232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BosqueAssets_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 242
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbeceaec3c3b98d41a0fdfef801b9813
+      internalID: -1738406241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -272,11 +382,15 @@ TextureImporter:
     nameFileIdTable:
       BosqueAssets_0: 8579657104557995040
       BosqueAssets_1: -6024148171056904722
+      BosqueAssets_10: -1738406241
       BosqueAssets_2: 8084859631333636439
       BosqueAssets_3: 8993798486845528734
       BosqueAssets_4: 8243002378265953202
       BosqueAssets_5: -431532366
       BosqueAssets_6: -2092511777
+      BosqueAssets_7: 214812392
+      BosqueAssets_8: -2091068009
+      BosqueAssets_9: 1458435232
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

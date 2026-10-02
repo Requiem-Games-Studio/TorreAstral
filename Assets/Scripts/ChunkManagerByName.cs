@@ -191,6 +191,8 @@ public class ChunkManagerByName : NetworkBehaviour
 
     void LoadChunk(Vector2Int chunkCoord)
     {
+        data = SaveManager.Instance.currentData;
+
         Vector3 chunkPosition = new Vector3(chunkCoord.x * chunkWidth, chunkCoord.y * chunkHeight, 0);
 
         GameObject chunkPrefab = chunkPrefabMap[chunkCoord];
@@ -207,8 +209,13 @@ public class ChunkManagerByName : NetworkBehaviour
 
         if (objectsInChunk.Count > 0)
         {
+            Debug.Log("Spawn objects in " + chunkCoord);
             // Le pasas la lista completa a tu método de spawneo
             SpawnSavedObjects(objectsInChunk);
+        }
+        else
+        {
+            Debug.Log("There is not objects in " + chunkCoord);
         }       
     }
 
@@ -246,7 +253,7 @@ public class ChunkManagerByName : NetworkBehaviour
                 if (chunkScript != null)
                 {
                     // Escaneamos los objetos actuales de este chunk
-                    List<SavedObject> savedObjects = chunkScript.SaveEnemiesAndItems();
+                    List<SavedObject> savedObjects = chunkScript.SaveEnemiesAndItems(false);
 
                     // Actualizamos la lista global en el SaveData
                     data.SaveObjectsInChunk(chunkCoord, savedObjects);

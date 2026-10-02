@@ -13,6 +13,7 @@ TagManager:
   - Grass
   - Chest
   - Door
+  - SoftPlace
   layers:
   - Default
   - TransparentFX
