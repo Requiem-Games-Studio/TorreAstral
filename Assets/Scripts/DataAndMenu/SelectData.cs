@@ -9,6 +9,7 @@ public class SelectData : MonoBehaviour
     public TMPro.TextMeshProUGUI[] progress;
     public TMPro.TextMeshProUGUI[] newName;
 
+    public CharacterPanel characterPanel;
 
 
     private void Start()
@@ -47,14 +48,13 @@ public class SelectData : MonoBehaviour
             Debug.Log("Cargando partida del slot " + slotIndex);
             SaveManager.Instance.currentSlot = slotIndex;
             SaveManager.Instance.currentData = SaveManager.Instance.LoadGame(slotIndex);
+            SceneManager.LoadScene("Game");
         }
         else
         {
-            Debug.Log("Slot vacío, creando nueva partida...");
-            SaveManager.Instance.NewGame(slotIndex);
+            Debug.Log("Character Panel");
+            characterPanel.CreateNewCharacter(slotIndex);
         }
-
-        SceneManager.LoadScene("Game");
     }
 
     public void DeletSlot(int slotID)
@@ -64,6 +64,11 @@ public class SelectData : MonoBehaviour
         time[slotID].text = "";
         progress[slotID].text = "";
 
+    }
+
+    public void BackButton()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
 }

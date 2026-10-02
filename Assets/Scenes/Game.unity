@@ -10311,8 +10311,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RunnerPrefab: {fileID: 1863818111}
-  StartMode: 1
-  AutoStartAs: 1
+  StartMode: 2
+  AutoStartAs: 4
   AutoHideGUI: 1
   AutoClients: 1
   ClientStartDelay: 0.1
@@ -10974,7 +10974,7 @@ GameObject:
   - component: {fileID: 1863818115}
   m_Layer: 0
   m_Name: Prototype Runner
-  m_TagString: Untagged
+  m_TagString: Runner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

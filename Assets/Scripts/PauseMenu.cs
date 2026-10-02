@@ -1,9 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
 
     public GameObject menu,equipment;
+    public SaveController saveController;
+
+    [HideInInspector]
+    public string playerMode = "Single";
 
 
     void Update()
@@ -24,6 +29,23 @@ public class PauseMenu : MonoBehaviour
 
     public void ExitGame()
     {
+        SaveGame();
         Application.Quit();
+    }
+
+    public void MainMenu()
+    {
+        SaveGame();
+        //SceneManager.LoadScene("Menu");
+    }
+
+    public void SaveGame()
+    {              
+        saveController = GameObject.Find(playerMode).GetComponent<SaveController>();     
+        
+        if(saveController != null )
+        {
+            saveController.SavePlayerData();
+        }
     }
 }
