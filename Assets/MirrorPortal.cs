@@ -1,19 +1,17 @@
 using Fusion;
-using Unity.VisualScripting;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
-public class MirrorPortal : NetworkBehaviour
-{
-
-    public Canvas canvas;
-
-
-    private void Start()
+public class MirrorPortal : MonoBehaviour
+{    
+    public Animator anim;
+    bool open;
+    
+    public void CheckMirror()
     {
-        if (Runner.IsServer && Runner.IsPlayer)
-        {
-            Debug.Log("Eres el HOST (Servidor + Jugador).");
-            canvas.worldCamera = GameObject.FindGameObjectWithTag("PlayerCamera")?.GetComponent<Camera>();
-        }
+        open = !open;
+
+        anim.SetBool("Open", open);
+
     }
 }

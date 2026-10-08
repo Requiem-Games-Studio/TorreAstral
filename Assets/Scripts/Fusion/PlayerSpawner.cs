@@ -15,6 +15,14 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
     {
         NetworkObject playerObject = null;
 
+        Debug.Log(
+        $"PLAYER JOINED | " +
+        $"Runner: {Runner.name} | " +
+        $"Joined Player: {player} | " +
+        $"LocalPlayer: {Runner.LocalPlayer} | " +
+        $"IsServer: {Runner.IsServer}"
+        );
+
         if (Runner.IsServer)
         {
             playerObject = Runner.Spawn(
@@ -24,7 +32,11 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
                 player
             );
 
-            chunkManager.CheckPlayers();
+            chunkManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<ChunkManagerByName>();
+            if ( chunkManager != null )
+            {
+                chunkManager.CheckPlayers();
+            }
         }
 
         // Solo el host carga los datos una vez

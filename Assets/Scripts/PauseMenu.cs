@@ -4,11 +4,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
 
-    public GameObject menu,equipment;
+    public GameObject menu,equipment,connectionPanel;
     public SaveController saveController;
-
-    [HideInInspector]
-    public string playerMode = "Single";
 
 
     void Update()
@@ -41,11 +38,16 @@ public class PauseMenu : MonoBehaviour
 
     public void SaveGame()
     {              
-        saveController = GameObject.Find(playerMode).GetComponent<SaveController>();     
+        saveController = GameObject.FindGameObjectWithTag("Runner").GetComponent<SaveController>();
         
         if(saveController != null )
         {
             saveController.SavePlayerData();
         }
+    }
+
+    public void UseConnectionPanel()
+    {
+        connectionPanel.SetActive(!connectionPanel.activeSelf);
     }
 }

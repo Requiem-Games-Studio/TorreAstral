@@ -6,6 +6,7 @@ public class HandScript : MonoBehaviour
 {
 
     public Equipment equipment;
+    public PauseMenu pauseMenu;
     public PlayerControler playerControler;
 
     [HideInInspector]
@@ -104,6 +105,19 @@ public class HandScript : MonoBehaviour
             {
                 taken = true;
                 TakeObject(collision.gameObject);
+            }
+
+            if (collision.CompareTag("Mirror"))
+            {
+                MirrorPortal portal = collision.GetComponent<MirrorPortal>();
+                
+                if(portal != null)
+                {
+                    portal.CheckMirror();
+                    pauseMenu.UseConnectionPanel();
+                }
+
+                return;
             }
         }
     }

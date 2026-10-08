@@ -10,6 +10,7 @@ public class SelectData : MonoBehaviour
     public TMPro.TextMeshProUGUI[] newName;
 
     public CharacterPanel characterPanel;
+    public SelectDataManager manager;
 
 
     private void Start()
@@ -48,7 +49,7 @@ public class SelectData : MonoBehaviour
             Debug.Log("Cargando partida del slot " + slotIndex);
             SaveManager.Instance.currentSlot = slotIndex;
             SaveManager.Instance.currentData = SaveManager.Instance.LoadGame(slotIndex);
-            SceneManager.LoadScene("Game");
+            manager.StartHostPrivate();
         }
         else
         {

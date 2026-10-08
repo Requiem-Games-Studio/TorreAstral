@@ -4,6 +4,7 @@ using System;
 using Fusion;
 using Photon.Realtime;
 using System.Security.Cryptography.X509Certificates;
+using static Unity.Collections.Unicode;
 //using UnityEditor.Rendering;
 
 public class PlayerControler : NetworkBehaviour
@@ -121,12 +122,17 @@ public class PlayerControler : NetworkBehaviour
         if (HasInputAuthority)
         {
             // Este es mi jugador local
+            cameraPlayer.SetActive(true);
             cameraPlayer.transform.parent = null;
             canvas.transform.parent = null;
             cameraFollow = cameraPlayer.GetComponent<CameraFollow>(); 
             cameraFollow.player = this.gameObject.transform;
             cameraFollow.StartCamera();
         }
+
+        Debug.Log("HasStateAuthority " + HasStateAuthority);
+        Debug.Log("HasInputAuthority " + HasInputAuthority);
+        Debug.Log("Runner.LocalPlayer " + Runner.LocalPlayer);
 
         // En Fusion 2 pasas directamente ChangeDetector.Source.SimulationState
         _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);

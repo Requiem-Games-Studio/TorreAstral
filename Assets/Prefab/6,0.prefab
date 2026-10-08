@@ -811,6 +811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   col: {fileID: 5679632542308309334}
   objetos: []
+  gameObjects: []
 --- !u!1 &1723475960906835289
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ TagManager:
   - SoftPlace
   - Runner
   - PlayerCamera
+  - Mirror
   layers:
   - Default
   - TransparentFX
