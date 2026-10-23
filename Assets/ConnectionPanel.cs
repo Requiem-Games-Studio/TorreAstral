@@ -10,6 +10,21 @@ public class ConnectionPanel : NetworkBehaviour
     [SerializeField] private NetworkRunner runnerPrefab;
 
     // --- ACCIÓN DEL HOST EN EL ESPEJO ---
+
+    public void OpenPortal()
+    {
+        if (Runner == null || !Runner.IsServer) return;
+
+        Runner.SessionInfo.IsVisible = true;
+    }
+
+    public void ClosePortal()
+    {
+        if (Runner == null || !Runner.IsServer) return;
+
+        Runner.SessionInfo.IsVisible = false;
+    }
+
     public void MakeRoomPublicOrPrivate()
     {
         if (Runner == null || !Runner.IsServer) return;
@@ -34,9 +49,11 @@ public class ConnectionPanel : NetworkBehaviour
         //mirrorCanvas.SetActive(false); // Cerrar UI del espejo
     }
 
+
      //--- ACCIÓN DEL INVITADO EN EL ESPEJO ---
     public async void JoinWorldAsCoop()
     {
+        
         if (Runner != null)
             await Runner.Shutdown();
 

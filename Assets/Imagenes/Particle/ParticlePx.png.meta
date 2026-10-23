@@ -153,10 +153,10 @@ TextureImporter:
       name: ParticlePx_1
       rect:
         serializedVersion: 2
-        x: 42
-        y: 43
-        width: 42
-        height: 43
+        x: 56
+        y: 58
+        width: 15
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

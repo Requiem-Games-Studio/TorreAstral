@@ -119,9 +119,9 @@ TextureImporter:
         x: 0
         y: 0
         width: 640
-        height: 241
+        height: 184
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -134,11 +134,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Playa_1
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 202
+        width: 434
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac583e05426a0424b93885256b0f8387
+      internalID: 1318698247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playa_2
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 287
+        width: 115
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 972cc8b510d49a94fa4018b6b60b80a1
+      internalID: -641302700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 775ee111ada213a4e91cb9b547867691
     internalID: 0
     vertices: []
     indices: 
@@ -149,6 +193,8 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Playa_0: 1774802895513883531
+      Playa_1: 1318698247
+      Playa_2: -641302700
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -22,7 +22,7 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -186227701, guid: 6cd1b92ea41a0dd47895ee7b0c10ba6c, type: 3}
-    - time: 0.16666667
+    - time: 0.083333336
       value: {fileID: -1582397732, guid: 41f9e84af38293a428ded17b8cca33c6, type: 3}
     - time: 0.73333335
       value: {fileID: -1582397732, guid: 41f9e84af38293a428ded17b8cca33c6, type: 3}
@@ -75,4 +75,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.083333336
+    functionName: AttackStepSoft
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

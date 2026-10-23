@@ -40,6 +40,7 @@ public class PlayerControler : NetworkBehaviour
     [Networked] private NetworkBool IsRunning { get; set; }
 
     [Networked] public NetworkBool IsDodging { get; set; }
+    [Networked] public NetworkBool IsHidden { get; set; }
     [Networked] private TickTimer DodgeTimer { get; set; }
     [Networked] private TickTimer DodgeCooldownTimer { get; set; }
 
@@ -107,6 +108,8 @@ public class PlayerControler : NetworkBehaviour
     [Networked] public NetworkBool IsBlocking { get; set; }
     [Networked] public NetworkBool ItsComfortable { get; set; }
     [Networked] public NetworkBool IsSitting{ get; set; }
+
+    [Networked] public NetworkBool narrowPlace { get; set; }
     [Networked] private int BlockStartCount { get; set; }
 
     private bool _lastIsBlocking;
@@ -169,7 +172,10 @@ public class PlayerControler : NetworkBehaviour
             }
 
             MoveInput = input.movement.x;
-            rb.linearVelocity = new Vector2(MoveInput * speed, rb.linearVelocity.y);
+            if (!IsAttacking)
+            {
+                rb.linearVelocity = new Vector2(MoveInput * speed, rb.linearVelocity.y);
+            }
 
             if (MoveInput != 0)
             {
@@ -481,11 +487,22 @@ public class PlayerControler : NetworkBehaviour
             {
                 // Transición de inicio (StartCrouch)
                 PlayAnimationOnAll("StarCrouch");
+                ChangeCollider();
+                SetBoolOnAll("Crouch", IsCrouching);
+                // Actualizamos la memoria local del cliente
+                _lastIsCrouching = IsCrouching;
             }
-            ChangeCollider();
-            SetBoolOnAll("Crouch", IsCrouching);
-            // Actualizamos la memoria local del cliente
-            _lastIsCrouching = IsCrouching;
+            else
+            {
+                if (!narrowPlace)
+                {
+                    ChangeCollider();
+                    SetBoolOnAll("Crouch", IsCrouching);
+                    // Actualizamos la memoria local del cliente
+                    _lastIsCrouching = IsCrouching;
+                }
+            }
+
         }
         if (IsBeating != _lastIsBeating)
         {
@@ -539,10 +556,8 @@ public class PlayerControler : NetworkBehaviour
             }
             else
             {
-                if (!animatorP.GetBool("Walk") && !animatorP.GetBool("Run") && !animatorP.GetBool("isJumping")) animatorP.Play("Attack");
-                if (animator) animator.Play("Fist");
-                if (animatorC) animatorC.Play("Fist");
-                if (animatorB) animatorB.Play("Fist");
+                //if (!animatorP.GetBool("Walk") && !animatorP.GetBool("Run") && !animatorP.GetBool("isJumping")) animatorP.Play("Fist");
+                PlayAnimationOnAll("Fist");
             }                     
         }
         // Guardamos el estado anterior
@@ -771,12 +786,34 @@ public class PlayerControler : NetworkBehaviour
         animator.SetBool("isInteracting", false);
     }
 
+    public void AttackStep(float speedStep)
+    {
+        float direction = IsFacingLeft ? -1f : 1f;
+
+        rb.linearVelocity = new Vector2(
+            direction * speedStep,
+            rb.linearVelocity.y
+        );
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("SoftPlace"))
         {
-            Debug.Log("Entró a SoftPlace");
             ItsComfortable = true;
+        }
+
+        if (other.CompareTag("NarrowPlace"))
+        {
+            Debug.Log("Entró a NarrowPlace");
+            narrowPlace = true;
+        }
+
+        if (other.CompareTag("HidingPlace") && IsCrouching)
+        {
+            IsHidden = true;
+            SetEnemyCollision(true);
+            //vignetteController.SetVignetteIntensity(0.5f);
         }
     }
 
@@ -784,8 +821,20 @@ public class PlayerControler : NetworkBehaviour
     {
         if (other.CompareTag("SoftPlace"))
         {
-            Debug.Log("Salio de SoftPlace");
             ItsComfortable = false;
+        }
+
+        if (other.CompareTag("NarrowPlace"))
+        {
+            Debug.Log("Salio de NarrowPlace");
+            narrowPlace = false;
+        }
+
+        if (other.CompareTag("HidingPlace"))
+        {
+            IsHidden = false;
+            SetEnemyCollision(false);
+            //vignetteController.SetVignetteIntensity(0.5f);
         }
     }
 

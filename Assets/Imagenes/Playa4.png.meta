@@ -398,6 +398,160 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Playa4_13
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 262
+        width: 8
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22e2cfa2bc3bae044b3d4486b7154c21
+      internalID: -1662829042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playa4_14
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 234
+        width: 52
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ccb7f68443f42b428b81e8fea3949e6
+      internalID: 2042713188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playa4_15
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 272
+        width: 38
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06ade2f1e9ad611498298baa5df987dd
+      internalID: 1287615606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playa4_16
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 236
+        width: 24
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e66adcc9d644c641b96523f7eb2678b
+      internalID: 552465010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playa4_17
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 242
+        width: 212
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8cd8149ea5435d4695de32f2e9f1741
+      internalID: -290717839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playa4_18
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 268
+        width: 46
+        height: 5
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdd82fd5567682348a47f71c467ff83b
+      internalID: 428685853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Playa4_19
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 280
+        width: 46
+        height: 8
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 301399ce2f5faa147801985bb21bb7cc
+      internalID: -2141970059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -417,6 +571,13 @@ TextureImporter:
       Playa4_10: -1644358896
       Playa4_11: 1866019453
       Playa4_12: -1716826894
+      Playa4_13: -1662829042
+      Playa4_14: 2042713188
+      Playa4_15: 1287615606
+      Playa4_16: 552465010
+      Playa4_17: -290717839
+      Playa4_18: 428685853
+      Playa4_19: -2141970059
       Playa4_2: -558597598
       Playa4_3: 1157507528
       Playa4_4: 1173534206

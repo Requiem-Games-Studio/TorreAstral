@@ -13,6 +13,8 @@ public class SaveObjectsByChunk : MonoBehaviour
     [ContextMenu("Save Enemies And Items")]
     public List<SavedObject> SaveEnemiesAndItems(bool destroyObjects = true)
     {
+        
+        
         Debug.Log("Save Enemies And Items");
 
         objetos.Clear();
@@ -23,18 +25,24 @@ public class SaveObjectsByChunk : MonoBehaviour
 
         int count = col.Overlap(filter, results);
 
+
+        Debug.Log("Colliders detectados: " + count);
+
         for (int i = 0; i < count; i++)
         {
-            if (results[i] != null && results[i].CompareTag("Object"))
+            if (results[i] == null) continue;
+
+            Debug.Log($"Detectado: {results[i].name} | Tag: {results[i].tag}");
+
+            if (results[i].CompareTag("Object") ||
+                results[i].CompareTag("Enemy"))
             {
                 SavedObject objeto = new SavedObject();
 
-                // Limpiamos el "(Clone)" del nombre si es un objeto instanciado
                 objeto.nombre = results[i].name.Replace("(Clone)", "").Trim();
                 objeto.posicion = results[i].transform.position;
 
                 objetos.Add(objeto);
-
                 gameObjects.Add(results[i].gameObject);
             }
         }

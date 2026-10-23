@@ -101,6 +101,15 @@ public class HandScript : MonoBehaviour
                 return;
             }
 
+            if (collision.CompareTag("Mechanism"))
+            {
+                Mechanism currentMechanism = collision.GetComponent<Mechanism>();
+
+                currentMechanism.SendMessage("UseMechanism");
+
+                return;
+            }
+
             if (collision.CompareTag("Object") && !taken)
             {
                 taken = true;

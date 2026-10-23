@@ -189,6 +189,8 @@ MonoBehaviour:
   - {fileID: 4829151389225626087, guid: a6359a20fed4bb54ab56ff4a83db921d, type: 3}
   - {fileID: 4829151389225626087, guid: e9b90a893048dd54c84d2f7362fa5244, type: 3}
   - {fileID: 8274936719305097702, guid: d1538a16fed12984692ab1f99aec83e9, type: 3}
+  - {fileID: 8274936719305097702, guid: 0d2f1773f70e5694692ab9b9372b1c69, type: 3}
+  - {fileID: 8274936719305097702, guid: ea9f25ac82ac5b2459b3002b0b945e8d, type: 3}
   chunkWidth: 17
   chunkHeight: 12
   loadRadius: 1
@@ -832,11 +834,11 @@ MonoBehaviour:
   m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.7877358, g: 1, b: 0.9924959, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: c58a9877736cfc91000000002db2b7c4
+  m_ApplyToSortingLayers: c58a9877736cfc91000000002db2b7c4fb85e730
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0

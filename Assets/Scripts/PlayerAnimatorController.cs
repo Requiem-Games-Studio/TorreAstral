@@ -61,4 +61,14 @@ public class PlayerAnimatorController : MonoBehaviour
     {
         hand.AddOrDrop();
     }
+
+    public void AttackStepSoft()
+    {
+        playerControler.AttackStep(2.5f);
+    }
+
+    public void AttackStepHard()
+    {
+        playerControler.AttackStep(5);
+    }
 }

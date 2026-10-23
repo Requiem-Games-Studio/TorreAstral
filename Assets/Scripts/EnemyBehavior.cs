@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using Fusion;
+using UnityEngine.EventSystems;
 
 public class EnemyBehavior : NetworkBehaviour
 {
@@ -19,7 +20,7 @@ public class EnemyBehavior : NetworkBehaviour
     private Vector2 startPos;
     private float lastAttackTime = 0;
     private bool MovingRight = true;
-    public bool attacking;
+    public bool attacking,patrol;
 
     [Networked] private float Direction { get; set; }
     [Networked] public NetworkBool Dead { get; set; }
@@ -33,6 +34,11 @@ public class EnemyBehavior : NetworkBehaviour
     private ChangeDetector _changeDetector;
 
    PlayerControler _playerControler;
+
+    [SerializeField] Transform groundCheck;
+    [SerializeField] float wallDistance = 0.5f;
+    [SerializeField] float groundDistance = 0.8f;
+    [SerializeField] LayerMask groundLayer;
 
 
     public override void Spawned()
@@ -56,29 +62,37 @@ public class EnemyBehavior : NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
-        if (!HasStateAuthority)
+        if (!HasStateAuthority || Dead)
             return;
 
-        if (Dead || Target == null)
-            return;
 
-        float distance = Vector2.Distance(transform.position, Target.transform.position);
+        if(Target != null)
+        {
+            float distance = Vector2.Distance(transform.position, Target.transform.position);
 
-        if (distance <= attackRange)
-        { 
-            AttackPlayer();          
-        }
-        else if (distance <= patrolRange && !attacking)
-        {
-            ChasePlayer();            
-        }
-        else
-        {
-            if (!attacking)
+            if (distance <= attackRange)
             {
-                Patrol();                
+                AttackPlayer();
+            }
+            else if (distance <= patrolRange && !attacking)
+            {
+                ChasePlayer();
+            }
+            else
+            {
+                if (!attacking)
+                {
+                    Debug.Log("Target Perdido " + distance + "<=" + patrolRange);
+                    Target = null;
+                }
             }
         }
+
+        if (patrol && Target == null)
+        {
+            Patrol();
+        }
+
     }
 
     public override void Render()
@@ -130,6 +144,8 @@ public class EnemyBehavior : NetworkBehaviour
         float moveDirection = MovingRight ? 1 : -1;
         rb.linearVelocity = new Vector2(moveDirection * patrolSpeed, rb.linearVelocity.y);
 
+        DetectGroundAndWall(moveDirection);
+
         if (MovingRight && transform.position.x >= startPos.x + patrolRange)
             MovingRight = false;
         else if (!MovingRight && transform.position.x <= startPos.x - patrolRange)
@@ -137,6 +153,35 @@ public class EnemyBehavior : NetworkBehaviour
 
         Direction = moveDirection;
         IsWalking = true;
+    }
+    void DetectGroundAndWall(float moveDirection)
+    {
+        // Detectar muro al frente
+        Vector2 direction = MovingRight ? Vector2.right : Vector2.left;
+
+        bool wall = Physics2D.Raycast(
+            transform.position,
+            direction,
+            wallDistance,
+            groundLayer
+        );
+
+        // Detectar si hay piso adelante
+        Vector2 groundOrigin = groundCheck.position;
+        groundOrigin.x += moveDirection * groundDistance;
+
+        bool groundAhead = Physics2D.Raycast(
+            groundOrigin,
+            Vector2.down,
+            groundDistance,
+            groundLayer
+        );
+
+        // Cambiar dirección si hay muro o no hay piso
+        if (wall || !groundAhead)
+        {         
+            MovingRight = !MovingRight;
+        }
     }
     void ChasePlayer()
     {        

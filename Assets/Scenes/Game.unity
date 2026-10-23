@@ -291,15 +291,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunkPrefabs:
-  - {fileID: 8274936719305097702, guid: b930229ea0033754797c2520677ec4d8, type: 3}
   - {fileID: 8627731808148339785, guid: 701c1f352cccc7e4fa5befa0f6f86735, type: 3}
-  - {fileID: 4829151389225626087, guid: f249eef58c04a5047bc03f434c3673dc, type: 3}
-  - {fileID: 8274936719305097702, guid: 9ae6267def7b75c4b8c9e0a1da6f9d85, type: 3}
-  - {fileID: 1601403859045479982, guid: 71a4cdf135d41a747a4d60328e9d34ed, type: 3}
   - {fileID: 4829151389225626087, guid: 63bc75c68c23d244f86c5c69641b7495, type: 3}
+  - {fileID: 4829151389225626087, guid: f249eef58c04a5047bc03f434c3673dc, type: 3}
   - {fileID: 4829151389225626087, guid: a6359a20fed4bb54ab56ff4a83db921d, type: 3}
+  - {fileID: 8274936719305097702, guid: 9ae6267def7b75c4b8c9e0a1da6f9d85, type: 3}
   - {fileID: 4829151389225626087, guid: e9b90a893048dd54c84d2f7362fa5244, type: 3}
+  - {fileID: 8274936719305097702, guid: b930229ea0033754797c2520677ec4d8, type: 3}
+  - {fileID: 8274936719305097702, guid: 0d2f1773f70e5694692ab9b9372b1c69, type: 3}
   - {fileID: 8274936719305097702, guid: d1538a16fed12984692ab1f99aec83e9, type: 3}
+  - {fileID: 8274936719305097702, guid: 2c91973d295bb7542903bfb0d31c4de8, type: 3}
+  - {fileID: 8274936719305097702, guid: 8c55c5f3ce4500c4190136a228281b59, type: 3}
+  - {fileID: 8274936719305097702, guid: 4916484a4ef1c5440bdd039c1677d8a3, type: 3}
+  - {fileID: 8274936719305097702, guid: ea9f25ac82ac5b2459b3002b0b945e8d, type: 3}
+  - {fileID: 8274936719305097702, guid: 5d0ce4fdac3300448b60e22352c20024, type: 3}
+  - {fileID: 8274936719305097702, guid: 9569a8d5f688ac9408f4269da6cb015c, type: 3}
+  - {fileID: 8274936719305097702, guid: 88dcb1ee6ad1b1c4cb4504bbd2f7e26a, type: 3}
+  - {fileID: 8274936719305097702, guid: 8ca99d1ee8036ca4d9c40de685657e25, type: 3}
+  - {fileID: 8274936719305097702, guid: 12f5c35179184a84092dcdfaab29c9ed, type: 3}
+  - {fileID: 8274936719305097702, guid: c7c11885f72ce2841814bbce44d3a9e1, type: 3}
+  - {fileID: 8274936719305097702, guid: c554a46dcd936a44f968c0d0a55b14bc, type: 3}
+  - {fileID: 8274936719305097702, guid: 28ec02cf76f91c8459ed4e4bf05dea67, type: 3}
+  - {fileID: 8274936719305097702, guid: 498b728ff5f206a498575ac3c17661c2, type: 3}
+  - {fileID: 8274936719305097702, guid: 8c134f0299e82744588bcc2c5ab9c526, type: 3}
+  - {fileID: 8274936719305097702, guid: 09b173f13aef7fe4f86a39187c9afeb6, type: 3}
+  - {fileID: 8274936719305097702, guid: 8ce3da1ebab696f489dc0256c09dbe19, type: 3}
+  - {fileID: 8274936719305097702, guid: fb52b191719e40842b5ae9ee34cfa5cf, type: 3}
+  - {fileID: 8274936719305097702, guid: 347cdba90d978c94d8a573928ac1658c, type: 3}
   chunkWidth: 17
   chunkHeight: 12
   loadRadius: 1
@@ -310,6 +328,7 @@ MonoBehaviour:
   - {fileID: 2676433045332270646, guid: b2134c8c2a6f3b1439826243c1a1602e, type: 3}
   - {fileID: 6901656289428008172, guid: 6e5f355ebf3b4ed46ad68faa413d436e, type: 3}
   - {fileID: 754421207521079545, guid: 1205b72b0edb31d43b92589c875a2b9e, type: 3}
+  - {fileID: 2199421492415793561, guid: 0cd770704353f7b4080d84b04e6e0301, type: 3}
   data:
     playerName: 
     playTime: 0
@@ -943,11 +962,11 @@ MonoBehaviour:
   m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.7877358, g: 1, b: 0.9924959, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: c58a9877736cfc91000000002db2b7c4
+  m_ApplyToSortingLayers: c58a9877736cfc91000000002db2b7c4fb85e730
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0

@@ -87,7 +87,7 @@ public class SelectDataManager : MonoBehaviour
             GameMode = GameMode.Host,
             SessionName = roomSala,
             IsOpen = true,       // Nadie puede unirse aún
-            IsVisible = true,    // No aparece en listas de matchmaking
+            IsVisible = false,    // No aparece en listas de matchmaking
             Scene = SceneRef.FromIndex(sceneIndex),
             SceneManager = sceneManager
         });

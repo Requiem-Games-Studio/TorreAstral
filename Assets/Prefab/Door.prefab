@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1948022386965593195}
   - component: {fileID: 8343801800362981577}
   - component: {fileID: 8003971911345196902}
+  - component: {fileID: 3776970147799848369}
+  - component: {fileID: 2718863144517853516}
   m_Layer: 3
   m_Name: Door
   m_TagString: Door
@@ -128,7 +130,7 @@ BoxCollider2D:
   m_Offset: {x: -0.001452595, y: -0.0047396123}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0.5}
+    pivot: {x: 0.3, y: 0.5}
     oldSize: {x: 0.15, y: 0.99}
     newSize: {x: 0.12, y: 0.6}
     adaptiveTilingThreshold: 0.5
@@ -217,3 +219,41 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &3776970147799848369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2162778308880827171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 8343801800362981577}
+  ApplyTiming: 2
+  SyncSettings: 79
+  StateHashes: 00000000c0aec0d242e18c579a2c4204c8763d2d
+  TriggerHashes: 00000000
+  TotalWords: 1
+--- !u!114 &2718863144517853516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2162778308880827171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 4096824268
+  SendPriority: 1
+  EnableInterpolation: 1
+  Flags: 262146
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 3776970147799848369}
+  ForceRemoteRenderTimeframe: 0
