@@ -4948,9 +4948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 3270485877194331670}
   sounds:
-  - {fileID: 8300000, guid: 5ab1713e8aa270146bac32764dc1bde3, type: 3}
   - {fileID: 8300000, guid: 3323bea7731423d458e973a9430d0982, type: 3}
-  - {fileID: 8300000, guid: 675eed176a477a94b85706f077036962, type: 3}
   pitchVariation: 0.343
 --- !u!1001 &1452163295755195232
 PrefabInstance:

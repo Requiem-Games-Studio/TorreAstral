@@ -5,6 +5,7 @@ public class PlayRandomSound : MonoBehaviour
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip[] sounds;
+    public AudioClip[] sounds2;
 
     [Header("Pitch")]
     [Range(0f, 1f)]
@@ -21,6 +22,23 @@ public class PlayRandomSound : MonoBehaviour
             return;
 
         AudioClip randomSound = sounds[Random.Range(0, sounds.Length)];
+
+        audioSource.pitch = Random.Range(
+            1f - pitchVariation,
+            1f + pitchVariation
+        );
+
+        audioSource.PlayOneShot(randomSound);
+
+        audioSource.pitch = 1f;
+    }
+
+    public void PlaySound2()
+    {
+        if (audioSource == null || sounds2 == null || sounds2.Length == 0)
+            return;
+
+        AudioClip randomSound = sounds2[Random.Range(0, sounds2.Length)];
 
         audioSource.pitch = Random.Range(
             1f - pitchVariation,

@@ -4281,6 +4281,44 @@ MonoBehaviour:
       savedObjects:
       - nombre: Zombie
         posicion: {x: 66, y: -0.7, z: 0}
+    - chunkPosition: {x: 7, y: -1}
+      savedObjects:
+      - nombre: ZombieB
+        posicion: {x: 117, y: -12.2, z: 0}
+      - nombre: ZombieB
+        posicion: {x: 121.5, y: -12.2, z: 0}
+      - nombre: ZombieB
+        posicion: {x: 126, y: -12.2, z: 0}
+      - nombre: ZombieB
+        posicion: {x: 109, y: -13.8, z: 0}
+    - chunkPosition: {x: 8, y: -1}
+      savedObjects:
+      - nombre: Zombie
+        posicion: {x: 132.5, y: -10.5, z: 0}
+    - chunkPosition: {x: 8, y: 0}
+      savedObjects:
+      - nombre: Zombie
+        posicion: {x: 140.5, y: 2.37, z: 0}
+    - chunkPosition: {x: 11, y: 0}
+      savedObjects:
+      - nombre: Zombie
+        posicion: {x: 181, y: 0.3, z: 0}
+      - nombre: Zombie
+        posicion: {x: 180, y: -2.8, z: 0}
+      - nombre: Zombie
+        posicion: {x: 190, y: -2.8, z: 0}
+    - chunkPosition: {x: 14, y: 0}
+      savedObjects:
+      - nombre: BoxF
+        posicion: {x: 233, y: -4.3, z: 0}
+      - nombre: BoxF
+        posicion: {x: 233, y: -3.6, z: 0}
+      - nombre: BoxF
+        posicion: {x: 233.8, y: -4.3, z: 0}
+      - nombre: BoxF
+        posicion: {x: 240, y: -4.3, z: 0}
+      - nombre: BoxF
+        posicion: {x: 240, y: -3.6, z: 0}
 --- !u!4 &1754882268
 Transform:
   m_ObjectHideFlags: 0

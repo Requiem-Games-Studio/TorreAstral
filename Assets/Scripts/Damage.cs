@@ -5,10 +5,10 @@ using static DamageSystem;
 
 public class Damage : MonoBehaviour
 {
-    public float damage, postureDamage;  
+    public float postureDamage;  
     public bool damageToPlayer, damageToEnemy;
     public bool heavyAttack;
-    public GameObject enemyObject;
+    public GameObject damageObject;
 
     public NetworkObject attacker;
     [HideInInspector]
@@ -19,6 +19,10 @@ public class Damage : MonoBehaviour
     private void Awake()
     {
         attacker = GetComponentInParent<NetworkObject>();
+        if(damageObject == null)
+        {
+            damageObject = this.gameObject;
+        }
     }
 
 
@@ -29,7 +33,7 @@ public class Damage : MonoBehaviour
             PlayerStats stats = collision.GetComponent<PlayerStats>();
             if (stats != null)
             {
-                stats.Damage(damageData, postureDamage, enemyObject, heavyAttack);
+                stats.Damage(damageData, postureDamage, damageObject, heavyAttack);
             
             }           
         }
@@ -42,7 +46,7 @@ public class Damage : MonoBehaviour
 
             if (stats != null)
             {               
-                stats.Damage(damage, postureDamage, heavyAttack);
+                stats.Damage(damageData, postureDamage, heavyAttack);
             }
 
             if (behavior != null && attacker != null)
@@ -57,7 +61,7 @@ public class Damage : MonoBehaviour
             ObjectStats stats = collision.GetComponent<ObjectStats>();
             if(stats != null)
             {
-                collision.SendMessage("Damage", damage);
+                collision.SendMessage("Damage", damageData);
             }
         }
     }

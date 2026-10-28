@@ -1,5 +1,6 @@
 using Fusion;
 using UnityEngine;
+using static DamageSystem;
 
 public class ObjectStats : NetworkBehaviour
 {
@@ -11,17 +12,22 @@ public class ObjectStats : NetworkBehaviour
     public GameObject particle;
     public FlashSprite flashSprite;
 
+    public ArmorResistance resistance;
+
     void Start()
     {
         currentHealth = maxHealth;
     }
 
-    public void Damage(float damage)
+    public void Damage(DamageData damageData)
     {
         if (!isAlive) return;
 
+        float defense = resistance.GetResistance(damageData.type);
+        float finalDamage = DamageCalculator.CalculateDamage(damageData.damage, defense);
 
-        currentHealth -= damage;
+
+        currentHealth -= finalDamage;
 
         flashSprite.Flash();
         Instantiate(particle, transform.position, Quaternion.identity);

@@ -2317,7 +2317,7 @@ MonoBehaviour:
   spriteElements:
   - {fileID: 6845733822709005069}
   disappearRate: 2
-  toggleWall: 1
+  toggleWall: 0
   reverse: 0
 --- !u!1 &7124405993426320637
 GameObject:

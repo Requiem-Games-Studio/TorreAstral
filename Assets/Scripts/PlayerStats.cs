@@ -46,6 +46,8 @@ public class PlayerStats : NetworkBehaviour
 
     public FlashSprite flashSprite;
 
+    public SpriteRenderer imageDeath;
+
     void Start()
     {
         CurrentHealth = maxHealth;
@@ -143,6 +145,7 @@ public class PlayerStats : NetworkBehaviour
 
             if (CurrentHealth <= 0)
             {
+                StartCoroutine(ImageDeath());
                 StartCoroutine(Beating());
                 GameFeelManager.Instance.DoImpactToKill();
                 return;
@@ -196,7 +199,6 @@ public class PlayerStats : NetworkBehaviour
     }
 
     // Derrotado
-
     // Timepo de recuperacion
     System.Collections.IEnumerator Beating()
     {
@@ -205,6 +207,64 @@ public class PlayerStats : NetworkBehaviour
         CurrentRecovery = 0;
         yield return new WaitForSeconds(RecoveryTime);
         controler.CrawlCount ++;
+    }
+    System.Collections.IEnumerator ImageDeath()
+    {
+        yield return new WaitForSeconds(3f);
+
+        Color color = imageDeath.color;
+
+        float duration = 1f;
+        float elapsed = 0f;
+
+        // Aparecer gradualmente
+        color.a = 0f;
+        imageDeath.color = color;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            color.a = Mathf.Pow(elapsed / duration, 2f);
+            imageDeath.color = color;
+            yield return null;
+        }
+
+        color.a = 1f;
+        imageDeath.color = color;
+
+        SearchDeathEvent();
+
+        // Esperar 5 segundos
+        yield return new WaitForSeconds(5f);
+
+        // Desaparecer gradualmente
+        elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            color.a = Mathf.Pow(1f - elapsed / duration, 2f);
+            imageDeath.color = color;
+            yield return null;
+        }
+
+        color.a = 0f;
+        imageDeath.color = color;
+    }
+
+    public void SearchDeathEvent()
+    {
+        GameObject deathObj = GameObject.FindGameObjectWithTag("DeathEvent");
+
+        if (deathObj != null)
+        {
+            DeathEvent deathEvent = deathObj.GetComponent<DeathEvent>();
+
+            if (deathEvent != null)
+            {
+                transform.position = deathEvent.newposition;
+            }
+        }
     }
 
     private void UpdateHealthBar()

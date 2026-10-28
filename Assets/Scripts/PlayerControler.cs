@@ -511,6 +511,12 @@ public class PlayerControler : NetworkBehaviour
                 // Transición de inicio (StartCrouch)
                 animator.SetBool("isInteracting",true);
                 PlayAnimationOnAll("Beaten");
+                SetEnemyCollision(true);
+            }
+
+            if (!IsBeating)
+            {
+                SetEnemyCollision(false);
             }
             // Actualizamos la memoria local del cliente
             _lastIsBeating = IsBeating;
@@ -551,7 +557,8 @@ public class PlayerControler : NetworkBehaviour
                 }
                 else
                 {
-                    PlayAnimationWithoutLegs("Attack");
+                    //PlayAnimationWithoutLegs("Attack");
+                    PlayAnimationOnAll("Attack");
                 }
             }
             else

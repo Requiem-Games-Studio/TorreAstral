@@ -1,6 +1,7 @@
 using Fusion;
 using UnityEngine;
 using UnityEngine.UI;
+using static DamageSystem;
 
 public class EnemyStats : NetworkBehaviour
 {
@@ -27,6 +28,8 @@ public class EnemyStats : NetworkBehaviour
 
     public FlashSprite flashSprite;
 
+    public ArmorResistance resistance;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -39,15 +42,17 @@ public class EnemyStats : NetworkBehaviour
     }
 
     // Recibir daño
-    public void Damage(float damage, float postureDamage,bool heavy)
+    public void Damage(DamageData damageData, float postureDamage,bool heavy)
     {
         if (!isAlive) return;
 
+        float defense = resistance.GetResistance(damageData.type);
+        float finalDamage = DamageCalculator.CalculateDamage(damageData.damage, defense);
 
         if (isStaggered)
         {
             animator.Play("HDamage");
-            currentHealth -= damage * 2;
+            currentHealth -= finalDamage * 1.5f;
             UpdateHealthBar();
         }
         else
@@ -55,8 +60,8 @@ public class EnemyStats : NetworkBehaviour
             if (postureDamage > poiseDefence)
             {
                 animator.Play("Damage");
-            }
-            currentHealth -= damage;
+            }          
+            currentHealth -= finalDamage;
             UpdateHealthBar();
             currentPosture -= postureDamage;
             CheckPostureBreak();

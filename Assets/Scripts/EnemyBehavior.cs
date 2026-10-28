@@ -17,6 +17,7 @@ public class EnemyBehavior : NetworkBehaviour
     private Rigidbody2D rb;
     public GameObject spriteEnemy;
     private Animator animator;
+    public string[] attackAnim;
     private Vector2 startPos;
     private float lastAttackTime = 0;
     private bool MovingRight = true;
@@ -24,6 +25,8 @@ public class EnemyBehavior : NetworkBehaviour
 
     [Networked] private float Direction { get; set; }
     [Networked] public NetworkBool Dead { get; set; }
+
+    [Networked] public NetworkBool IsInteracting { get; set; }
     [Networked] public NetworkBool FacingRight { get; set; }
 
     [Networked] public NetworkBool IsWalking { get; set; }
@@ -66,7 +69,7 @@ public class EnemyBehavior : NetworkBehaviour
             return;
 
 
-        if(Target != null)
+        if(Target != null && !IsInteracting)
         {
             float distance = Vector2.Distance(transform.position, Target.transform.position);
 
@@ -83,12 +86,13 @@ public class EnemyBehavior : NetworkBehaviour
                 if (!attacking)
                 {
                     Debug.Log("Target Perdido " + distance + "<=" + patrolRange);
+                    IsWalking = false;
                     Target = null;
                 }
             }
         }
 
-        if (patrol && Target == null)
+        if (patrol && Target == null && !IsInteracting)
         {
             Patrol();
         }
@@ -99,26 +103,15 @@ public class EnemyBehavior : NetworkBehaviour
     {
         Flip(Direction);
 
+        IsInteracting = animator.GetBool("isInteracting");
+
         foreach (var change in _changeDetector.DetectChanges(this))
         {
             if (change == nameof(IsAttackingCount))
             {
-                int randomAttack = UnityEngine.Random.Range(0, 3);
+                int randomAttack = UnityEngine.Random.Range(0, attackAnim.Length);
 
-                switch (randomAttack)
-                {
-                    case 0:
-                        animator.Play("Attack");
-                        break;
-
-                    case 1:
-                        animator.Play("Attack2");
-                        break;
-
-                    case 2:
-                        animator.Play("Attack");
-                        break;
-                }
+                animator.Play(attackAnim[randomAttack]);
             }
         }
 
