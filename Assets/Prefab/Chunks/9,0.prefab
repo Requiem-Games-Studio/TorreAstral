@@ -830,8 +830,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1845728141
+  m_SortingLayer: -1
   m_SortingOrder: -1
   m_Sprite: {fileID: 485562329, guid: 1d1620b278104d341bd45f42571f78d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1287,8 +1287,8 @@ Transform:
   m_GameObject: {fileID: 2273903902129332389}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.02, y: 0.4608, z: 0}
-  m_LocalScale: {x: -1.2866961, y: 1.7564162, z: 1}
+  m_LocalPosition: {x: -3.264, y: 0.4395, z: 0}
+  m_LocalScale: {x: -1.520837, y: 1.923886, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6186831230389397571}
@@ -1386,8 +1386,8 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: -1.3537469, y: -0.50300026}
-  - {x: 0.2642103, y: 0.5592373}
-  - {x: 1.340595, y: 0.55959344}
+  - {x: 0.16255581, y: 0.5196955}
+  - {x: 1.16424, y: 0.5200517}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -3666,6 +3666,8 @@ MonoBehaviour:
   damageData:
     damage: 80
     type: 0
+  destroy: 0
+  objectToDestroy: {fileID: 0}
 --- !u!1 &6909241999347164202
 GameObject:
   m_ObjectHideFlags: 0

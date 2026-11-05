@@ -4279,8 +4279,8 @@ MonoBehaviour:
         posicion: {x: 38.15, y: -0.7, z: 0}
     - chunkPosition: {x: 4, y: 0}
       savedObjects:
-      - nombre: Zombie
-        posicion: {x: 66, y: -0.7, z: 0}
+      - nombre: ZombieB
+        posicion: {x: 66, y: -1, z: 0}
     - chunkPosition: {x: 7, y: -1}
       savedObjects:
       - nombre: ZombieB
@@ -4319,6 +4319,10 @@ MonoBehaviour:
         posicion: {x: 240, y: -4.3, z: 0}
       - nombre: BoxF
         posicion: {x: 240, y: -3.6, z: 0}
+    - chunkPosition: {x: 5, y: 0}
+      savedObjects:
+      - nombre: WO_Sword
+        posicion: {x: 84.3, y: 1.3, z: 0}
 --- !u!4 &1754882268
 Transform:
   m_ObjectHideFlags: 0

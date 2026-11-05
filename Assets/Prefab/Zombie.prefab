@@ -677,6 +677,8 @@ MonoBehaviour:
   damageData:
     damage: 5
     type: 2
+  destroy: 0
+  objectToDestroy: {fileID: 0}
 --- !u!60 &9184421338183757574
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -887,7 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c62ca1c4461cd344693866b0de32b068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 40
+  maxHealth: 50
   _currentHealth: 0
   maxPosture: 10
   _poiseDefence: 5
@@ -1193,6 +1195,8 @@ MonoBehaviour:
   damageData:
     damage: 5
     type: 2
+  destroy: 0
+  objectToDestroy: {fileID: 0}
 --- !u!60 &2372986245813453669
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6830,6 +6834,8 @@ MonoBehaviour:
   damageData:
     damage: 7
     type: 1
+  destroy: 0
+  objectToDestroy: {fileID: 0}
 --- !u!70 &7448421283336982735
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

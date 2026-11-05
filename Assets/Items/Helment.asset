@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   itemName: Helment
-  icon: {fileID: -186227701, guid: 63154e4d3c997854c8e74a2a96539a5c, type: 3}
+  icon: {fileID: -851715481033328299, guid: d6695658ec50c1b4f89931884ffc8e05, type: 3}
   maxStack: 1
   itemType: 1
+  playerObject: {fileID: 9072485746035707307, guid: 71b0872fed38c79479635a0d3790946f, type: 3}
+  worldObject: {fileID: 3374991379228971355, guid: e560a58c55c8dc646b29adc584cd1b8f, type: 3}

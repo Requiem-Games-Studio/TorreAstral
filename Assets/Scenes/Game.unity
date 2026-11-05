@@ -346,6 +346,7 @@ MonoBehaviour:
   - {fileID: 2199421492415793561, guid: 0cd770704353f7b4080d84b04e6e0301, type: 3}
   - {fileID: 2199421492415793561, guid: 00ca211e2dc16634a89d7d60e562e2a1, type: 3}
   - {fileID: 2199421492415793561, guid: 22ba673a952ef304ca8c6269d14cf941, type: 3}
+  - {fileID: 6901656289428008172, guid: 6e5f355ebf3b4ed46ad68faa413d436e, type: 3}
   data:
     playerName: 
     playTime: 0

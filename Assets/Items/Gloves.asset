@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   itemName: Gloves
-  icon: {fileID: -186227701, guid: 8954c3e1f55c72d498c4e6bdaacec17e, type: 3}
+  icon: {fileID: -6297800631036545471, guid: d6695658ec50c1b4f89931884ffc8e05, type: 3}
   maxStack: 1
   itemType: 4
+  playerObject: {fileID: 9072485746035707307, guid: 99ef6ee16e09d3446985ae54777ccddf, type: 3}
+  worldObject: {fileID: 3374991379228971355, guid: b9025cbdbe5bae745b740b90251d0d35, type: 3}

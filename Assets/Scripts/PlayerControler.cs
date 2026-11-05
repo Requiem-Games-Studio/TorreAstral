@@ -368,9 +368,13 @@ public class PlayerControler : NetworkBehaviour
 
             if (VerticalInput < 0 && ItsComfortable)
             {
-                IsSitting = true;
-                IsInteracting = true;
-                Debug.Log("Is Sitting!!!!");
+                if (!IsSitting)
+                {
+                    IsSitting = true;
+                    IsInteracting = true;
+                    Debug.Log("Is Sitting!!!! SAVE Game");
+                    SavePlayerData();
+                }
                 return;
             }
                 // Cuando se presiona abajo
@@ -801,6 +805,13 @@ public class PlayerControler : NetworkBehaviour
             direction * speedStep,
             rb.linearVelocity.y
         );
+    }
+
+    public void SavePlayerData()
+    {
+        SaveController saveController = FindFirstObjectByType<SaveController>();
+
+        saveController.SavePlayerData();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

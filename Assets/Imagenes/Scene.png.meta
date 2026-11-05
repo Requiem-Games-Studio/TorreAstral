@@ -516,7 +516,7 @@ TextureImporter:
         width: 23
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -525,6 +525,28 @@ TextureImporter:
       bones: []
       spriteID: 8dc6ff6bba9c94e469201d599418beee
       internalID: 385095012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scene_18
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 132
+        width: 75
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fc5c662aa723704a89ef4c9d5ce630a
+      internalID: -492477974
       vertices: []
       indices: 
       edges: []
@@ -553,6 +575,7 @@ TextureImporter:
       Scene_15: -1870499662
       Scene_16: -631943214
       Scene_17: 385095012
+      Scene_18: -492477974
       Scene_2: -655518315096615809
       Scene_3: -8941735663481320360
       Scene_4: -7491126784752247881

@@ -233,6 +233,7 @@ public class PlayerStats : NetworkBehaviour
         imageDeath.color = color;
 
         SearchDeathEvent();
+        controler.SavePlayerData();
 
         // Esperar 5 segundos
         yield return new WaitForSeconds(5f);

@@ -16,6 +16,10 @@ public class Damage : MonoBehaviour
 
     public DamageData damageData;
 
+    
+    public bool destroy;
+    public GameObject objectToDestroy;
+
     private void Awake()
     {
         attacker = GetComponentInParent<NetworkObject>();
@@ -53,6 +57,11 @@ public class Damage : MonoBehaviour
             {
                 behavior.SetTarget(attacker);
                 Debug.Log("Damage Set Targer");
+            }
+
+            if (destroy)
+            {
+                Destroy(objectToDestroy);
             }
         }
 
